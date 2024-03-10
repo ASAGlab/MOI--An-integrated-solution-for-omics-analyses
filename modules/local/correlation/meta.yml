@@ -1,0 +1,50 @@
+name: correlation
+description: Estimate correlation of two matrices
+keywords:
+  - correlation 
+tools:
+  - correlation:
+      description: Estimate correlation of two matrices
+
+
+input:
+  - m1:
+      type: file
+      description: |
+        Count matrix of first set of features. Rows are features, columns are samples.
+  - m2:
+      type: file
+      description: |
+        Count matrix of first set of features. Rows are features, columns are samples.
+  - method:
+      type: string
+      description: |
+        Choose correlation method: "pearson","spearman" etc.
+  - cor_cut_off:
+      type: double
+      description: |
+        Correlation cut-off
+  - pval_cut_off:
+      type: double
+      description: |
+        Pvalue cut-off
+
+output:
+  - correlated:
+      type: file
+      description: |
+        Dataframe of correlated features
+  - cor_plots:
+      type: file
+      description: |
+        Plot of top correlated features.
+
+        
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

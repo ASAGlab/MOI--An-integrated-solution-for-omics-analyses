@@ -1,0 +1,40 @@
+name: gridd
+description: Predict if a RNA sequence will form recognizable substrate for IRE1.
+keywords:
+  - RNA secondary structure
+  - pattern
+  - RNAfold
+  - RNAeval
+  - ProbScan
+tools:
+  - gridd:
+      description: Predict if a RNA sequence will form recognizable substrate for IRE1.
+      tool_dev_url: https://www.nature.com/articles/s41467-021-27597-7#code-availability
+      doi: ""
+      licence: ["Artistic-2.0"]
+
+
+input:
+  - sequences:
+      type: file
+      description: |
+        Fasta file containing the fasta of the RNA molecules you wish to see if they are IRE1 substrates.
+
+output:
+  - ridd:
+      type: file
+      description: |
+        Whole output of gRIDD algorithm.
+  - ridd_strong_ids:
+      type: file
+      description: |
+        Names of transcripts containing the exact pattern that IRE1 recognizes
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

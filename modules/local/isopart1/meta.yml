@@ -1,0 +1,70 @@
+name: isopart1
+description: Differential isoform expression analysis
+keywords:
+  - differential isoform expression
+  - non-coding
+  - isoforms
+tools:
+  - isopart1:
+      description: Identify, Annotate and Visualize Isoform Switches with Functional Consequences from both short- and long-read RNA-seq data
+      homepage: https://bioconductor.org/packages/release/bioc/html/IsoformSwitchAnalyzeR.html
+      documentation: https://bioconductor.org/packages/release/bioc/vignettes/IsoformSwitchAnalyzeR/inst/doc/IsoformSwitchAnalyzeR.html
+      tool_dev_url: None
+      doi: ""
+      licence: ["GPL (>=2)"]
+    
+
+input:
+  - meta:
+      type: map
+      description: |
+         Wait for alignassamblyiso or to execute or provide same path as path to salmon results
+  - txt:
+      type: directory
+      description: |
+        Path of directory that stores salmon results. Quant.sf files have to be sub-directories of this path, e.g.: /path/sampleName/quant.sf 
+  - sample:
+      type: file
+      description: |
+        Samples info file containing the attributes (metadata) of the samples that will form your count matrix. Sample names have to be identical with the names you have under your path (declared above).
+  - gtf:
+      type: file
+      description: |
+        GTF you used during the align-assembly step. 
+  - fasta:
+      type: file
+      description: |
+        FASTA file you used during the align-assembly step
+  - dexseqpval:
+      type: float
+      description: |
+        Pvalue cut-off for the differentially expressed features from dexseq analysis
+  - dexseqfdr:
+      type: float
+      description: |
+        FDR cut-off for the differentially expressed features from dexseq analysis
+
+
+
+output:
+  - switchlist:
+      type: file
+      description: |
+        SwitchList as an Robject
+  - aa:
+      type: file
+      description: |
+        Aminoacid sequences of isoforms.
+  - nt:
+      type: file
+      description: |
+        Nucleotid sequences of isoforms.
+        
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

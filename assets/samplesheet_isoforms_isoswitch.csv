@@ -1,0 +1,5 @@
+sample,sampleID,condition,batch,cl
+fib0,fib0,fib,1,1
+fib1,fib1,fib,2,1
+hESC_0,hESC_0,control,1,0
+hESC_1,hESC_1,control,2,0

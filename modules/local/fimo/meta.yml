@@ -1,0 +1,46 @@
+name: fimo
+description: Find pattern in RNA sequences with FIMO
+keywords:
+  - fimo
+
+tools:
+  - iupac2meme:
+      description: Covert perl pattern to meme pattern for meme suite tools.
+  - fimo:
+      description: Find pattern in RNA sequences with FIMO
+      tool_dev_url:
+      doi: ""
+      licence: 
+
+
+input:
+  - sequences:
+      type: file
+      description: |
+        Fasta file containing the fasta of the RNA molecules you wish to search the motif in.
+
+
+  - pattern:
+      type: string
+      description: |
+        Pattern you want to search for in your RNA sequence. Use regular expressions. 
+  - pval:
+      type: double
+      description: |
+        Pvalue theshold for hits.
+
+output:
+  - fimo_out:
+      type: file
+      description: |
+        Results with sequences containg the motif you searched for.
+
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

@@ -1,0 +1,31 @@
+name: concentrate
+description: Cbind multiple text files
+keywords:
+  - cbind
+  - common columns
+tools:
+  - concentrate:
+      description: Cbind multiple text files
+
+
+input:
+  - txt:
+      type: directory
+      description: |
+        Location of files you wish to bind horizontally
+
+    
+
+output:
+  - count_matrix:
+      type: file
+      description: |
+        Merged array in txt format
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

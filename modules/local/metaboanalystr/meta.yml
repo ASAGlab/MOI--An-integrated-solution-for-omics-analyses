@@ -1,0 +1,32 @@
+name: metaboanalystr
+description: Pathway enrichment analysis for lipidomic data
+keywords:
+  - metabolomics
+  - pathway enrichment analysis
+tools:
+  - metaboanalystr:
+      description: A universal enrichment tool for interpreting omics data.
+      homepage: https://www.metaboanalyst.ca/docs/RTutorial.xhtml
+      documentation: https://www.metaboanalyst.ca/docs/RTutorial.xhtml
+
+
+input:
+  - features:
+      type: file
+      description: |
+        List of differentially expressed features
+    
+
+output:
+  - enriched:
+      type: list
+      description: |
+        Different plots from the pathway and gene enrichment analysis including barplots, cnetplots, dotplots, ematplots, heatplots, treeplots, upsetplot
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

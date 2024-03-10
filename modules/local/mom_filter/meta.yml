@@ -1,0 +1,54 @@
+name: mom_filter
+description: Filter out low counts
+keywords:
+  - filtering
+  - low counts
+tools:
+  - mom_filter:
+      description: Filter lowly expressed features with filterByExp or based on minimum cutoff
+
+
+
+input:
+  - txt:
+      type: file
+      description: |
+        Count matrix of features you want to estimate the differential expression. Rows are features, columns are samples.
+  - sample:
+      type: file
+      description: |
+        Samples info file containing the attributes of the samples of your count matrix. Sample names have to be identical with the column names in your count matrix. First column has to be condition of interest and values have to be 0 for treatment 1 for control.
+  - change_anot:
+      type: boolean
+      description: |
+        Change annotation of miRNAs. 
+  - method:
+      type: string
+      description: |
+        Method for filtering. Available: filterByExp (from DESeq2) or minimum counts in half of the samples.
+
+  - cutoff:
+      type: float
+      description: |
+        Cut off if you chose cut off method
+
+
+output:
+  - filtered:
+      type: file
+      description: |
+        Dataframe with filtered data.
+
+  - filteredRdata:
+      type: file
+      description: |
+        Robject with filtered data.
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

@@ -1,0 +1,62 @@
+name: deseq2
+description: Differential expression analysis
+keywords:
+  - differential expression
+  - negative binomial
+  - rnaseq
+tools:
+  - deseq2:
+      description: Differential gene expression analysis based on the negative binomial distribution.
+      homepage: homepage:https://bioconductor.org/packages/release/bioc/html/DESeq2.html
+      documentation: https://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html
+      tool_dev_url: None
+      doi: ""
+      licence: ["LGPL (>= 3)"]
+
+input:
+  - count_matrix:
+      type: file
+      description: |
+        Count matrix of features you want to estimate the differential expression. Rows are features, columns are samples.
+  - samplesInfo:
+      type: file
+      description: |
+        Samples info file containing the attributes of the samples of your count matrix.  Column names have to be condition and batch. Samples have to be identical with the column names in your count matrix.
+  - deseq2batch:
+      type: boolean
+      description: |
+        Perform deseq2 batch effect correction
+  - deseq_formula:
+    type: string
+    description: |
+        Formula of your design matrix
+  - con1:
+      type: string
+      description: |
+        Value of cell in the condition column of your samples info file. Condition 1
+  - con2:
+    type: string
+    description: |
+        Value of cell in the condition column of your samples info file. Condition 2
+
+  - single_matrix:
+    type: boolean
+    description: |
+        Is the input a single matrix or a directory             
+
+
+
+output:
+  - de_genes:
+      type: file
+      description: |
+        Differentially expressed features.
+        
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

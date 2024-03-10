@@ -1,0 +1,36 @@
+name: rnafold
+description: Predict secondary structure of RNA sequence.
+keywords:
+  - RNAfold
+
+tools:
+  - rnafold:
+      description: Predict secondary structure of RNA sequence.
+      tool_dev_url:
+      doi: ""
+      licence: 
+
+
+input:
+  - sequences:
+      type: file
+      description: |
+        Fasta file containing the fasta of the RNA molecules you wish to predict their secondary structure.
+
+
+
+output:
+  - rnafold_out:
+      type: file
+      description: |
+        Whole output of rnafold algorithm.
+
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

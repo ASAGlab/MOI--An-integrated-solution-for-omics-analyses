@@ -1,0 +1,36 @@
+name: rnaeval
+description: Calculate free energy of secondary structure
+keywords:
+  - RNAeval
+
+tools:
+  - rnafold:
+      description: Calculate free energy of secondary structure
+      tool_dev_url:
+      doi: ""
+      licence: 
+
+
+input:
+  - sequences:
+      type: file
+      description: |
+        Fasta file containing the fasta of the RNA molecules you wish to calculate free energy of secondary structures.
+
+
+
+output:
+  - rnafold_out:
+      type: file
+      description: |
+        Whole output of rnafold algorithm.
+
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

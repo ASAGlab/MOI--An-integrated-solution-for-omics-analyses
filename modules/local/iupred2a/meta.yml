@@ -1,0 +1,36 @@
+name: iupred2a
+description: Estimate coding potential of RNA transcripts
+keywords:
+  - non-coding RNAs
+  - IDR
+tools:
+  - iupred2a:
+      description: Estimate coding potential of RNA transcripts
+      homepage: https://bio.tools/iupred2a
+      documentation: https://bio.tools/iupred2a
+      tool_dev_url: None
+      doi: ""
+      licence: ["GPL-3.0"]
+
+
+input:
+  - txt:
+      type: file
+      description: |
+        Fasta file containing your transcripts you wish to estimate the intrinsically disorded regions. One transcript per row
+
+    
+
+output:
+  - cpat_out:
+      type: file
+      description: |
+        Text file with results for each trascript of its intrinsically disorded regions
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

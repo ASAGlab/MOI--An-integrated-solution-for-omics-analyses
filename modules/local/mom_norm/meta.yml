@@ -1,0 +1,62 @@
+name: mom_norm
+description: Normalize your data
+keywords:
+  - omics
+  - normalization
+  - DESeq2
+  - quantile
+tools:
+  - mom_norm:
+      description: Normalize your data with calcNormFactors (DESeq2) or quantile method.
+
+
+
+input:
+  - txt:
+      type: file
+      description: |
+        Count matrix of features you want to estimate the differential expression. Rows are features, columns are samples.
+  - sample:
+      type: file
+      description: |
+        Samples info file containing the attributes of the samples of your count matrix. Sample names have to be identical with the column names in your count matrix. First column has to be condition of interest and values have to be 0 for treatment 1 for control.
+  - method:
+      type: string
+      description: |
+        Method for normalization. Available calcNorm, quantile.
+  - condition:
+      type: string
+      description: |
+        Name of condition column. Must be present in columns of sample info
+  - treatment:
+      type: string
+      description: |
+        Name of treatment column (or in other words second condition. Give same name if you have only one condition). Must be present in columns of sample info
+
+
+
+
+output:
+  - normalized:
+      type: file
+      description: |
+        Dataframe with normalized data.
+
+  - normalizedRdata:
+      type: file
+      description: |
+        Robject with normalized data.
+
+  -  boxplots:
+      type: list
+      description: |
+        PCA before and after normalization. 
+        
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

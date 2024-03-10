@@ -1,0 +1,42 @@
+name: gene_to_fasta
+description: Convert gene names to fasta sequences with biomaRt
+keywords:
+  - biomaRt
+tools:
+  - gene_to_fasta:
+      description: Convert gene names to fasta sequences with biomaRt
+      homepage: https://bioconductor.org/packages/release/bioc/html/biomaRt.html
+      documentation: https://bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/accessing_ensembl.html
+      tool_dev_url: None
+      doi: ""
+      licence: ["Artistic-2.0"]
+
+
+input:
+  - genes:
+      type: file
+      description: |
+        Fasta file containing your transcripts you wish to estimate the coding potential. One transcript per row
+  - type:
+      type: string
+      description: |
+        Type of gene symbol. Options: "ensembl_id","hgnc_symbol" etc see biomaRt getSeq() for more
+  - seqType:
+      type: string
+      description: |
+        Type of sequence you want to get. Options: "cdna","peptide","transxript_exon_intron" etc see biomaRt getSeq() for more
+
+    
+output:
+  - sequences:
+      type: file
+      description: |
+        Fasta file containig sequences of genes.
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

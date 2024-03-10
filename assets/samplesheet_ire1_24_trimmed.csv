@@ -1,0 +1,7 @@
+sample,fastq_1,fastq_2,strandedness,sampleID,condition,batch,cl
+SRR14766496,/home/bianca/testresultsire1star/trimgalore/SRX11099922_trimmed.fq.gz,,unknown,SRR14766496,DMSO,1,1
+SRR14766497,/home/bianca/testresultsire1star/trimgalore/SRX11099924_trimmed.fq.gz,,unknown,SRR14766497,DMSO,2,1
+SRR14766498,/home/bianca/testresultsire1star/trimgalore/SRX11099926_trimmed.fq.gz,,unknown,SRR14766498,DMSO,3,1
+SRR14766499,/home/bianca/testresultsire1star/trimgalore/SRX11099923_trimmed.fq.gz,,unknown,SRR14766499,MKC,1,0
+SRR14766500,/home/bianca/testresultsire1star/trimgalore/SRX11099925_trimmed.fq.gz,,unknown,SRR14766500,MKC,2,0
+SRR14766501,/home/bianca/testresultsire1star/trimgalore/SRX11099927_trimmed.fq.gz,,unknown,SRR14766501,MKC,3,0

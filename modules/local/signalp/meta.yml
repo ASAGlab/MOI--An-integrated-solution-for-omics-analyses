@@ -1,0 +1,36 @@
+name: signalp
+description: Predict existense of signal peptides 
+keywords:
+  - signal peptides
+  - localization
+  - functional annotation 
+
+tools:
+  - signalp:
+      description: Predict existense of signal peptides 
+      homepage: https://services.healthtech.dtu.dk/services/SignalP-5.0/
+      documentation: https://services.healthtech.dtu.dk/services/SignalP-5.0/
+
+
+
+input:
+  - inputaafasta:
+      type: file
+      description: |
+        Fasta file containing the amino-acid sequences of the transcripts you wish to predict the existense of signal peptides. One transcript per row.
+
+    
+
+output:
+  - signal_out:
+      type: file
+      description: |
+        Text file with results for each trascript of its singal peptides.
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

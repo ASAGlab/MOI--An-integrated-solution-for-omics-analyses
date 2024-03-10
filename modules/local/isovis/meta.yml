@@ -1,0 +1,44 @@
+name: isovis
+description: Differential isoform expression analysis
+keywords:
+  - differential isoform expression
+  - non-coding
+  - isoforms
+tools:
+  - isovis:
+      description: Identify, Annotate and Visualize Isoform Switches with Functional Consequences from both short- and long-read RNA-seq data
+      homepage: https://bioconductor.org/packages/release/bioc/html/IsoformSwitchAnalyzeR.html
+      documentation: https://bioconductor.org/packages/release/bioc/vignettes/IsoformSwitchAnalyzeR/inst/doc/IsoformSwitchAnalyzeR.html
+      tool_dev_url: None
+      doi: ""
+      licence: ["GPL (>=2)"]
+    
+
+
+input:
+  - switchlist:
+      type: file
+      description: |
+        Path to switchList genereated by isopart2). If you did the analysis externally then is the SwitchList generated from the second part of the analysis. See vingette
+  - topisoforms:
+      type: boolean
+      description: |
+        Whether you want to output the first 10 differentially expressed features.
+  - isoformstosee:
+      type: file
+      description: |
+        Whether you want to output a specific gene. Only hgnc_symbols accepted.
+
+output:
+  - plots:
+      type: list
+      description: |
+        Various plots for intepreting isoform expression and isoform switches along with functional implications of those switches.
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

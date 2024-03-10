@@ -1,0 +1,84 @@
+
+## Boilerplate options
+isoforms : false
+sra_isoforms : false
+sra_genes : false
+genes : false
+lipids: false
+ridder_alone: false
+runmcia : false
+outdir: 'testresultsmirna'
+
+genome                     : 'GRCh38'
+gencode                    : true // these need to be changes in modules.config
+igenomes_base              : 's3://ngi-igenomes/igenomes'
+igenomes_ignore            : true
+gencode_mirna                   : true
+featurecounts_group_type_mirna  : 'gene_biotype'
+fasta_mirna                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz'
+transcript_fasta_mirna          : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz'
+gtf_mirna                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz'
+
+mirna  : true
+input_mirna                     : "${projectDir}/assets/samplesheet_mirna.csv"
+
+# Run SRA
+sra_mirna : false
+
+
+
+# QC
+skip_qc_mirna                   : true
+
+# Alignment and pseudalignemnt
+skip_pseudo_alignment_mirna     : true # if false set also skip_alignment_mirna= false
+skip_alignment_mirna            : true  
+# salmon
+pseudo_aligner_mirna            : 'salmon'
+salmon_index_mirna            : null
+#//salmon_index_mirna              : '/home/bianca/gencode2/salmon/'
+salmonDirGenes                  : 'testresultsmirna/genes/salmon_mirna/'  # change this for salmon outputs format: outdir/genes/salmon_mirna
+extra_salmon_quant_args_mirna    : null   
+
+  
+   
+# start from count matrix
+count_matrix_mirna  : '${projectDir}/assets/mirna.txt'
+
+# preprocess
+mom_change_anot_mirna   : true 
+mom_filt_method_mirna   : "filterByExp"  #filterByExp filterCustom
+mom_filt_cutoff_mirna   : 0
+mom_norm_method_mirna   : "none" # calncNorm quantile
+mom_norm_condition_mirna   : "condition"   # must be columns in samples info 
+mom_norm_treatment_mirna   : "batch"   # must be columns in samples info 
+mom_batch_method_mirna  : "com"
+mom_batch_condition_mirna   : "condition" # which is the condition of interest, must be present in columns of sample info
+mom_batch_batch_mirna   : "batch"   # which is the batch, must be present in columns of sample info
+
+# Differential expression analysis
+
+alg_mirna   : 'rp' # deseq2, edger  
+
+# Deseq2
+batchdeseq2_mirna   : false
+deseqFormula_mirna  : "~0 + condition"  # batch and condition have to be column names in deseq2 samlesinfo
+con1_mirna : "mkc"   # deseq2, has to be cell in samplesinfo
+con2_mirna : "dmso"  # deseq2, has to be cell in samplesinfo
+
+# edger
+dgergroupingfactor_mirna:  "condition" 
+edgerformulamodelmatrix_mirna   :  "~0 + condition" 
+edgercontrasts_mirna: "TNBC-non_TNBC"  
+
+# clusterprofiler
+
+genes_genespval                  : 0.1
+
+# MCIA
+runmcia                         : false
+pathmcia                        : "/home/bianca/testresultsmirna/mcia/" # should of the format complete output directory/mcia
+samplesinfomcia                 : '${projectDir}/assets/samplesheet_mirna.csv
+mcia_a1lim                      : '0, Inf'
+mcia_a2lim                      : '-Inf, 0'
+

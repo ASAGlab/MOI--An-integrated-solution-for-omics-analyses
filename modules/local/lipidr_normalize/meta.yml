@@ -1,0 +1,56 @@
+name: lipidr_normalize
+description: Data Mining and Analysis of Lipidomics Datasets
+keywords:
+  - metabolomics
+  - lipidomics
+  - differential expression 
+tools:
+  - lipidr_normalize:
+      description: Data Mining and Analysis of Lipidomics Datasets
+      homepage: https://bioconductor.org/packages/release/bioc/html/lipidr.html
+      documentation: https://bioconductor.org/packages/release/bioc/vignettes/lipidr/inst/doc/workflow.html
+      doi: ""
+      licence: ["LGPL (>= 3)"]
+
+
+
+
+input:
+  - count_matrix:
+      type: file
+      description: |
+        Count matrix of features you want to estimate the differential expression. Rows are features, columns are samples.
+  - samplesInfo:
+      type: file
+      description: |
+        Samples info file containing the attributes of the samples of your count matrix. Condition of interest SHOULD be in the first column. Samples names have to be identical with the column names in your count matrix.
+ 
+  - normalize: 
+      type: boolean
+      description: |
+        Name of column existing in your samplesinfo file according to which you want to group your samples.
+
+
+
+output:
+  - normalized_lipids:
+      type: file
+      description: |
+        Dataframe with normalized lipids.
+  - normalized_lipidsRdata:
+      type: file
+      description: |
+        Robject with normalized lipids.
+  - de_plots:
+      type: list
+      description: |
+        Plots of normalized lipids. 
+        
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

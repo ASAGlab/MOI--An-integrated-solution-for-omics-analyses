@@ -1,0 +1,55 @@
+## Boilerplate options
+isoforms : false
+genes : false
+sra_isoforms : false
+sra_mirna : false
+sra_genes : false
+mirna : false
+lipids: false
+ridder_alone: false
+runmcia : false
+# Max resource options
+# Defaults only, expecting to be overwritten
+max_memory                 : '36.GB'
+max_cpus                   : 17
+max_time                   : '240.h'
+
+outdir: 'testresultsproteins'
+
+proteins: true
+
+input_proteins: "${projectDir}/assets/samplesheet_proteins.csv"
+count_matrix_proteins: "${projectDir}/assets/proteins.txt"
+
+
+mom_prot_change_anot: false
+mom_prot_filt_method: "filterByExp"
+mom_prot_filt_cutoff: 0
+mom_prot_norm_method: "calcNorm"
+mom_prot_norm_condition: "condition"
+mom_prot_norm_treatment: "batch"
+mom_prot_batch_method: "none"
+mom_prot_batch_condition: "condition"
+mom_prot_batch_batch: "batch"
+
+alg_proteins: 'deseq2'
+
+deseq2single_matrix : true
+batchdeseq2_proteins: false
+deseqFormula_proteins: "~0 + condition"
+con1_proteins: "TNBC"
+con2_proteins: "non_TNBC"
+
+dgergroupingfactor_proteins: "condition"
+edgerformulamodelmatrix_proteins: "~0 + condition"
+edgercontrasts_proteins: "TNBC-non_TNBC"
+
+#clusterprofiler
+
+proteins_genespval               : 0.1
+
+biotranslator_alone              : false
+pea_proteins                    : "biotranslator"
+biotrans_pro_organism          : "hsapiens"
+biotrans_pro_keytype          : "gene_symbol"
+biotrans_pro_ontology         : "GO" # MGIMP, Reactome

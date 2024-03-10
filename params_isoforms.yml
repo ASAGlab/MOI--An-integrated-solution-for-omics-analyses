@@ -1,0 +1,87 @@
+## Boilerplate options
+
+genes : false
+mirna : false
+lipids: false
+proteins: false
+ridder_alone: false
+max_memory                 : '36.GB'
+max_cpus                   : 17
+max_time                   : '240.h'
+outdir : 'testresultsire124'
+genome                     : 'GRCh38'
+igenomes_base              : 's3://ngi-igenomes/igenomes'
+featurecounts_group_type_isoforms: 'gene_biotype'
+gencode_isoforms : true
+igenomes_ignore            : false
+
+
+
+
+#fasta_isoforms   : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz' # if you choose awsgenome set this to null
+#transcript_fasta_isoforms: '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz' # if you choose awsgenome set this to null
+#gtf_isoforms : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz' # if you choose awsgenome set this to null
+
+# TODO 
+#save_reference : false
+#save_align_intermeds : false 
+
+#isoforms #########################################/
+isoforms : true
+input_isoforms   : "/home/bianca/gittest/moi/assets/samplesheet_ire1_24_trimmed.csv"
+
+
+# run SRA
+sra_isoforms: false
+
+# QC parameters
+skip_qc_isoforms: true
+
+# Alignment and pseudoalignment
+skip_alignment_isoforms : false
+skip_pseudo_alignment_isoforms  : false
+aligner_isoforms: 'salmon' # 'star', 'hisat2'
+pseudo_aligner_isoforms : 'salmon'
+#salmon_index_isoforms   : null
+#salmon_index_isoforms   : '/home/bianca/gencode2/salmon/'
+salmonDirIso: '/home/bianca/testresultsire124/isoforms/salmon_isoforms/'  # change this for your own salmon outputs  or should be whole directory where the pipeline outputs the results
+extra_salmon_quant_args_iso  : null
+
+#/ run from directory of quant.sf ##########/
+#fasta_isoforms   : '/home/bianca/isoforms/example_isoform_nt.fasta.gz'
+#transcript_fasta_isoforms: '/home/bianca/isoforms/example_isoform_nt.fasta.gz'
+#gtf_isoforms : '/home/bianca/isoforms/example.gtf.gz'
+#salmonsamplesinfo_isoforms  : '/home/bianca/isoforms/design_matrix.txt'
+#salmon_input_path_isoforms  : '/home/bianca/isoforms/test/' # change this if you performed the analysis outside
+#  fasta_salmon_isoforms   : '/home/bianca/isoforms/example_isoform_nt.fasta'
+
+#sra_isoforms : false
+#skip_qc_isoforms: true
+#skip_alignment_isoforms : true
+#skip_pseudo_alignment_isoforms  : true
+##############################
+
+#isoforms isoSwitch
+isopart2reduceToSwitchingGenes  : false
+topisoforms : true   ## see top ten genes with DEU
+isoformstosee   : 'IMMT' ## see specific gene. Works only if topisoforms : false
+
+## run saturn
+saturn_run  : false
+saturn_fdr  : 0.05
+saturn_fc   : 0.1
+dexseqpval  : 0.05
+dexseqfdr   : 0.0001
+
+## run mcia
+runmcia                          : true
+pathmcia                        : "/home/bianca/testresultsire124/mcia/" 
+samplesinfomcia                 : '${projectDir}/assets/samplesheet_ire1_24.csv'
+mcia_a1lim                      : '0, Inf'
+mcia_a2lim                      : '-Inf, 0'
+
+
+
+
+
+

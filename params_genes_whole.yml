@@ -1,0 +1,148 @@
+
+## Boilerplate options
+
+outdir: 'testresultsire1star'
+fasta_genes                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz' #set this to null if you have selected aws genome
+transcript_fasta_genes          : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz' #set this to null if you have selected aws genome 
+gtf_genes                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz' #set this to null if you have selected aws genome
+salmonDirGenes                  : '/home/bianca/testresultsgenesire24/genes/salmon_genes/'  # change this for salmon outputs format: outdir/genes/salmon_genes    
+pathmcia                        : "/testresultsgenes/mcia/" # should of the format complete output directory/mcia
+samplesinfomcia                 : '${projectDir}/assets/samplesheet_genes.csv'
+# salmon 
+salmon_index_genes            : null 
+#//salmon_index_genes              : '/home/bianca/gencode2/salmon/'
+# star
+#star_index_genes               : '/home/bianca/star/'
+star_index_genes           : null
+max_memory                 : '80.GB'
+max_cpus                   : 17
+max_time                   : '240.h'
+
+
+
+
+genome                     : 'GRCh38'
+igenomes_base              : 's3://ngi-igenomes/igenomes'
+igenomes_ignore            : true
+gencode_genes                   : false
+featurecounts_group_type_genes  : 'gene_biotype'
+#fasta_genes                     : null
+#transcript_fasta_genes          : null
+#gtf_genes                       : null 
+
+#genes
+
+genes   : true
+input_genes                     : "${projectDir}/assets/samplesheet_ire1_24_trimmed.csv"
+#input_genes                     : "${projectDir}/assets/samplesheet_genes.csv"
+
+
+#start from sra
+sra_genes : false
+
+#QC parameters
+skip_qc_genes                   : true
+skip_preseq_genes               : true
+skip_markduplicates_genes       : true
+
+# Alignment and pseudoalignment
+skip_pseudo_alignment_genes     : false # if false set also skip_alignment_genes : false
+skip_alignment_genes            : false
+pseudo_aligner_genes            : 'star'   
+aligner_genes                   : star #// 'star', 'hisat2'
+
+
+extra_salmon_quant_args_genes    : null
+
+
+
+# star extra
+read_length                     : 101 #// jdbOverhang
+
+#star_index                      : "/home/bianca/starindex/"
+
+star_twopass                    : true
+star_ignore_sjdbgtf             : false     #// Ignore GTF file while creating index or alignment by STAR
+star_max_memory_bamsort         : 88132572426   #     // STAR parameter limitBAMsortRAM to specify maximum RAM for sorting BAM
+star_bins_bamsort               : 12     #   // STAR parameter outBAMsortingBinsN to specify number of bins for sorting BAM
+#TODO
+#    star_max_collapsed_junc         : 88132572426   // STAR parameter limitOutSJcollapsed to specify max number of collapsed junctions
+#    star_nthreads                   : 20
+#star_limitGenomeGenerateRAM   : 97132572426
+seq_center                      : null
+seq_platform                    : 'illumina' # Required for preparing for BAM headers for GATK to work
+bam_csi_index                   : false
+
+
+
+hisat2_index_genes              : null
+
+skip_stringtie_genes            : true
+   
+
+   
+# start from count matrix
+count_matrix_genes  : '${projectDir}/assets/genes.txt'
+
+# preprocess steps
+mom_change_anot_genes   : true 
+mom_filt_method_genes   : "filterByExp"  #filterByExp filterCustom
+mom_filt_cutoff_genes   : 0
+mom_norm_method_genes   : "none" # calncNorm quantile
+mom_norm_condition_genes   : "condition"   # must be columns in samples info 
+mom_norm_treatment_genes   : "batch"   # must be columns in samples info 
+mom_batch_method_genes  : "com"
+mom_batch_condition_genes   : "condition" # which is the condition of interest, must be present in columns of sample info
+mom_batch_batch_genes   : "batch"   # which is the batch, must be present in columns of sample info
+
+# algorithm for DEA
+alg_genes   : 'rp' # deseq2, edger  
+
+# RANKPROD
+rp                         : false
+logged                    : false
+logbase                   : 2
+norm                      : false
+wantgenes                 : false
+numgenes                  : 5000
+method                    : 'pval'
+cutoff                    : 0.05
+
+
+# DESeq2
+batchdeseq2_genes   : false
+deseqFormula_genes  : "~0 + condition"  # batch and condition have to be column names in deseq2 samlesinfo
+con1_genes : "mkc"   # deseq2, has to be cell in samplesinfo
+con2_genes : "dmso"  # deseq2, has to be cell in samplesinfo
+
+# edger
+dgergroupingfactor_genes:  "condition" 
+edgerformulamodelmatrix_genes   :  "~0 + condition" 
+edgercontrasts_genes: "TNBC-non_TNBC"  
+
+# clusterprofiler
+
+genes_genespval                  : 0.1
+
+# MCIA
+runmcia                         : false
+mcia_a1lim                      : '0, Inf'
+mcia_a2lim                      : '-Inf, 0'
+
+# RIDDER
+ridder                         : false
+riddernames                    : false // start from names (or fasta)
+type                           : "ensembl_transcript_id"
+#type                           : "hgnc_symbol"
+seqType                        : "cdna"
+
+ridder_alone                   : false # set to true if you want to run it separately
+ridder_input                   : "${projectDir}/assets/dgat2"
+
+isoforms : false
+sra_isoforms : false
+sra_mirna : false
+mirna : false
+lipids: false
+ridder_alone: false
+runmcia : false

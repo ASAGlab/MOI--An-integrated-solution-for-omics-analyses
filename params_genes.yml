@@ -1,0 +1,110 @@
+
+## Boilerplate options
+
+outdir: '${projectDir}/results/'
+max_memory                 : '28.GB'
+max_cpus                   : 17
+max_time                   : '240.h'
+genome                     : 'GRCh38'
+igenomes_base              : 's3://ngi-igenomes/igenomes'
+igenomes_ignore            : false
+gencode_genes                   : false
+featurecounts_group_type_genes  : 'gene_biotype'
+#fasta_genes                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz' #set this to null if you have selected aws genome
+#transcript_fasta_genes          : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz' #set this to null if you have selected aws genome 
+#gtf_genes                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz' #set this to null if you have selected aws genome
+#fasta_genes                     : null
+#transcript_fasta_genes          : null
+#gtf_genes                       : null 
+
+#genes
+
+genes   : true
+input_genes                     : "${projectDir}/assets/samplesheet_ire1_24.csv"
+#input_genes                     : "${projectDir}/assets/samplesheet_genes.csv"
+
+
+#start from sra
+sra_genes : true
+
+#QC parameters
+skip_qc_genes                   : false
+skip_preseq_genes               : true
+skip_markduplicates_genes       : true
+
+# Alignment and pseudoalignment
+skip_pseudo_alignment_genes     : false # if false set also skip_alignment_genes : false
+skip_alignment_genes            : false
+pseudo_aligner_genes            : 'salmon'   
+aligner_genes                   : null # 'star', 'hisat2'
+
+# salmon 
+salmon_index_genes            : null 
+#//salmon_index_genes              : '/home/bianca/gencode2/salmon/'
+salmonDirGenes                  : '${projectDir}/results/genes/salmon_genes/'  # change this for salmon outputs format: outdir/genes/salmon_genes    
+extra_salmon_quant_args_genes    : null
+
+   
+# start from count matrix
+count_matrix_genes  : '${projectDir}/assets/genes.txt'
+
+# preprocess steps
+mom_change_anot_genes   : true 
+mom_filt_method_genes   : "filterByExp"  #filterByExp filterCustom
+mom_filt_cutoff_genes   : 0
+mom_norm_method_genes   : "none" # calncNorm quantile
+mom_norm_condition_genes   : "condition"   # must be columns in samples info 
+mom_norm_treatment_genes   : "batch"   # must be columns in samples info 
+mom_batch_method_genes  : "com"
+mom_batch_condition_genes   : "condition" # which is the condition of interest, must be present in columns of sample info
+mom_batch_batch_genes   : "batch"   # which is the batch, must be present in columns of sample info
+
+# algorithm for DEA
+alg_genes   : 'rp' # deseq2, edger  
+
+# DESeq2
+batchdeseq2_genes   : false
+deseqFormula_genes  : "~0 + condition"  # batch and condition have to be column names in deseq2 samlesinfo
+con1_genes : "TNBC"   # deseq2, has to be cell in samplesinfo
+con2_genes : "non_TNBC"  # deseq2, has to be cell in samplesinfo
+
+# edger
+dgergroupingfactor_genes:  "condition" 
+edgerformulamodelmatrix_genes   :  "~0 + condition" 
+edgercontrasts_genes: "TNBC-non_TNBC"  
+
+# clusterprofiler
+
+genes_genespval                  : 0.1
+
+# MCIA
+runmcia                         : false
+pathmcia                        : "${projectDir}/results/mcia/" # should of the format complete output directory/mcia
+samplesinfomcia                 : '${projectDir}/assets/samplesheet_ire1_24.csv'
+mcia_a1lim                      : '0, Inf'
+mcia_a2lim                      : '-Inf, 0'
+
+# RIDDER
+ridder                         : false
+riddernames                    : false #// start from names (or fasta)
+type                           : "ensembl_transcript_id"
+#type                          : "hgnc_symbol"
+seqType                        : "cdna"
+
+ridder_alone                   : false # set to true if you want to run it separately
+ridder_input                   : "${projectDir}/assets/dgat"
+
+#BIOTRANSLATOR
+pea_genes  : "biotranslator"
+biotrans_genes_organism  : "hsapiens"
+biotrans_genes_keytype  : "gene_symbol"
+biotrans_genes_ontology : "GO" # MGIMP, Reactome
+
+
+isoforms : false
+sra_isoforms : false
+sra_mirna : false
+mirna : false
+lipids: false
+ridder_alone: false
+runmcia : false

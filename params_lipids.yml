@@ -1,0 +1,53 @@
+## Boilerplate options
+isoforms : false
+genes : false
+sra_isoforms : false
+sra_mirna : false
+sra_genes : false
+mirna : false
+proteins: false
+ridder_alone: false
+runmcia : false
+
+outdir: 'testresultslipids'
+max_memory                 : '36.GB'
+max_cpus                   : 17
+max_time                   : '240.h'
+
+lipids  : true
+count_matrix_lipids   : '${projectDir}/assets/lipids.txt'
+input_lipids   : '${projectDir}/assets/samplesheet_lipids.csv'
+
+
+
+
+#lipidr 
+lipidr   : true
+lipidr_normalize : false
+lipidr_formula   : "~condition"  # has to be something with condition 
+lipidr_condition : "TNBC" # has to be cell in sampleInfo
+
+
+#######################3
+mom_lipid_change_anot   : true 
+mom_lipid_filt_method : "filterByExp"  #filterByExp filterCustom
+mom_lipid_filt_cutoff : 0
+mom_norm_lipid_cutoff : 100000000
+mom_lipid_norm_condition : "condition"   # must be columns in samples info 
+mom_lipid_norm_treatment : "batch"   # must be columns in samples info 
+mom_lipid_batch_method: "com"
+mom_lipid_batch_condition: "condition"   # which is the condition of interest, must be present in columns of sample info
+mom_lipid_batch_batch : "batch"   # which is the batch, must be present in columns of sample info
+
+alg_lipids   : 'edger' # deseq2, edger  
+
+
+batchdeseq2_lipids   : false
+deseqFormula_lipids  : "~0 + condition"  # batch and condition have to be column names in deseq2 samlesinfo
+con1_lipids : "mkc"   # deseq2, has to be cell in samplesinfo
+con2_lipids : "dmso"  # deseq2, has to be cell in samplesinfo
+
+dgergroupingfactor_lipids:  "condition" 
+edgerformulamodelmatrix_lipids   :  "~0 + condition" 
+edgercontrasts_lipids: "non_tnbc-tnbc" 
+

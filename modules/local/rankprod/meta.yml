@@ -1,0 +1,81 @@
+name: rankprod
+description: Differential expression analysis
+keywords:
+  - differential expression
+  - non-parametric
+  - rank test
+tools:
+  - rankprod:
+      description: Rank Product method for identifying differentially expressed genes with application in meta-analysis
+      homepage: https://www.bioconductor.org/packages/release/bioc/html/RankProd.html
+      documentation: https://www.bioconductor.org/packages/release/bioc/vignettes/RankProd/inst/doc/RankProd.pdf
+      tool_dev_url: None
+      doi: ""
+      licence: ["GPL (>=2)"]
+
+input:
+  - txt:
+      type: file
+      description: |
+        Count matrix of features you want to estimate the differential expression. Rows are features, columns are samples.
+  - sample:
+      type: file
+      description: |
+        Samples info file containing the attributes of the samples of your count matrix. Sample names have to be identical with the column names in your count matrix. First column has to be condition of interest and values have to be 0 for treatment 1 for control.
+
+  - runRank:
+      type: boolean
+      description: |
+        Run rankprod?
+
+  - logged:
+      type: boolean
+      description: |
+        Are values loged transformed?
+
+  - logbase:
+      type: float
+      description: |
+        Log base
+  - norm:
+      type: boolean
+      description: |
+        Run rankprod?
+
+  - wantgenes:
+      type: boolean
+      description: |
+        Output specific number genes instead of pval, pfp?
+  - numgenes:
+      type: float
+      description: |
+        Number of genes
+  - method:
+      type: string
+      description: |
+        Method for filtration of DE genes. Options: pval, pfp.
+  - cutoff:
+      type: float
+      description: |
+        Number of genes
+
+
+output:
+  - de_genes:
+      type: file
+      description: |
+        Dataframe of differentially expressed features.
+
+  - de_plots:
+      type: list
+      description: |
+        Plots of differentially expressed features.
+        
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

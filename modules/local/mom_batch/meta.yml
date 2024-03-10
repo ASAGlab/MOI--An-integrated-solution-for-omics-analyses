@@ -1,0 +1,64 @@
+name: mom_batch
+description: Correct batch effects
+keywords:
+  - Surrogate Variable Analysis
+  - batch-effect
+  - rnaseq
+tools:
+  - mom_batch:
+      description: Surrogate Variable Analysis
+      homepage: https://bioconductor.org/packages/release/bioc/html/sva.html
+      documentation: https://www.bioconductor.org/packages/devel/bioc/vignettes/sva/inst/doc/sva.pdf
+      licence: ["Artistic-2.0"]
+
+
+
+input:
+  - txt:
+      type: file
+      description: |
+        Count matrix of features you want to estimate the differential expression. Rows are features, columns are samples.
+  - sample:
+      type: file
+      description: |
+        Samples info file containing the attributes of the samples of your count matrix. Sample names have to be identical with the column names in your count matrix. First column has to be condition of interest and values have to be 0 for treatment 1 for control.
+  - method:
+      type: string
+      description: |
+        Method for batch effect correction. Available: sva, com (combat), svacom (first sva then combat), comsva (forst combat then sva).
+  - var1:
+      type: string
+      description: |
+        Name of condition column. Must be present in columns of sample info
+  - var2:
+      type: string
+      description: |
+        Name of batch column. Must be present in columns of sample info
+
+
+
+
+output:
+  - cleaned:
+      type: file
+      description: |
+        Dataframe with cleaned data.
+
+  - cleanedRdata:
+      type: file
+      description: |
+        Robject with cleaned data.
+
+  - cleanedsvg:
+      type: list
+      description: |
+        PCA before and after correction. 
+        
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

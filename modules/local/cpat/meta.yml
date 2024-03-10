@@ -1,0 +1,36 @@
+name: cpat
+description: Estimate coding potential of RNA transcripts
+keywords:
+  - coding potential
+  - non-coding RNAs
+tools:
+  - cpat:
+      description: Estimate coding potential of RNA transcripts
+      homepage: https://bio.tools/cpat
+      documentation: https://bio.tools/cpat
+      tool_dev_url: None
+      doi: ""
+      licence: ["GPL-3.0"]
+
+
+input:
+  - txt:
+      type: file
+      description: |
+        Fasta file containing your transcripts you wish to estimate the coding potential. One transcript per row
+
+    
+
+output:
+  - cpat_out:
+      type: file
+      description: |
+        Text file with results for each trascript of its coding potential prediction
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"

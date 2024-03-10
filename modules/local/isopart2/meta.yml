@@ -1,0 +1,100 @@
+name: isopart2
+description: Differential isoform expression analysis
+keywords:
+  - differential isoform expression
+  - non-coding
+  - isoforms
+tools:
+  - isopart2:
+      description: Identify, Annotate and Visualize Isoform Switches with Functional Consequences from both short- and long-read RNA-seq data
+      homepage: https://bioconductor.org/packages/release/bioc/html/IsoformSwitchAnalyzeR.html
+      documentation: https://bioconductor.org/packages/release/bioc/vignettes/IsoformSwitchAnalyzeR/inst/doc/IsoformSwitchAnalyzeR.html
+      tool_dev_url: None
+      doi: ""
+      licence: ["GPL (>=2)"]
+    
+
+
+
+input:
+  - switchlist:
+      type: file
+      description: |
+        Path to switchList genereated by isopart1 (or isiopart1a). If you did the analysis externally then is the SwitchList generated from the first part of the analysis. See vingette
+  - cpat_resuluts:
+      type: file
+      description: |
+        Output from cpat analysis.
+  - pfam_resuluts:
+      type: file
+      description: |
+        Output from pfam analysis.
+  - signalp_resuluts:
+      type: file
+      description: |
+        Output from signalp analysis.
+  - reducetoswitches:
+      type: boolean
+      description: |
+        Consider only genes whose isoform switches had consequences. 
+  - saturn_run:
+      type: boolean
+      description: |
+        Run saturn for differential expression analysis.
+  - saturn_fdr:
+      type: float
+      description: |
+        FDR cut-off for the differentially expressed features from saturn analysis
+  - saturn_fc:
+      type: float
+      description: |
+        Fold change cut-off for the differentially expressed features from saturn analysis
+
+
+
+output:
+  - switchlistDex:
+      type: file
+      description: |
+        SwitchList from DEXseq analysis as an Robject
+  - isoAnalysis:
+      type: file
+      description: |
+        Matrix with detailed information about the isoforms/genes expression.
+  - lncRNAs:
+      type: file
+      description: |
+        Matrix of lncRNAs and their expression.
+  - lncRNAs_dataframe_detailed:
+      type: file
+      description: |
+        Correlation dataframe of DE genes and lncRNAs with details.
+  - correlation_plots:
+      type: list
+      description: |
+        Correlation plots of DE genes and lncRNAs.
+  - lncrna_targets:
+      type: file
+      description: |
+        Correlation dataframe of DE genes and lncRNAs.
+  - orfAnalysis:
+      type: file
+      description: |
+        Results from the orf analysis
+  - all_results:
+      type: file
+      description: |
+        All results regarding isoforms and genes and their respective metadata.
+  - switchlistSat:
+      type: file
+      description: |
+        SwitchList from Saturn analysis as an Robject.
+        
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@BiancaPasat"
