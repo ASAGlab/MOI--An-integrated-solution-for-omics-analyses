@@ -82,7 +82,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool
    ```bash
    nextflow run multiomicsintegrator -params-file /full/path/to/params_mcia.yml -profile docker -resume
    ```
-
+   - If the error persists try delete container of bianca7/mompreprocess (or all containers if possible) and run again 
    - Comparative analysis, isoform analysis and mcia need substantial resources (at least 7 cpus).
    - Check resources and your directories!
 
