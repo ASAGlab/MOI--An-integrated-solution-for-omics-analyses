@@ -5,7 +5,7 @@ process MOM_FILTER {
 
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://hub.docker.com' : 'bianca7/mompreprocess'}"
+        'https://hub.docker.com' : 'bianca7/mompreprocess2'}"
 
     input:
 
