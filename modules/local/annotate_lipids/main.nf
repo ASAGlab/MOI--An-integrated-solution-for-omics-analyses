@@ -27,12 +27,12 @@ process ANNOTATE_LIPIDS {
 
     script:
     def args   = task.ext.args   ?: ''
-    def parameters = additional_omics_df.name != 'NO_FILE' ? "T $additional_omics_df" : 'F'
+    //def parameters = additional_omics_df.name != 'NO_FILE' ? "T $additional_omics_df" : 'F'
 
     """
     
 
-    Rscript /r/lipids_to_genes.R $de_lipids $parameters
+    Rscript /r/lipids_to_genes.R $de_lipids $additional_omics $additional_omics_df
 
     
 
