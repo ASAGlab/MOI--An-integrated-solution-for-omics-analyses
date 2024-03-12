@@ -77,7 +77,18 @@ The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool
 
 
 ## Common issues:
-   - If an error regarding biomaRt appears just run the pipeline again with -resume. It is a biomaRt issue
+   - If an error regarding biomaRt appears:
+     
+    ```bash
+     Error in h(simpleError(msg, call)) : 
+     error in evaluating the argument 'conn' in selecting a method for function 'dbDisconnect': object 'info' not found
+     Calls: useEnsembl ... .sql_disconnect -> dbDisconnect -> .handleSimpleError -> h
+     Execution halted
+    ```
+
+just run the pipeline again with -resume. It is a biomaRt issue:
+
+
    ```bash
    nextflow run multiomicsintegrator -params-file /full/path/to/params_mcia.yml -profile docker -resume
    ```
