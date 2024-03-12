@@ -85,6 +85,16 @@ The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool
      Calls: useEnsembl ... .sql_disconnect -> dbDisconnect -> .handleSimpleError -> h
      Execution halted
     ```
+   or 
+   
+   ```
+     Ensembl site unresponsive, trying useast mirror
+  Ensembl site unresponsive, trying asia mirror
+  Error in .chooseEnsemblMirror(mirror = mirror, http_config = http_config) : 
+    Unable to query any Ensembl site
+  Calls: useEnsembl -> .chooseEnsemblMirror
+  Execution halted
+   ```
 
 just run the pipeline again with -resume. It is a biomaRt issue:
 
