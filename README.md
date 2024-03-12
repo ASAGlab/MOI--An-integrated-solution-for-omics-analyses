@@ -29,7 +29,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool
 3. Download the pipeline and rename it:
 
    ```bash
-   
+   git clone https://github.com/ASAGlab/MOI--An-integrated-solution-for-omics-analyses.git
    mv MOI--An-integrated-solution-for-omics-analyses multiomicsintegrator 
    ```
 
