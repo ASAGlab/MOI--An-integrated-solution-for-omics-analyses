@@ -1,12 +1,51 @@
 ## Boilerplate options
-isoforms : false
-sra_isoforms : false
-sra_mirna : false
+
 
 outdir: 'testresultsmcia'
 max_memory                 : '36.GB'
 max_cpus                   : 17
 max_time                   : '240.h'
+
+### paths you need to change
+
+biotrans_all_path  : "/home/bianca/testresultsmcia/prepareforbio/"
+pathmcia: "/home/bianca/testresultsmcia/mcia/" # should of the format complete output directory/mcia
+#samplesinfomcia : '/home/bianca/mom_lipids_sampleinfo.txt'
+samplesinfomcia : '${projectDir}/assets/samplesheet_genes.csv'
+
+
+fasta_genes                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz' #set this to null if you have selected aws genome
+transcript_fasta_genes          : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz' #set this to null if you have selected aws genome 
+gtf_genes                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz' #set this to null if you have selected aws genome
+#fasta_genes                     : null
+#transcript_fasta_genes          : null
+#gtf_genes                       : null 
+salmon_index_genes            : null 
+salmonDirGenes                  : '/home/bianca/testresultsmcia/genes/salmon_genes/'  # change this for salmon outputs format: outdir/genes/salmon_genes  
+
+
+salmon_index_mirna            : null 
+salmonDirmiRNA                  : '/home/bianca/testresultsmcia/mirna/salmon_mirna/'  # change this for salmon outputs format: outdir/genes/salmon_mirna    
+extra_salmon_quant_args_mirna    : null
+
+fasta_mirna                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz' #set this to null if you have selected aws genome
+transcript_fasta_mirna          : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz' #set this to null if you have selected aws genome 
+gtf_mirna                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz' #set this to null if you have selected aws genome
+#fasta_mirna                     : null
+#transcript_fasta_mirna          : null
+#gtf_mirna                       : null 
+
+count_matrix_genes  : '${projectDir}/assets/genes.txt'
+input_genes         : "${projectDir}/assets/samplesheet_genes.csv"
+
+count_matrix_mirna   : '${projectDir}/assets/mirna.txt' 
+input_mirna  : '${projectDir}/assets/samplesheet_mirna.csv'
+
+count_matrix_proteins: "${projectDir}/assets/proteins.txt"
+input_proteins: "${projectDir}/assets/samplesheet_proteins.csv"
+
+count_matrix_lipids   : '${projectDir}/assets/lipids.txt'
+input_lipids   : '${projectDir}/assets/samplesheet_lipids.csv'
 
 
 
@@ -30,24 +69,12 @@ skip_pseudo_alignment_genes : true
    
 pseudo_aligner_genes: 'salmon'
 # salmon 
-salmon_index_genes            : null 
-#//salmon_index_genes              : '/home/bianca/gencode2/salmon/'
-salmonDirGenes                  : '/home/bianca/testresultsmcia/genes/salmon_genes/'  # change this for salmon outputs format: outdir/genes/salmon_genes    
+  
 extra_salmon_quant_args_genes    : null
 
 
-fasta_genes                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz' #set this to null if you have selected aws genome
-transcript_fasta_genes          : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz' #set this to null if you have selected aws genome 
-gtf_genes                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz' #set this to null if you have selected aws genome
-#fasta_genes                     : null
-#transcript_fasta_genes          : null
-#gtf_genes                       : null 
-   
 
-count_matrix_genes  : '${projectDir}/assets/genes.txt'
-input_genes         : "${projectDir}/assets/samplesheet_genes.csv"
-
-mom_change_anot_genes   : true 
+mom_change_anot_genes   : false 
 mom_filt_method_genes   : "filterByExp"  #filterByExp filterCustom
 mom_filt_cutoff_genes   : 0
 mom_norm_method_genes   : "none" # calncNorm quantile
@@ -83,22 +110,11 @@ skip_pseudo_alignment_mirna : true
    
 pseudo_aligner_mirna: 'salmon'
 # salmon 
-salmon_index_mirna            : null 
-#//salmon_index_mirna              : '/home/bianca/gencode2/salmon/'
-salmonDirGenes                  : '/home/bianca/testresultsmcia/mirna/salmon_mirna/'  # change this for salmon outputs format: outdir/genes/salmon_mirna    
-extra_salmon_quant_args_mirna    : null
-
-fasta_mirna                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz' #set this to null if you have selected aws genome
-transcript_fasta_mirna          : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz' #set this to null if you have selected aws genome 
-gtf_mirna                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz' #set this to null if you have selected aws genome
-#fasta_mirna                     : null
-#transcript_fasta_mirna          : null
-#gtf_mirna                       : null 
 
 
-count_matrix_mirna   : '${projectDir}/assets/mirna.txt' 
-input_mirna  : '${projectDir}/assets/samplesheet_mirna.csv'
-mom_change_anot_mirna   : true 
+
+
+mom_change_anot_mirna   : false
 mom_filt_method_mirna: "filterByExp"  #filterByExp filterCustom
 mom_filt_cutoff_mirna: 0
 mom_norm_method_mirna: "calcNorm" # calncNorm quantile
@@ -124,8 +140,7 @@ edgercontrasts_mirna: "TNBC-non_TNBC"
 # proteins
 
 proteins: true
-count_matrix_proteins: "${projectDir}/assets/proteins.txt"
-input_proteins: "${projectDir}/assets/samplesheet_proteins.csv"
+
 
 mom_prot_change_anot: false
 mom_prot_filt_method: "filterByExp"
@@ -153,9 +168,9 @@ edgercontrasts_proteins: "TNBC-non_TNBC"
 
 
 lipids  : true
-count_matrix_lipids   : '${projectDir}/assets/lipids.txt'
-input_lipids   : '${projectDir}/assets/samplesheet_lipids.csv'
-mom_lipid_change_anot   : true 
+additional_omics_lipids : true
+
+mom_lipid_change_anot   : false
 mom_lipid_filt_method : "filterByExp"  #filterByExp filterCustom
 mom_lipid_filt_cutoff : 0
 mom_norm_lipid_cutoff : 100000000
@@ -185,8 +200,46 @@ lipidr_condition : "TNBC" # has to be cell in sampleInfo
 
 #MCIA
 runmcia : true
-pathmcia: "/home/bianca/testresultsmcia/mcia/" # should of the format complete output directory/mcia
-#samplesinfomcia : '/home/bianca/mom_lipids_sampleinfo.txt'
-samplesinfomcia : '${projectDir}/assets/samplesheet_genes.csv'
+
 mcia_a1lim  : '0, Inf'
 mcia_a2lim  : '-Inf, 0'
+
+# Integration
+#BIOTRANSLATOR all
+
+pea_all  : "biotranslator"
+biotrans_all_organism  : "hsapiens"
+biotrans_all_keytype  : "gene_symbol"
+biotrans_all_ontology : "GO" # MGIMP, Reactome
+biotrans_all_pval : 0.05
+
+
+#BIOTRANSLATOR run it alone
+biotranslator_alone : false
+#biotrans_input : "/home/bianca/testresultsbrcafinal/genes/rankprod/genes_defeatures.txt"
+biotrans_organism  : "hsapiens"
+biotrans_keytype  : "hene_symbol"
+biotrans_ontology : "GO" # MGIMP, Reactome
+
+
+#BIOTRANSLATOR
+pea_genes  : "biotranslator"
+biotrans_genes_organism  : "hsapiens"
+biotrans_genes_keytype  : "gene_symbol"
+biotrans_genes_ontology : "GO" # MGIMP, Reactome
+
+pea_proteins  : "biotranslator"
+biotrans_proteins _organism  : "hsapiens"
+biotrans_proteins _keytype  : "gene_symbol"
+biotrans_proteins _ontology : "GO" # MGIMP, Reactome
+
+
+#    BIOTRANSLATOR
+pea_mirna      : "clusterprofiler"
+biotrans_mirna_organism          : "hsapiens"
+biotrans_mirna_keytype          : "gene_symbol"
+biotrans_mirna_ontology         : "GO" # MGIMP, Reactome
+
+isoforms : false
+sra_isoforms : false
+sra_mirna : false
