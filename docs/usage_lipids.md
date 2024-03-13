@@ -209,7 +209,7 @@ Lipidr provides additional exploratory plots regarding the different classes of 
 
 <br><br>
 
-### PAE
+### PEA
  Last step of the analysis is to perform pathway enrichment analysis with [metabAnalystR](../modules/local/metaboanalystr)
 
 <br>
@@ -224,7 +224,7 @@ params{
     proteins_genespval               = 0.5 # pval cutoff for proteins
     lipids_genespval                 = 0.5 # pval cutoff for lipids
     // BIOTRANSLATOR
-    pea_genes      = "biotranslator"
+    pea_lipids      = "biotranslator"
     biotrans_lipids_organism          = "hsapiens"
     biotrans_lipids_keytype          = "gene_symbol"
     biotrans_lipids_ontology         = "GO" // MGIMP, Reactome
