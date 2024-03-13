@@ -289,6 +289,11 @@ params{
     mirna_genespval                  = 1 # pval cutoff for miRNA
     proteins_genespval               = 0.5 # pval cutoff for proteins
     lipids_genespval                 = 0.5 # pval cutoff for lipids
+    // BIOTRANSLATOR
+    pea_mirna      = "biotranslator"
+    biotrans_mirna_organism          = "hsapiens"
+    biotrans_mirna_keytype          = "gene_symbol"
+    biotrans_mirna_ontology         = "GO" // MGIMP, Reactome
 }
 ```
 
