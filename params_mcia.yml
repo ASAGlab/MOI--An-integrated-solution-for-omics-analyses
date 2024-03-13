@@ -38,7 +38,7 @@ skip_alignment_genes: true
 count_matrix_genes  : '${projectDir}/assets/genes.txt'
 input_genes : "${projectDir}/assets/samplesheet_genes.csv"
 
-mom_change_anot_genes   : true 
+mom_change_anot_genes   : false
 mom_filt_method_genes   : "filterByExp"  #filterByExp filterCustom
 mom_filt_cutoff_genes   : 0
 mom_norm_method_genes   : "quantile" # calncNorm quantile
@@ -70,7 +70,7 @@ skip_pseudo_alignment_mirna  : true
 
 count_matrix_mirna   : '${projectDir}/assets/mirna.txt' 
 input_mirna  : '${projectDir}/assets/samplesheet_mirna.csv'
-mom_change_anot_mirna   : true 
+mom_change_anot_mirna   : false
 mom_filt_method_mirna: "filterByExp"  #filterByExp filterCustom
 mom_filt_cutoff_mirna: 0
 mom_norm_method_mirna: "calcNorm" # calncNorm quantile
@@ -127,7 +127,7 @@ edgercontrasts_proteins: "TNBC-non_TNBC"
 lipids  : true
 count_matrix_lipids   : '${projectDir}/assets/lipids.txt'
 input_lipids   : '${projectDir}/assets/samplesheet_lipids.csv'
-mom_lipid_change_anot   : true 
+mom_lipid_change_anot   : false
 mom_lipid_filt_method : "filterByExp"  #filterByExp filterCustom
 mom_lipid_filt_cutoff : 0
 mom_norm_lipid_cutoff : 100000000
