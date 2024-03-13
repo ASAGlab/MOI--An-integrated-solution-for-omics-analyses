@@ -32,10 +32,10 @@ input_isoforms   : "/home/bianca/gittest/moi/assets/samplesheet_ire1_24_trimmed.
 
 
 # run SRA
-sra_isoforms: false
+sra_isoforms: true
 
 # QC parameters
-skip_qc_isoforms: true
+skip_qc_isoforms: false
 
 # Alignment and pseudoalignment
 skip_alignment_isoforms : false
