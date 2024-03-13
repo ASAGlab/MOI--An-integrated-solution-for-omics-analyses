@@ -2,10 +2,6 @@
 
 
 
-<br>
-> _Documentation of pipeline parameters is generated automatically from the pipeline schema and can no longer be found in markdown files.
-<br><br>
-
 # Introduction
 
 
@@ -227,6 +223,11 @@ params{
     mirna_genespval                  = 1 # pval cutoff for miRNA
     proteins_genespval               = 0.5 # pval cutoff for proteins
     lipids_genespval                 = 0.5 # pval cutoff for lipids
+    // BIOTRANSLATOR
+    pea_genes      = "biotranslator"
+    biotrans_lipids_organism          = "hsapiens"
+    biotrans_lipids_keytype          = "gene_symbol"
+    biotrans_lipids_ontology         = "GO" // MGIMP, Reactome
 }
 ```
 
