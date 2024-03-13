@@ -1,10 +1,6 @@
 ## Boilerplate options
 
-genes : false
-mirna : false
-lipids: false
-proteins: false
-ridder_alone: false
+
 max_memory                 : '36.GB'
 max_cpus                   : 17
 max_time                   : '240.h'
@@ -18,13 +14,14 @@ featurecounts_group_type_isoforms: 'gene_biotype'
 gencode_isoforms : true
 
 
-fasta_isoforms   : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz'
+fasta_isoforms   : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz' 
 transcript_fasta_isoforms: '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz'
 gtf_isoforms : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz'
+salmon_index_isoforms   : '/home/bianca/gencode2/salmon/'
+salmonDirIso: '/home/bianca/testresultsisoforms/isoforms/salmon_isoforms/' 
 
-# TODO 
-#save_reference : false
-#save_align_intermeds : false 
+
+
  
 #isoforms #########################################/
 isoforms : true
@@ -46,8 +43,7 @@ skip_pseudo_alignment_isoforms  : false
 aligner_isoforms: 'salmon' # 'star', 'hisat2'
 pseudo_aligner_isoforms : 'salmon'
 #salmon_index_isoforms   : null
-salmon_index_isoforms   : '/home/bianca/gencode2/salmon/'
-salmonDirIso: '/home/bianca/testresultsisoforms/isoforms/salmon_isoforms/'  # change this for your own salmon outputs  or should be whole directory where the pipeline outputs the results
+ # change this for your own salmon outputs  or should be whole directory where the pipeline outputs the results
 extra_salmon_quant_args_iso  : null
 
 
@@ -78,13 +74,17 @@ dexseqpval  : 0.05
 dexseqfdr   : 0.0001
 
 #run mcia
-runmcia                          : true
+runmcia                          : false
 pathmcia                        : "/home/bianca/testresultsisoforms2/mcia/" 
 samplesinfomcia                 : '${projectDir}/assets/samplesheet_isoforms.csv'
 mcia_a1lim                      : '0, Inf'
 mcia_a2lim                      : '-Inf, 0'
 
-
+genes : false
+mirna : false
+lipids: false
+proteins: false
+ridder_alone: false
 
 skip_preseq_isoforms: true
 bbsplit_fasta_list_isoforms : null
