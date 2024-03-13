@@ -87,8 +87,6 @@ genome = 'GRCh38'  # Reference genome identifier from AWS, check /conf/igenomes.
 outdir  = 'full path of location you want to output'
 salmonDiGenes = '/path/to/outdir/salmon/genes'
 input_genes = 'full path of samplesheet with SRA code or location of fastq files'
-input_genes = 'full path of phenotype file assigning conditions to samples'
-
 }
 ```
 
