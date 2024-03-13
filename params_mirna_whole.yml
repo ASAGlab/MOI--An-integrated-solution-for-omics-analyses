@@ -1,12 +1,6 @@
 
 ## Boilerplate options
-isoforms : false
-sra_isoforms : false
-sra_genes : false
-genes : false
-lipids: false
-ridder_alone: false
-runmcia : false
+
 outdir: 'testresultsmirna'
 
 genome                     : 'GRCh38'
@@ -90,4 +84,19 @@ pathmcia                        : "/home/bianca/testresultsmirna/mcia/" # should
 samplesinfomcia                 : '${projectDir}/assets/samplesheet_mirna.csv
 mcia_a1lim                      : '0, Inf'
 mcia_a2lim                      : '-Inf, 0'
+
+#BIOTRANSLATOR
+pea_mirna      : "clusterprofiler"
+biotrans_mirna_organism          : "hsapiens"
+biotrans_mirna_keytype          : "gene_symbol"
+biotrans_mirna_ontology         : "GO" #// MGIMP, Reactome
+
+
+isoforms : false
+sra_isoforms : false
+sra_genes : false
+genes : false
+lipids: false
+ridder_alone: false
+runmcia : false
 
