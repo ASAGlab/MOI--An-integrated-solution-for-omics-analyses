@@ -1,13 +1,5 @@
 ## Boilerplate options
-isoforms : false
-genes : false
-sra_isoforms : false
-sra_mirna : false
-sra_genes : false
-mirna : false
-lipids: false
-ridder_alone: false
-runmcia : false
+
 # Max resource options
 # Defaults only, expecting to be overwritten
 max_memory                 : '36.GB'
@@ -53,3 +45,13 @@ pea_proteins                    : "biotranslator"
 biotrans_pro_organism          : "hsapiens"
 biotrans_pro_keytype          : "gene_symbol"
 biotrans_pro_ontology         : "GO" # MGIMP, Reactome
+
+isoforms : false
+genes : false
+sra_isoforms : false
+sra_mirna : false
+sra_genes : false
+mirna : false
+lipids: false
+ridder_alone: false
+runmcia : false
