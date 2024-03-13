@@ -16,7 +16,10 @@ featurecounts_group_type_genes  : 'gene_biotype'
 #fasta_genes                     : null
 #transcript_fasta_genes          : null
 #gtf_genes                       : null 
-
+# salmon 
+salmon_index_genes            : null 
+#//salmon_index_genes              : '/home/bianca/gencode2/salmon/'
+salmonDirGenes                  : '${projectDir}/results/genes/salmon_genes/'  # change this for salmon outputs format: outdir/genes/salmon_genes    
 #genes
 
 genes   : true
@@ -38,10 +41,7 @@ skip_alignment_genes            : false
 pseudo_aligner_genes            : 'salmon'   
 aligner_genes                   : null # 'star', 'hisat2'
 
-# salmon 
-salmon_index_genes            : null 
-#//salmon_index_genes              : '/home/bianca/gencode2/salmon/'
-salmonDirGenes                  : '${projectDir}/results/genes/salmon_genes/'  # change this for salmon outputs format: outdir/genes/salmon_genes    
+
 extra_salmon_quant_args_genes    : null
 
    
@@ -77,6 +77,8 @@ edgercontrasts_genes: "TNBC-non_TNBC"
 
 genes_genespval                  : 0.1
 
+
+#################### MODIFY BELOW PATHS FOR YOUR OWN DATA
 # MCIA
 runmcia                         : false
 pathmcia                        : "${projectDir}/results/mcia/" # should of the format complete output directory/mcia
