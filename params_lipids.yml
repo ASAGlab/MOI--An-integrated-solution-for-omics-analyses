@@ -1,13 +1,5 @@
 ## Boilerplate options
-isoforms : false
-genes : false
-sra_isoforms : false
-sra_mirna : false
-sra_genes : false
-mirna : false
-proteins: false
-ridder_alone: false
-runmcia : false
+
 
 outdir: 'testresultslipids'
 max_memory                 : '36.GB'
@@ -18,9 +10,6 @@ lipids  : true
 count_matrix_lipids   : '${projectDir}/assets/lipids.txt'
 input_lipids   : '${projectDir}/assets/samplesheet_lipids.csv'
 
-
-
-
 #lipidr 
 lipidr   : true
 lipidr_normalize : false
@@ -28,7 +17,19 @@ lipidr_formula   : "~condition"  # has to be something with condition
 lipidr_condition : "TNBC" # has to be cell in sampleInfo
 
 
-#######################3
+
+additional_omics_lipids: false
+isoforms : false
+genes : false
+sra_isoforms : false
+sra_mirna : false
+sra_genes : false
+mirna : false
+proteins: false
+ridder_alone: false
+runmcia : false
+
+#########################################################################################################################
 mom_lipid_change_anot   : true 
 mom_lipid_filt_method : "filterByExp"  #filterByExp filterCustom
 mom_lipid_filt_cutoff : 0
