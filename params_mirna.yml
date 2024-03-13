@@ -30,7 +30,7 @@ sra_mirna : false
 skip_qc_mirna                   : true
 
 # Alignment and pseudalignemnt
-skip_pseudo_alignment_mirna     : true # if false set also skip_alignment_mirna= false
+skip_pseudo_alignment_mirna     : true  # if false set also skip_alignment_mirna= false
 skip_alignment_mirna            : true  
 # salmon
 pseudo_aligner_mirna            : 'salmon'
