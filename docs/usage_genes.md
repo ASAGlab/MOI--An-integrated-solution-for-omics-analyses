@@ -282,9 +282,9 @@ SRX1022920 1
 
 <br><br>
 
-## PAE
+## PEA
 
- Last step of the analysis is to perform pathway enrichment analysis with [clusterprofiler](../modules/local/clusterprofiler) 
+ Last step of the analysis is to perform pathway enrichment analysis with [clusterprofiler](../modules/local/clusterprofiler) or biotranslator [biotranslator](../modules/local/biotranslator). 
 
 <br>
 
@@ -297,6 +297,11 @@ params{
     mirna_genespval                  = 1 # pval cutoff for miRNA
     proteins_genespval               = 0.5 # pval cutoff for proteins
     lipids_genespval                 = 0.5 # pval cutoff for lipids
+    // BIOTRANSLATOR
+    pea_genes      = "biotranslator"
+    biotrans_genes_organism          = "hsapiens"
+    biotrans_genes_keytype          = "gene_symbol"
+    biotrans_genes_ontology         = "GO" // MGIMP, Reactome
 }
 ```
 
