@@ -1,12 +1,6 @@
 
 ## Boilerplate options
-isoforms : false
-sra_isoforms : false
-sra_genes : false
-genes : false
-lipids: false
-ridder_alone: false
-runmcia : false
+
 outdir: 'testresultsmirna'
 
 genome                     : 'GRCh38'
@@ -14,11 +8,16 @@ gencode                    : true // these need to be changes in modules.config
 igenomes_base              : 's3://ngi-igenomes/igenomes'
 igenomes_ignore            : true
 gencode_mirna                   : true
-featurecounts_group_type_mirna  : 'gene_biotype'
+featurecounts_group_type_mirna  : 'gene_biotype'`
+
+### CHANGE BELOW TO RUN FOR YOUR OWN DATA!
 fasta_mirna                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz'
 transcript_fasta_mirna          : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz'
 gtf_mirna                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz'
 
+
+
+#####################################
 mirna  : true
 input_mirna                     : "${projectDir}/assets/samplesheet_mirna.csv"
 
@@ -75,6 +74,13 @@ edgercontrasts_mirna: "TNBC-non_TNBC"
 
 genes_genespval                  : 0.1
 
+#BIOTRANSLATOR
+pea_mirna      : "clusterprofiler"
+biotrans_mirna_organism          : "hsapiens"
+biotrans_mirna_keytype          : "gene_symbol"
+biotrans_mirna_ontology         : "GO" #// MGIMP, Reactome
+
+################### CHANGE PATHMCIA IF YOU WANT TO RUN MCIA
 # MCIA
 runmcia                         : false
 pathmcia                        : "/home/bianca/testresultsmirna/mcia/" # should of the format complete output directory/mcia
@@ -82,3 +88,10 @@ samplesinfomcia                 : '${projectDir}/assets/samplesheet_mirna.csv
 mcia_a1lim                      : '0, Inf'
 mcia_a2lim                      : '-Inf, 0'
 
+isoforms : false
+sra_isoforms : false
+sra_genes : false
+genes : false
+lipids: false
+ridder_alone: false
+runmcia : false
