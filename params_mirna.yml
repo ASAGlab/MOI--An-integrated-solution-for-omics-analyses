@@ -10,7 +10,7 @@ igenomes_ignore            : true
 gencode_mirna                   : true
 featurecounts_group_type_mirna  : 'gene_biotype'`
 
-### CHANGE BELOW TO RUN FOR YOUR OWN DATA!
+## CHANGE BELOW TO RUN FOR YOUR OWN DATA!
 fasta_mirna                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz'
 transcript_fasta_mirna          : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz'
 gtf_mirna                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz'
