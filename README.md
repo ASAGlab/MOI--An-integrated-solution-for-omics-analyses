@@ -20,6 +20,10 @@ The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool
 4. Proteomics analysis
 5. Integration of multi omics data
 
+## Supplementary materials for this pipeline can be found at this zenodo repository:
+https://zenodo.org/records/10813721
+
+
 ## Quick Start
 
 1. Install [`Nextflow`](https://www.nextflow.io/docs/latest/getstarted.html#installation) (`>=22.10.1`)
