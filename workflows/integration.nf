@@ -199,7 +199,7 @@ workflow INTEGRATION {
                         pathprepare,params.alg_genes, params.alg_mirna,params.alg_proteins,params.biotrans_all_pval)
                         COMPARATIVE_ANALYSIS_LIPIDS(PREPARE_DF_INT_LIPIDS.out.comparative_df,params.biocomp_all_organism, params.biocomp_all_keytype,params.biocomp_all_ontology,ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO)
                         comparative_analysis_with_lipids = COMPARATIVE_ANALYSIS_LIPIDS.out.biocomp_plots
-                        pathprepare,params.alg_genes, params.alg_mirna,params.alg_proteins,params.biotrans_all_pval)
+                        
             }
             else if(!params.runmcia){
                     PREPARE_DF(genesp,
