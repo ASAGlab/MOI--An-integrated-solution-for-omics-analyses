@@ -13,7 +13,7 @@ nextflow.enable.dsl = 2
 
 include { QUALITYCONTROL } from './qualitycontrol'
 
-include { PEA } from '../subworkflows/local/pea'
+
 include { ALIGNASSEMBLYISO } from './alignassemblyiso.nf'
 include { ALIGNASSEMBLYMIRNA } from './alignassemblymirna.nf'
 include { ISOFORMSPART1 } from './isoformspart1.nf'
