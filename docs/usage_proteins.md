@@ -185,7 +185,7 @@ params{
 <br>
 
 Inputs for to run RankProduct are the same, with a single difference: 
-The **condition column** has to be named **cl** and the user has to asign **1 to controls and 0 to treatments**
+The **condition column** has to be named **cl** and the user has to asign **0 to controls and 1 to treatments**
 
 ```console
 sampleID,cl
