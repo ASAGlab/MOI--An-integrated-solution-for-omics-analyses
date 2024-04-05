@@ -16,7 +16,7 @@ You will need to create a samplesheet with information about the samples you wou
 <br>
 
 ```console
-sample,fastq_1,fastq_2,condition,batch
+sample,fastq_1,fastq_2,condition,batch,cl
 CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz,control,1
 CONTROL_REP1,AEG588A1_S1_L003_R1_001.fastq.gz,AEG588A1_S1_L003_R2_001.fastq.gz,control,2
 CONTROL_REP1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz,control,3
@@ -262,7 +262,7 @@ params{
 <br>
 
 Inputs for to run RankProduct are the same, with a single difference: 
-The **condition column** has to be named **cl** and the user has to asign **1 to controls and 0 to treatments**
+The **condition column** has to be named **cl** and the user has to asign **0 to controls and 1 to treatments**
 
 ```console
 sampleID cl
