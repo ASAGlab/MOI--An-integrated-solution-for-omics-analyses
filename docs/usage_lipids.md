@@ -93,23 +93,11 @@ LipidR will produce differentially expressed features for each category of lipid
 
 <br>
 
-
-```bash
-params{
-    features                         = null # if you want to perform clusterprofiler as a standalone tool, specify directory of features here
-    alg                        = "edger" # algoritmh you used to perform differential expression analysis or mcia
-    lipids_genespval                  = 1 # pval cutoff for genes
-    mirna_genespval                  = 1 # pval cutoff for miRNA
-    proteins_genespval               = 0.5 # pval cutoff for proteins
-    lipids_genespval                 = 0.5 # pval cutoff for lipids
-
-}
-```
-<br>
+#### BIOTRANSLATOR
 
 ```bash 
 params{
-    //BIOTRANSLATOR
+    
     pea_proteins      = "biotranslator"
     biotrans_pro_organism          = "hsapiens"
     biotrans_pro_keytype          = "gene_symbol"
