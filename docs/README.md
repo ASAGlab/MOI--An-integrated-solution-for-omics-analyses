@@ -25,19 +25,19 @@ MOI produces extensive outputs, including informative plots and intermediate res
 
 Most important tools 
 
-Omics | Functionality | Tools
-Genes, miRNA, isoforms | SRA download | SRA toolkit
-Genes, miRNA, isoforms | Quality control | FastQC, trimgalore
-Genes, miRNA, isoforms | Align and Assembly | Salmon, samtools, STAR, Hisat2, StringTie2,
-Genes, miRNA, isoforms, proteins, lipids | Data preprocessing | R packages: edger, limma, sva, ggplot2, ComplexHeatmap
-Proteins, lipids | Specific for proteins and lipids | R packages: preprocesscore, mstus normalization
-Lipids | Specific for lipids | R packags: lipidr
-Genes, miRNA, isoforms, proteins, lipids | Differential expression analyss | R packages: DESeq2, edger, RankProd, ggplot2 ComplexHeatmap
-Genes, miRNA, isoforms, proteins, lipids | Correlation analysis | R package stats
-Genes, miRNA, isoforms, proteins, lipids | Pathway enrichment analysis | Clusterprofiler, Biotranslator
-Lipids | Specific for lipids pathway enrichment analysis | Custom tool: Lipidb 
-Genes, miRNA, isoforms, proteins | RIDDER (module to identify IRE1 substrates) | gRIDD, RNAeval, fimo
-Genes, miRNA, isoforms | Functional annotation | CPAT, signalP, pfam
-Genes, miRNA, isoforms, proteins | Secondary structure prediction | RNAfold, RNAeval 
-Genes, miRNA, isoforms, proteins | Find motif | fimo
-Isoforms | Genome wide isoform analysis | IsoformSwitchAnalyzer
+| Omics | Functionality | Tools |
+| Genes, miRNA, isoforms | SRA download | SRA toolkit |
+| Genes, miRNA, isoforms | Quality control | FastQC, trimgalore |
+| Genes, miRNA, isoforms | Align and Assembly | Salmon, samtools, STAR, Hisat2, StringTie2 |
+| Genes, miRNA, isoforms, proteins, lipids | Data preprocessing | R packages: edger, limma, sva, ggplot2, ComplexHeatmap |
+| Proteins, lipids | Specific for proteins and lipids | R packages: preprocesscore, mstus normalization |
+| Lipids | Specific for lipids | R packags: lipidr |
+| Genes, miRNA, isoforms, proteins, lipids | Differential expression analyss | R packages: DESeq2, edger, RankProd, ggplot2 ComplexHeatmap |
+| Genes, miRNA, isoforms, proteins, lipids | Correlation analysis | R package stats |
+| Genes, miRNA, isoforms, proteins, lipids | Pathway enrichment analysis | Clusterprofiler, Biotranslator |
+| Lipids | Specific for lipids pathway enrichment analysis | Custom tool: Lipidb  |
+| Genes, miRNA, isoforms, proteins | RIDDER (module to identify IRE1 substrates) | gRIDD, RNAeval, fimo |
+| Genes, miRNA, isoforms | Functional annotation | CPAT, signalP, pfam |
+| Genes, miRNA, isoforms, proteins | Secondary structure prediction | RNAfold, RNAeval  |
+| Genes, miRNA, isoforms, proteins | Find motif | fimo |
+| Isoforms | Genome wide isoform analysis | IsoformSwitchAnalyzer |
