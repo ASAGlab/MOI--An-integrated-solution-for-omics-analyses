@@ -25,7 +25,8 @@ MOI produces extensive outputs, including informative plots and intermediate res
 
 Most important tools 
 
-| Omics | Functionality | Tools |
+| Omics | Functionality | Tools 
+|-------|---------------|-------
 | Genes, miRNA, isoforms | SRA download | SRA toolkit |
 | Genes, miRNA, isoforms | Quality control | FastQC, trimgalore |
 | Genes, miRNA, isoforms | Align and Assembly | Salmon, samtools, STAR, Hisat2, StringTie2 |
