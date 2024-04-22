@@ -1,4 +1,4 @@
-# ASAGlab/mom: Documentation
+# ASAGlab/moi: Documentation
 
 The ASAGlab/mom documentation is split into the following pages:
 
