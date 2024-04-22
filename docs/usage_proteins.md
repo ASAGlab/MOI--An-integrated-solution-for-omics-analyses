@@ -28,7 +28,7 @@ params{
 
 # Important
 > ### Sample names have to be in the first column or in a column called sampleID and **need to match** the column names of your count matrix. 
-> ### If you have column names other than **condition** and **batch** you need to change declare the names in the params_lipids.yml. See below (preprocess_matrix.,dea,clusterprofiler)
+> ### If you have column names other than **condition** and **batch** you need to change declare the names in the params_proteins.yml. See below (preprocess_matrix.,dea,clusterprofiler)
 
 <br>
 
@@ -71,7 +71,7 @@ depending on the state of their data.
 
 <br>
 
-> ### Input_proteins should have a column named condition describing the states of the experiment (ctr vs treat) and one called "batch" describing batches of the experiment (if there is no batch then the replicate column is the batch). If the user wants other names they user have to specify in the params_proteins.yml the column name of their conditions and that column name to be present in the samplesInfo_mirna.txt file:
+> ### Input_proteins should have a column named "condition" describing the states of the experiment (ctr vs treat) and one called "batch" describing batches of the experiment (if there is no batch then the replicate column is the batch). If the user wants other names they user have to specify in the params_proteins.yml the column name of their conditions and that column name to be present in the input_proteins.csv file:
 
 <br>
 
@@ -79,13 +79,11 @@ depending on the state of their data.
 ```bash 
 
 params{
-    mom_filt_method_proteins           = "filterByExp"  # filterByExp or choose a cutoff value
-    mom_norm_method_proteins           = "quantile"     # calcNorm quantile
+
     mom_norm_condition_proteins           = "condition"   # must be columns in samples info 
     mom_norm_treatment_proteins           = "condition"   # must be columns in samples info 
-    mom_batch_method_proteins          = "com" # com for combat, sva,  comsva for combat & sva, svacom for sva and comba, none
     mom_batch_condition_proteins       = "condition"    # which is the condition of interest, must be present in columns of sample info
-    mom_batch_batch_proteins           = "replicate"  
+    mom_batch_batch_proteins           = "batch"  
 }
 ```
 
@@ -93,12 +91,6 @@ params{
 
 Once the count matrix is ready, we can move on to differential expression analysis. We provide three different algorithms for that:
 
-
-<br><br>
-
-# Important
-> ### Sample names have to be in the first column or in a column called sampleID and **need to match** the column names of your count matrix. 
-> ### If you have column names other than **condition** and **batch** you need to change declare the names in the params_proteins.yml. See below (preprocess_matrix.,dea,clusterprofiler)
 
 
 <br>
@@ -111,17 +103,12 @@ depending on the state of their data.
 
 <br>
 
-> ### Note that the user has to specify in the preoteins.config the column name of their treatments and that column name to be present in the samplesInfo_proteins.txt file:
-
 ```bash 
 
 params{
     mom_filt_method_proteins           = "filterByExp"  # filterByExp or choose a cutoff value
     mom_norm_method_proteins           = "quantile"     # calncNorm quantile
-    mom_norm_condition_proteins           = "condition"   # must be columns in samples info 
-    mom_norm_treatment_proteins           = "condition"   # must be columns in samples info 
     mom_batch_method_proteins          = "com" # com for combat, sva,  comsva for combat & sva, svacom for sva and comba, none
-    mom_batch_condition_proteins       = "condition"    # which is the condition of interest, must be present in columns of sample info
     mom_batch_batch_proteins           = "replicate"  
 }
 ```
