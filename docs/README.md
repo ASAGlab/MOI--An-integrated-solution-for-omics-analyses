@@ -13,7 +13,7 @@ The ASAGlab/mom documentation is split into the following pages:
   - An overview of the different results produced by the pipeline and how to interpret them.
 
 
-General inputs and outputs 
+# General inputs and outputs 
 
 The MOI pipeline is organized into individual modules, each responsible for a specific step in the analysis workflow. The modular design facilitates code flexibility in incorporating new analyses techniques or custom implementations, as well as easy maintenance and scalability.  
 
@@ -23,7 +23,7 @@ The pipeline's inputs are streamlined to one csv file. This file accommodates ei
 
 MOI produces extensive outputs, including informative plots and intermediate results in the form of text and RData objects for each module, accommodating users who seek further utilization or detailed inspection of results. Outputs are organized hierarchically based on the user’s parameterization; for example, the pathway enrichment analysis of genes will be located under the directory “/user_defined_output_directory/genes/biotranslator/”. 
 
-Most important tools 
+# Most important tools 
 
 | Omics | Functionality | Tools 
 |-------|---------------|-------
