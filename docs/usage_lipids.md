@@ -9,7 +9,7 @@
 
 ## Nessecary inputs
 <br>
-The pipeline has as input the [count matrix](../assets/counts_lipids.txt) with the abundance of lipids and a [phenotype file] (/assets/samplesheet_lipids.csv) describing the metadata of each sample. 
+The pipeline has as input the [count matrix](../assets/counts_lipids.txt) with the abundance of lipids and a [phenotype file] (/assets/input_lipids.csv) describing the metadata of each sample. 
 
 ```bash
 
@@ -24,7 +24,7 @@ params{
 
 # Important
 > ### Sample names have to be in the first column or in a column called sampleID and **need to match** the column names of your count matrix. 
-> ### If you have column names other than **condition** and **batch** you need to change declare the names in the params_lipids.yml. See below (preprocess_matrix.,dea,clusterprofiler)
+> ### If you have column names other than **condition** and **batch** you need to change declare the names in the params_lipids.yml. 
 
 <br>
 
@@ -33,20 +33,20 @@ params{
 
 <br>
 
-In order to run the isoform part of the pipeline you have to modify one file, specifying which part of the analysis you want to run and respective parameters [params_lipids.yml](../params_lipids.yml):
+In order to run the lipids part of the pipeline you have to modify one file, specifying which part of the analysis you want to run and respective parameters [params_lipids.yml](../params_lipids.yml):
 
 ```bash
 params{
   outdir  '[full path of location you want to output]'
   count_matrix_lipids  '[full path of location your lipids count matrix]'
-  samplesInfo_lipids   '[full path of location your lipids phenotype file]'
+  input_lipids   '[full path of location your lipids phenotype file]'
 }
 ```
 
 The general command to run the pipeline is: 
 
 ```bash
-nextflow run ASAGlab/mom -params-file ASAGlab/mom/params_lipids.yaml -profile docker 
+nextflow run multiomicsintegrator -params-file multiomicsintegrator/params_lipids.yaml -profile docker 
 ```
 
 <br>
@@ -74,143 +74,22 @@ work                'Directory containing the nextflow working files'
 
 <br>
 
-### Preprocess
-Initially, there is an optional module [preprocess_matrix](../subworkflows/local/preprocess_matrix.nf) that preprocesses this matrix.
-Namely, the user can perform [filtering](../modules/local/mom_filter), [normalization](../modules/local/mom_norm/) and [batch effect](../modules/local/mom_filter/) correction, 
-depending on the state of their data.
-
-<br>
-
-> ### Input_lipids should have a column named condition describing the states of the experiment (ctr vs treat) and one called "batch" describing batches of the experiment (if there is no batch then the replicate column is the batch). If the user wants other names they user have to specify in the params_lipids.yml the column name of their conditions and that column name to be present in the samplesInfo_mirna.txt file:
-
-<br>
-
-
-```bash 
-
-params{
-    mom_filt_method_lipids           = "filterByExp"  # filterByExp or choose a cutoff value
-    mom_norm_method_lipids           = "quantile"     # calcNorm quantile
-    mom_norm_condition_lipids           = "condition"   # must be columns in samples info 
-    mom_norm_treatment_lipids           = "condition"   # must be columns in samples info 
-    mom_batch_method_lipids          = "com" # com for combat, sva,  comsva for combat & sva, svacom for sva and comba, none
-    mom_batch_condition_lipids       = "condition"    # which is the condition of interest, must be present in columns of sample info
-    mom_batch_batch_lipids           = "replicate"  
-}
-```
-
-<br>
-
-### DEA
-
-Once the count matrix is ready, we can move on to differential expression analysis. We provide three different algorithms for that:
-
-
-<br><br>
-
-# Important
-> ### The first column in your phenotype file ***must*** match the column names in your count matrix. 
-> ### If you started the workflow from the begining then the first column in the phenotype file should be the same as the sample column in you samplesheet.csv
-
-<br>
-
-After the formation of the count matrix there is an optional module [preprocess_matrix](../subworkflows/local/preprocess_matrix.nf)that preprocesses this matrix.
-Namely, the user can perform [filtering](../modules/local/mom_filter), [normalization](../modules/local/mom_norm/) and [batch effect](../modules/local/mom_filter/) correction, 
-depending on the state of their data.
-
-<br>
-
-> ### Note that the user has to specify in the preoteins.config the column name of their treatments and that column name to be present in the samplesInfo_lipids.txt file:
-
-```bash 
-
-params{
-    mom_filt_method_lipids           = "filterByExp"  # filterByExp or choose a cutoff value
-    mom_norm_method_lipids           = "quantile"     # calncNorm quantile
-    mom_norm_condition_lipids           = "condition"   # must be columns in samples info 
-    mom_norm_treatment_lipids           = "condition"   # must be columns in samples info 
-    mom_batch_method_lipids          = "com" # com for combat, sva,  comsva for combat & sva, svacom for sva and comba, none
-    mom_batch_condition_lipids       = "condition"    # which is the condition of interest, must be present in columns of sample info
-    mom_batch_batch_lipids           = "replicate"  
-}
-```
-
-<br>
-
-Now,is time to perform differential expression analysis. We provide three different algorithms for that, which we describe below. 
-
-### Note 
-> You need to specify which algorithm you are going to use in lipids.config
-
-```bash
-params{
-  alg_lipids     = 'edger' # Default
-}
-```
-
-<br><br>
-
-### edger [edger](../modules/local/edger) 
-
-```bash
-params{
-    dgergroupingfactor_lipids        =  "condition" # column name where your treatments are located
-    edgerformulamodelmatrix_lipids   =  "~0 + condition" # design matrix, values have to be column names in deseq2 samlesInfo_lipids.txt
-    edgercontrasts_lipids            = "TNBC-non_TNBC"  # contrasts of interest. Values have to be present in the samplesInfo_lipids.txt
-}
-```
-
-<br>
-
-### DESeq2 [deseq](../modules/local/deseq2) 
-
-<br>
-
-### **Important note**
-
-<br>
-
-> For DESeq2 to run you need to have the column of the treatments in the samplesInfo_lipids.txt has to be named **condition** and the batches **batch**
-
-<br>
-
-
-```bash 
-params{
-    batchdeseq2_lipids               = false # perform batch effect correction
-    deseqFormula_lipids              = "~0 + condition"  # design matrix, values have to be column names in deseq2 samlesInfo_lipids.txt
-    con1_lipids                     = "mkc"   # control, has to be cell in samplesinfo
-    con2_lipids                     = "dmso"  # treatment, has to be cell in samplesinfo
-    deseq2single_matrix             = true   # if the input is a single matrix or a directory of files
-}
-```
-
-<br>
-
-### RankProduct [rankprod](../modules/local/rankprod) 
-
-<br>
-
-Inputs for to run RankProduct are the same, with a single difference: 
-The **condition column** has to be named **cl** and the user has to asign **0 to controls and 1 to treatments**
-
-```console
-sampleID,cl
-CONTROL_REP1,1
-CONTROL_REP2,1
-TREATMENT_REP1,0
-```
-
 ### All in one analysis with LipidR
 We provide the possibility to perform the proprocessing steps, as well as the the differential expression analysis using the R Bioconductor package [lipidr](../modules/local/lipidr) . 
 Lipidr provides additional exploratory plots regarding the different classes of lipids as well as if there is any enrichment of these classes between conditions. Moreover, it provides with information abou the saturation level of the carbon chains of the different classes of lipids between conditions.
 
 > ### You need to have either the first or one column named **sampleID** and the column that stores the different settings of your experiment has be named **condition** in your sampleInfo_lipids file.
 
-<br><br>
+<br>
+
+
+### LipiDB
+LipidR will produce differentially expressed features for each category of lipids. Subsequently, LipiDB, using KREGGREST will find genes associated to these differentially expressed lipids, for each category. The results are in as form of a text file and a heatmap. 
+
+<br>
 
 ### PEA
- Last step of the analysis is to perform pathway enrichment analysis with [metabAnalystR](../modules/local/metaboanalystr)
+ Last step of the analysis is to perform pathway enrichment analysis with [metabAnalystR](../modules/local/metaboanalystr) or with [biotranslator](../modules/local/metaboanalystr) (../modules/local/biotranslator) 
 
 <br>
 
@@ -226,8 +105,21 @@ params{
 
 }
 ```
+<br>
+
+```bash 
+params{
+    //BIOTRANSLATOR
+    pea_proteins      = "biotranslator"
+    biotrans_pro_organism          = "hsapiens"
+    biotrans_pro_keytype          = "gene_symbol"
+    biotrans_pro_ontology         = "GO" // MGIMP, Reactome
+
+}
+```
 
 <br><br>
+
 
 ## Core Nextflow arguments
 
