@@ -186,7 +186,7 @@ TREATMENT_REP1,0
 
 ### PAE
 
-Last step of the analysis is to perform pathway enrichment analysis with [clusterprofiler](../modules/local/clusterprofiler) 
+Last step of the analysis is to perform pathway enrichment analysis with [clusterprofiler](../modules/local/clusterprofiler) or [biotranslator](../modules/local/biotranslator) 
 
 <br>
 
@@ -199,6 +199,12 @@ params{
     mirna_genespval                  = 1 # pval cutoff for miRNA
     proteins_genespval               = 0.5 # pval cutoff for proteins
     lipids_genespval                 = 0.5 # pval cutoff for lipids
+}
+```
+
+
+```bash
+params{
     //BIOTRANSLATOR
     pea_proteins      = "biotranslator"
     biotrans_pro_organism          = "hsapiens"
