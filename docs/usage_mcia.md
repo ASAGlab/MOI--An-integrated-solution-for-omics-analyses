@@ -104,19 +104,54 @@ work                'Directory containing the nextflow working files'
 
 MCIA utilizes mathematical techniques such as covariance analysis, optimization, and dimensionality reduction to integrate diverse omics datasets. It starts by centering and scaling data, then identifies shared patterns through joint covariance analysis. Through optimization, it determines coefficients for each feature, quantifying their contribution to shared structures. The method constructs latent variables or components, representing these shared patterns. If needed, dimensionality reduction is applied for a more concise interpretation. This comprehensive mathematical approach allows MCIA to effectively capture commonalities and distinctions in multi-omics data, offering insights into complex biological relationships.
 
-<br><br>
+<br>
+
+Additionally, we offer the possibility of funtional integration of data to cover scenarios in which MCIA cannot be applied. 
+Namely, we offer correlation analysis [correlation](../modules/local/correlation) to estimate correlation between differentially expressed features. 
+We suggest to use the count matrices of the differentially expressed features.  
+
+```bash
+params{
+    correlation_alone          = false
+    cor_m1                     = "${projectDir}/results//mirna/rankprod/mirna_defeatures_expression.txt"
+    cor_m2                     = "${projectDir}/results/genes/rankprod/genes_defeatures_expression.txt"
+    cor_method                 = "pearson" // method of correlation. available: pearson, spearman
+    cor_corc                   = 0.8 // cutoff of correlation
+    cor_pvalc                  = 0.1 // pval cutoff of correlation
+    
+}
+
+```
+
+Additionally, we offer a [comparative_analysis](../modules/local/comparative_analysis) tool, which estimates the semantic distance (e.g. the similarity of their pathways) of two features signatures. Input is a txt file, with each column storing one distinct feature signature. Available parameters are:
 
 
-## Updating the pipeline
+```bash
+params{
+    comparative_alone = false
+    biocomp_input             = "${projectDir}/assets/ensembl_9.txt" // Input
+    biocomp_organism          = "hsapiens"   // Organism
+    biocomp_keytype          = "gene_symbol" // Type of keys. Available gene_symbol, ensembl, ncbi
+    biocomp_ontology         = "GO" // Ontologies MGIMP, Reactome
+}
+
+```
 
 <br>
 
-When you run the above command, Nextflow automatically pulls the pipeline code from GitHub and stores it as a cached version. When running the pipeline after this, it will always use the cached version if available - even if the pipeline has been updated since. To make sure that you're running the latest version of the pipeline, make sure that you regularly update the cached version of the pipeline:
+If the user wishes to run correlation or comparative_analysis as standalone modules they need to modify the nextflow.config file and run the command:
 
 ```bash
-nextflow pull multiomicsintegrator
+nextflow run multiomicsintegrator/modules/local/correlation/main.nf -c multiomicsintegrator/nextflow.config -profile docker
+
 ```
-<br><br>
+
+or
+
+```bash
+nextflow run multiomicsintegrator/modules/local/comparative_analysis/main.nf -c multiomicsintegrator/nextflow.config -profile docker
+
+```
 
 ## Core Nextflow arguments
 
