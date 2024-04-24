@@ -47,7 +47,7 @@ TREATMENT_REP1,treat
 | `fastq_1` | Full path to FastQ file for Illumina short reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
 | `fastq_2` | Full path to FastQ file for Illumina short reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
 | `strandness`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
-| `condition` | Metadata describing your test condition (or treatment, or state etc) and one called "batch"                                               |
+| `condition` | Metadata describing your test condition (or treatment, or state etc)                                        |
 | `batch` | Describes unwanted source of variation (e.g. technical replicates, different platfroms, different batches etc.).   
 
 
