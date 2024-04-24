@@ -14,11 +14,11 @@ featurecounts_group_type_isoforms: 'gene_biotype'
 gencode_isoforms : true
 
 ## MODIFY THESE FOR YOUR OWN DATA: 
-fasta_isoforms   : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz' 
-transcript_fasta_isoforms: '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz'
-gtf_isoforms : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz'
-salmon_index_isoforms   : '/home/bianca/gencode2/salmon/'
-salmonDirIso: '/home/bianca/testresultsisoforms/isoforms/salmon_isoforms/' 
+#fasta_isoforms   : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz' 
+#transcript_fasta_isoforms: '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz'
+#gtf_isoforms : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz'
+#salmon_index_isoforms   : '/home/bianca/gencode2/salmon/'
+#salmonDirIso: '/home/bianca/testresultsisoforms/isoforms/salmon_isoforms/' 
 
 input_isoforms   : "/home/bianca/gittest/moi/assets/samplesheet_isoforms.csv"
 
@@ -29,7 +29,7 @@ isoforms : true
 
 
 ## start from SRA
-sra_isoforms: false
+sra_isoforms: true
 
 
 #QC parameters
