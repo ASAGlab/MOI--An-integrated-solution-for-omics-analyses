@@ -28,6 +28,8 @@ mirna : false
 proteins: false
 ridder_alone: false
 runmcia : false
+pathmcia : '${projectDir}/assets/dummy_file.txt'
+samplesinfomcia : '${projectDir}/assets/dummy_file.txt'
 
 #########################################################################################################################
 mom_lipid_change_anot   : true 
