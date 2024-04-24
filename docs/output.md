@@ -92,8 +92,7 @@ Clusterprofiler can be utilized by individual analyses or after the integration 
 
 </details>
 
-### [Additional integration methods and biotranslator](/docs/images/figure7.png) 
-(A) MOI has unique tools for associating genes to the molecules found in metabolomic datasets and visualizing them across functional lipid categories and available omics data. (B) Correlation analysis performed with Pearson or Spearman can filter illuminating connection and patterns and aiding the noise mitigation for downstream analyses like pathway enrichment analysis (functional analysis). The example provided here shows the top 10 differentially expressed miRNA and their correlated genes. (C) The semantic distance matrix of feature signatures performed by our comparative analysis tool explores how closely connected regarding the biological ontologies are two signatures.  (D) shows the biological processes that hold the most descriptive information of the observed phenotype, interconnected with hub genes (x axis). 
+### [Additional integration methods and biotranslator](/docs/images/figure7.png) (A) MOI has unique tools for associating genes to the molecules found in metabolomic datasets and visualizing them across functional lipid categories and available omics data. (B) Correlation analysis performed with Pearson or Spearman can filter illuminating connection and patterns and aiding the noise mitigation for downstream analyses like pathway enrichment analysis (functional analysis). The example provided here shows the top 10 differentially expressed miRNA and their correlated genes. (C) The semantic distance matrix of feature signatures performed by our comparative analysis tool explores how closely connected regarding the biological ontologies are two signatures.  (D) shows the biological processes that hold the most descriptive information of the observed phenotype, interconnected with hub genes (x axis). 
 ### Pipeline information
 
 <details markdown="1">
