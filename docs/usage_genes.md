@@ -143,7 +143,7 @@ params{
 <br><br>
 
 It then employs [salmon](../modules/nf-core/salmon) in order to obtain quantification files that are outputed in 
-nfmom/MOM/$OUTDIR/salmon_genes/$sampleID/quant.sf directory. 
+$OUTDIR/salmon_genes/$sampleID/quant.sf directory. 
 
 
 If you have performed the alignment step outside you can organise your data in the aforementioned way and specify the directory that holds the quant.sf files in the params_genes.yml:
@@ -265,19 +265,19 @@ Inputs for to run RankProduct are the same, with a single difference:
 The **condition column** has to be named **cl** and the user has to asign **0 to controls and 1 to treatments**
 
 ```console
-sampleID cl
-CONTROL_REP1 1
-CONTROL_REP2 1
-TREATMENT_REP1 0
+sampleID,cl
+CONTROL_REP1,1
+CONTROL_REP2,1
+TREATMENT_REP1,0
 ```
 <br>
 
 or if you started from SRA codes
 ```console
-sampleID cl
-SRX1022911 0
-SRX1022917 0
-SRX1022920 1
+sampleID,cl
+SRX1022911,0
+SRX1022917,0
+SRX1022920,1
 ```
 
 <br><br>
@@ -297,6 +297,13 @@ params{
     mirna_genespval                  = 1 # pval cutoff for miRNA
     proteins_genespval               = 0.5 # pval cutoff for proteins
     lipids_genespval                 = 0.5 # pval cutoff for lipids
+}
+```
+<br>
+
+bash
+```
+params{
     // BIOTRANSLATOR
     pea_genes      = "biotranslator"
     biotrans_genes_organism          = "hsapiens"
