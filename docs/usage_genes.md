@@ -11,7 +11,7 @@
 
 ## Nessecary inputs
 <br>
-You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. It has to be a comma-separated file with 5 columns, and a header row as shown in the examples below.
+You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. It has to be a comma-separated file with 6 columns, and a header row as shown in the examples below.
 
 <br>
 
