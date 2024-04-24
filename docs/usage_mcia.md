@@ -26,8 +26,8 @@ For example if I have proteins and mirnas my mcia directory will look like:
 
 ```plaintext
 - mcia
-    -isoforms
-      isoforms.txt
+    -genes
+      genes.txt
     - proteins
       - proteins.txt
     - lipids
@@ -152,6 +152,8 @@ or
 nextflow run multiomicsintegrator/modules/local/comparative_analysis/main.nf -c multiomicsintegrator/nextflow.config -profile docker
 
 ```
+
+
 
 ## Core Nextflow arguments
 
