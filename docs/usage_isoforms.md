@@ -45,7 +45,7 @@ TREATMENT_REP1,treat
 | `fastq_1` | Full path to FastQ file for Illumina short reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
 | `fastq_2` | Full path to FastQ file for Illumina short reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
 | `strandness`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
-| `condition` | Metadata describing your test condition (or treatment, or state etc) and one called "batch"                                               |
+| `condition` | Metadata describing your test condition (or treatment, or state etc)                                       |
 | `batch` | Describes unwanted source of variation (e.g. technical replicates, different platfroms, different batches etc.).   
 
 
@@ -78,13 +78,24 @@ In order to run the isoform part of the pipeline you have to modify one file, sp
 
 ```bash
 params{
-genome  = 'GRCh38' # Reference genome identifier from AWS, check /conf/igenomes.config
 outdir   '[full path of location you want to output]'
 salmonDirIso '[full path of directory where outdir is/isoforms/salmon_isoforms/'
 input_isoforms '[full path of samplesheet with SRA code or location of fastq files]'
 
 }
 ```
+
+In addition you have to provide suitable reference fasta files regarding genome, transcripts and a gtf file regarding the genomic coordinates of the organism you study. 
+
+```bash
+params{
+fasta_isoforms   :  '[full path of location of fasta of the genome]'
+transcript_fasta_isoforms:  '[full path of location of fasta of the transcripts ]'
+gtf_isoforms :  '[full path of location of the gtf of the organism]'
+}
+```
+
+<br>
 
 The general command to run the pipeline is: 
 
