@@ -9,7 +9,7 @@
 
 ## Nessecary inputs
 <br>
-The pipeline has as input the [count matrix](../assets/counts_lipids.txt) with the abundance of lipids and a [phenotype file] (/assets/input_lipids.csv) describing the metadata of each sample. 
+The pipeline has as input the [count matrix](../assets/lipids.txt) with the abundance of lipids and a [phenotype file](/assets/samplesheet_lipids.csv) describing the metadata of each sample. 
 
 ```bash
 
