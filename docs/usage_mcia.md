@@ -27,7 +27,7 @@ For example if I have proteins and mirnas my mcia directory will look like:
 ```plaintext
 - mcia
     -genes
-      genes.txt
+      - genes.txt
     - proteins
       - proteins.txt
     - lipids
