@@ -22,7 +22,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and performs th
 5. Integration of multi omics data
 
 See diagram:
-[diagram.png](/docs/images/Figure_1.png) 
+[diagram.png](/docs/images/Figure1.png) 
 
 ## RNAseq analysis
 
