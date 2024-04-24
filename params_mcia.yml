@@ -61,7 +61,7 @@ edgercontrasts_genes: "TNBC-non_TNBC"
 
 #mirna
 
-mirna : true
+mirna : false
    
 skip_qc_mirna: true
 skip_alignment_mirna : true
