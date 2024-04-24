@@ -52,7 +52,7 @@ params{
   runmcia = true
   outdir =  '[full path of location you want to output]'
   pathmcia = 'directory that store the different omics data'
-  samplesInfomcia = 'path of you samples info file'
+  samplesinfomcia = 'path of you samples info file'
   a1lim = limits of your X space, Default :  '0, Inf'
   a2lim = limits of your Y space, Default :  '0, Inf'
 }
