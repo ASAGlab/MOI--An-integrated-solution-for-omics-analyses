@@ -44,7 +44,7 @@ TREATMENT_REP1,treat
 | `fastq_1` | Full path to FastQ file for Illumina short reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
 | `fastq_2` | Full path to FastQ file for Illumina short reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
 | `strandness`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
-| `condition` | Metadata describing your test condition (or treatment, or state etc) and one called "batch"                                               |
+| `condition` | Metadata describing your test condition (or treatment, or state etc)                                             |
 | `batch` | Describes unwanted source of variation (e.g. technical replicates, different platfroms, different batches etc.).   
 
 
@@ -141,7 +141,7 @@ params{
 <br><br>
 
 It then employs [salmon](../modules/nf-core/salmon) in order to obtain quantification files that are outputed in 
-nfmom/MOM/$OUTDIR/salmon_mirna/$sampleID/quant.sf directory. 
+$OUTDIR/salmon_mirna/$sampleID/quant.sf directory. 
 
 
 
@@ -289,6 +289,13 @@ params{
     mirna_genespval                  = 1 # pval cutoff for miRNA
     proteins_genespval               = 0.5 # pval cutoff for proteins
     lipids_genespval                 = 0.5 # pval cutoff for lipids
+}
+```
+
+<br>
+
+```bash
+params{
     // BIOTRANSLATOR
     pea_mirna      = "biotranslator"
     biotrans_mirna_organism          = "hsapiens"
