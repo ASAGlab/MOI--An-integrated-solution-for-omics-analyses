@@ -28,7 +28,7 @@ See diagram:
 
 Plots included here are generated from RNAseq data however similar plots can be generated for proteomic data if provided with a count matrix and a samples info file:
 
-[de_rnaprotmirna](/docs/images/figure3.png) 
+[RNAseq analysis](/docs/images/figure3.png) 
 Box plots of samples after filtering and normalizations steps (A) as well as PCA plots of raw and cleaned for batch effect samples (B) provide quality control of the data. Heatmaps (C) and Volcano plots (D) offer visual indications of differentially expressed features.
 
 <details markdown="1">
@@ -61,7 +61,7 @@ Box plots of samples after filtering and normalizations steps (A) as well as PCA
 
 Plots included here are generated if the user chose lipidr = true
 
-[lipids](/images/figure4.png) 
+[Lipids](/images/figure4.png) 
 Box plots of the relative fold change for each class of lipids is displayed (A) along with the output showing whether that fold change is enriched between conditions (B). The different classes of lipids shown are ceramides (CE), diglycerides (DAG), lysophosphatidylcholines (LPC), lysophosphatidylethanolamines (LPE), phosphatidylcholine (PC), sphingomyelin (SM) and triaglycerides (TAG). Distribution of saturation levels for each class of lipids is shown in (C) and the most enriched pathways found using biotranslator in which these lipids participate is shown in (D).
 
 Otherwise similar plots to those shown in [de_rnaprotmirna] will be generated.
