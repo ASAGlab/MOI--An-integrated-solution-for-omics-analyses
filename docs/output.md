@@ -1,4 +1,4 @@
-# nf-core/MOI: Output
+# MOI: Output
 
 ## Introduction
 
