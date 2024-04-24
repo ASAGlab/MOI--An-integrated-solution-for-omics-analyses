@@ -24,7 +24,7 @@ mom_prot_batch_method: "none"
 mom_prot_batch_condition: "condition"
 mom_prot_batch_batch: "batch"
 
-alg_proteins: 'deseq2'
+alg_proteins: 'rp'
 
 deseq2single_matrix : true
 batchdeseq2_proteins: false
