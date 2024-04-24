@@ -8,7 +8,7 @@ gencode                    : true // these need to be changes in modules.config
 igenomes_base              : 's3://ngi-igenomes/igenomes'
 igenomes_ignore            : true
 gencode_mirna                   : true
-featurecounts_group_type_mirna  : 'gene_biotype'`
+featurecounts_group_type_mirna  : 'gene_biotype'
 
 ## CHANGE BELOW TO RUN FOR YOUR OWN DATA!
 fasta_mirna                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz'
@@ -84,7 +84,7 @@ biotrans_mirna_ontology         : "GO" #// MGIMP, Reactome
 # MCIA
 runmcia                         : false
 pathmcia                        : "/home/bianca/testresultsmirna/mcia/" # should of the format complete output directory/mcia
-samplesinfomcia                 : '${projectDir}/assets/samplesheet_mirna.csv
+samplesinfomcia                 : '${projectDir}/assets/samplesheet_mirna.csv'
 mcia_a1lim                      : '0, Inf'
 mcia_a2lim                      : '-Inf, 0'
 
