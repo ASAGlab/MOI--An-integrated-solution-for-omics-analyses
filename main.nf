@@ -68,8 +68,27 @@ workflow MOM {
         INTEGRATION(GENES.out.dea_features,MIRNA.out.dea_features,PROTEINS.out.dea_features,LIPIDS.out.dea_features,ISOFORMSANALYSIS.out.de_isoforms, params.genes, params.mirna, params.proteins, params.lipids, params.isoforms,params.pathmcia, params.samplesinfomcia, params.mcia_a1lim, params.mcia_a2lim,params.biotrans_all_path,params.biotrans_all_pval,GENES.out.forcor, MIRNA.out.forcor, PROTEINS.out.forcor )
     }
 
-    //INTEGRATION(GENES.out.dea_features,MIRNA.out.dea_features,PROTEINS.out.dea_features,LIPIDS.out.dea_features,ISOFORMSANALYSIS.out.de_isoforms, params.genes, params.mirna, params.proteins, params.lipids, params.isoforms,params.pathmcia, params.samplesinfomcia, params.mcia_a1lim, params.mcia_a2lim,params.biotrans_all_path,params.biotrans_all_pval, GENES.out.forcor, MIRNA.out.forcor, PROTEINS.out.forcor )
-
+    INTEGRATION(
+    GENES.out.dea_features,
+    MIRNA.out.dea_features,
+    PROTEINS.out.dea_features,
+    LIPIDS.out.dea_features,
+    ISOFORMSANALYSIS.out.de_isoforms, 
+    params.genes, 
+    params.mirna, 
+    params.proteins, 
+    params.lipids, 
+    params.isoforms,
+    params.pathmcia, 
+    params.samplesinfomcia, 
+    params.mcia_a1lim, 
+    params.mcia_a2lim,
+    params.biotrans_all_path,
+    params.biotrans_all_pval, 
+    GENES.out.forcor, 
+    MIRNA.out.forcor, 
+    PROTEINS.out.forcor,
+    LIPIDS.out.dea_features2 )
     if(params.ridder_alone){
         RIDDER(params.ridder_input, params.riddernames)
     }
