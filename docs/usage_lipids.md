@@ -78,7 +78,7 @@ work                'Directory containing the nextflow working files'
 We provide the possibility to perform the proprocessing steps, as well as the the differential expression analysis using the R Bioconductor package [lipidr](../modules/local/lipidr) . 
 Lipidr provides additional exploratory plots regarding the different classes of lipids as well as if there is any enrichment of these classes between conditions. Moreover, it provides with information abou the saturation level of the carbon chains of the different classes of lipids between conditions.
 
-> ### You need to have either the first or one column named **sampleID** and the column that stores the different settings of your experiment has be named **condition** in your sampleInfo_lipids file.
+> ### You need to have either the first or one column named **sampleID** and the column that stores the different settings of your experiment has be named **condition** in your samplesheet_lipids.csv file.
 
 <br>
 
