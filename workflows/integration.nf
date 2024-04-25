@@ -79,11 +79,13 @@ include { CUSTOM_DUMPSOFTWAREVERSIONS } from '../modules/nf-core/custom/dumpsoft
 // Info required for completion email and summary
 def multiqc_report = []
 
-ch_delipids = file("${params.outdir}/prepareforbio/de_lipids.txt")
-/*ch_degenes = file("${params.outdir}/correlation/genes/*.txt").copyTo("${params.outdir}/forcorrelation/genes.txt")
+/*ch_delipids = file("${params.outdir}/prepareforbio/de_lipids.txt")
+ch_degenes = file("${params.outdir}/correlation/genes/*.txt").copyTo("${params.outdir}/forcorrelation/genes.txt")
 ch_demirna = file("${params.outdir}/correlation/mirna/*.txt").copyTo("${params.outdir}/forcorrelation/mirna.txt")
 ch_deproteins = file("${params.outdir}/correlation/proteins/*.txt").copyTo("${params.outdir}/forcorrelation/proteins.txt")
 */
+
+
 workflow INTEGRATION {
 
     take:
@@ -107,6 +109,7 @@ workflow INTEGRATION {
     ch_degenes
     ch_demirna
     ch_deproteins
+    ch_delipids
 
 
 
@@ -126,7 +129,7 @@ workflow INTEGRATION {
     biotranslator_enriched_lipids  = Channel.empty()
     lipids_genes    = Channel.empty()
     plot_mcia = Channel.empty()
-    genesmirnasvg = file("${params.projectDir}/assets/dummy_file3.txt")
+    genesmirnasvg = file("${projectDir}/assets/dummy_file3.txt")
     if (params.mirna && params.genes){
 
         CORRELATION(mirnap,genesp, ch_degenes, ch_demirna, "pearson",0.8, 0.05)
@@ -183,55 +186,67 @@ workflow INTEGRATION {
 
     // TODO ADD ISOFORMS AND MIRNA!!!!!!
     // TODO SECOND !! make annotate_lipids to take dummy file!
-    if(params.lipids){
-        if (params.additional_omics_lipids){
-            if (params.runmcia){
-                        ANNOTATE_LIPIDS(ch_delipids,params.additional_omics_lipids,PREPARE_DF_INT.out.genes_across_omics)
-                        PREPARE_DF_INT_LIPIDS(
-                        genesp,
-                        mirnap,
-                        proteinsp,
-                        lipidsp,
-                        isoformsp,
-                        MCIA_P.out.pca_integrated,ANNOTATE_LIPIDS.out.genes_related_to_deLipids,genesmirnasvg,
-                        params.genes,params.mirna,params.proteins,params.lipids,params.isoforms, params.runmcia,
-                        true, // integrated after lipids
-                        pathprepare,params.alg_genes, params.alg_mirna,params.alg_proteins,params.biotrans_all_pval)
-                        COMPARATIVE_ANALYSIS_LIPIDS(PREPARE_DF_INT_LIPIDS.out.comparative_df,params.biocomp_all_organism, params.biocomp_all_keytype,params.biocomp_all_ontology,ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO)
-                        comparative_analysis_with_lipids = COMPARATIVE_ANALYSIS_LIPIDS.out.biocomp_plots
-                        
-            }
-            else if(!params.runmcia){
-                    PREPARE_DF(genesp,
-                            mirnap,
-                            proteinsp,
-                            lipidsp,
-                            isoformsp,
-                            params.biocomp_dummy,params.dummy_file2,genesmirnasvg,
-                            params.genes,params.mirna,params.proteins,params.lipids,params.isoforms, params.runmcia,
-                            false, //integrated after lipids
-                            pathprepare,params.alg_genes, params.alg_mirna,params.alg_proteins,params.biotrans_all_pval)
-                            ANNOTATE_LIPIDS(ch_delipids,params.additional_omics_lipids,PREPARE_DF.out.genes_across_omics)
-                            // TODO ADD COMPARATIVE ANALYSIS WITHOUT MCIA!
-
-            }
-            PEA_OF_LIPIDS(params.pea_lipids,ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO,"mcia",1,params.biotrans_lipids_organism, params.biotrans_lipids_keytype,params.biotrans_lipids_ontology) 
-            lipids_genes    = ANNOTATE_LIPIDS.out.genes_across_lipids_omics
-            biotranslator_plots_lipids= PEA_OF_LIPIDS.out.biotrans_plots
-            biotranslator_priori_lipids = PEA_OF_LIPIDS.out.biotrans_priori
-            biotranslator_enriched_lipids = PEA_OF_LIPIDS.out.biotrans_enriched
-            //COMPARATIVE_ANALYSIS_LIPIDS(PREPARE_DF_INT_LIPIDS.out.comparative_df,params.biocomp_all_organism, params.biocomp_all_keytype,params.biocomp_all_ontology,ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO)
-            //comparative_analysis_with_lipids = COMPARATIVE_ANALYSIS_LIPIDS.out.biocomp_plots
-        }else(!params.additional_omics_lipids){
-            ANNOTATE_LIPIDS(ch_delipids,params.additional_omics_lipids,params.biocomp_dummy)
-            PEA_OF_LIPIDS(params.pea_lipids,ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO,"mcia",1,params.biotrans_lipids_organism, params.biotrans_lipids_keytype,params.biotrans_lipids_ontology) 
-            lipids_genes    = ANNOTATE_LIPIDS.out.genes_across_lipids_omics
-            biotranslator_plots_lipids= PEA_OF_LIPIDS.out.biotrans_plots
-            biotranslator_priori_lipids = PEA_OF_LIPIDS.out.biotrans_priori
-            biotranslator_enriched_lipids = PEA_OF_LIPIDS.out.biotrans_enriched  
-        }
-
+if (params.lipids && params.additional_omics_lipids) {
+    if (params.runmcia) {
+        ANNOTATE_LIPIDS(ch_delipids, params.additional_omics_lipids, PREPARE_DF_INT.out.genes_across_omics)
+        PREPARE_DF_INT_LIPIDS(
+            genesp,
+            mirnap,
+            proteinsp,
+            lipidsp,
+            isoformsp,
+            MCIA_P.out.pca_integrated,
+            ANNOTATE_LIPIDS.out.genes_related_to_deLipids,
+            genesmirnasvg,
+            params.genes,
+            params.mirna,
+            params.proteins,
+            params.lipids,
+            params.isoforms,
+            params.runmcia,
+            true, // integrated after lipids
+            pathprepare,
+            params.alg_genes,
+            params.alg_mirna,
+            params.alg_proteins,
+            params.biotrans_all_pval
+        )
+        COMPARATIVE_ANALYSIS_LIPIDS(PREPARE_DF_INT_LIPIDS.out.comparative_df, params.biocomp_all_organism, params.biocomp_all_keytype, params.biocomp_all_ontology, ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO)
+        comparative_analysis_with_lipids = COMPARATIVE_ANALYSIS_LIPIDS.out.biocomp_plots
+    } else {
+        PREPARE_DF(
+            genesp,
+            mirnap,
+            proteinsp,
+            lipidsp,
+            isoformsp,
+            params.biocomp_dummy,
+            params.dummy_file2,
+            genesmirnasvg,
+            params.genes,
+            params.mirna,
+            params.proteins,
+            params.lipids,
+            params.isoforms,
+            params.runmcia,
+            false, // integrated after lipids
+            pathprepare,
+            params.alg_genes,
+            params.alg_mirna,
+            params.alg_proteins,
+            params.biotrans_all_pval
+        )
+        ANNOTATE_LIPIDS(ch_delipids, params.additional_omics_lipids, PREPARE_DF.out.genes_across_omics)
+        // TODO ADD COMPARATIVE ANALYSIS WITHOUT MCIA!
     }
+    PEA_OF_LIPIDS(params.pea_lipids, ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO, "mcia", 1, params.biotrans_lipids_organism, params.biotrans_lipids_keytype, params.biotrans_lipids_ontology)
+    lipids_genes = ANNOTATE_LIPIDS.out.genes_across_lipids_omics
+    biotranslator_plots_lipids = PEA_OF_LIPIDS.out.biotrans_plots
+    biotranslator_priori_lipids = PEA_OF_LIPIDS.out.biotrans_priori
+    biotranslator_enriched_lipids = PEA_OF_LIPIDS.out.biotrans_enriched
+    //COMPARATIVE_ANALYSIS_LIPIDS(PREPARE_DF_INT_LIPIDS.out.comparative_df,params.biocomp_all_organism, params.biocomp_all_keytype,params.biocomp_all_ontology,ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO)
+    //comparative_analysis_with_lipids = COMPARATIVE_ANALYSIS_LIPIDS.out.biocomp_plots
+}
 
 
 
