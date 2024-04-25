@@ -12,14 +12,14 @@ outdir : 'testresultsire124'
 genome                     : 'GRCh38'
 igenomes_base              : 's3://ngi-igenomes/igenomes'
 featurecounts_group_type_isoforms: 'gene_biotype'
-gencode_isoforms : true
-igenomes_ignore            : false
+
 
 
 ## MODIFY THIS PARAMETER IN RESPECT TO YOUR OUTPUT DIRECTORY: full path to output directory /isoforms/salmon_isoforms
 #salmonDirIso: 'testresultsire124/isoforms/salmon_isoforms/'  
 
-
+gencode_isoforms : true
+igenomes_ignore            : false  ## Currently, aws genomes are incompatible. Download same genomes that are shown in the example below
 
 #fasta_isoforms   : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz' # if you choose awsgenome set this to null
 #transcript_fasta_isoforms: '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz' # if you choose awsgenome set this to null
