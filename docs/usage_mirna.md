@@ -163,7 +163,7 @@ The sampleID is the same of the sampleID of the phenotype file (or the sample na
 
 <br>
 
-If you want to skip the alignment step you need to specify the location of the count matrix and the respective phenotype (input_mirna.txt) you have, in the params_mirna.yml file:
+If you want to skip the alignment step you need to specify the location of the count matrix and the respective phenotype (samplesheet_mirna.csv) you have, in the params_mirna.yml file:
 
 ```bash
 params{
@@ -224,8 +224,8 @@ params{
 ```bash
 params{
     dgergroupingfactor_mirna        =  "condition" # column name where your treatments are located
-    edgerformulamodelmatrix_mirna   =  "~0 + condition" # design matrix, values have to be column names in deseq2 samlesInfo_mirna.txt
-    edgercontrasts_mirna            = "TNBC-non_TNBC"  # contrasts of interest. Values have to be present in the input_mirna.txt
+    edgerformulamodelmatrix_mirna   =  "~0 + condition" # design matrix, values have to be column names in deseq2 samplesheet_mirna.csv
+    edgercontrasts_mirna            = "TNBC-non_TNBC"  # contrasts of interest. Values have to be present in the samplesheet_mirna.csv
 }
 ```
 
@@ -239,7 +239,7 @@ params{
 
 <br>
 
-> For DESeq2 to run you need to have the column of the treatments in the input_mirna.txt has to be named **condition** and the batches **batch**
+> For DESeq2 to run you need to have the column of the treatments in the samplesheet_mirna.csv has to be named **condition** and the batches **batch**
 
 <br>
 
