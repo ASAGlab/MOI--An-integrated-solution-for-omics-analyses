@@ -247,9 +247,9 @@ params{
 ```bash 
 params{
     batchdeseq2_mirna               = false # perform batch effect correction
-    deseqFormula_mirna              = "~0 + condition"  # design matrix, values have to be column names in deseq2 samlesInfo_mirna.txt
-    con1_mirna                     = "mkc"   # control, has to be cell in samplesinfo
-    con2_mirna                     = "dmso"  # treatment, has to be cell in samplesinfo
+    deseqFormula_mirna              = "~0 + condition"  # design matrix, values have to be column names in deseq2 samplesheet_mirna.csv
+    con1_mirna                     = "mkc"   # control, has to be cell in samplesheet_mirna.csv
+    con2_mirna                     = "dmso"  # treatment, has to be cell in samplesheet_mirna.csv
     deseq2single_matrix             = true   # if the input is a single matrix or a directory of files
 }
 ```
