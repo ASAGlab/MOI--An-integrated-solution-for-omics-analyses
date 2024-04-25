@@ -164,7 +164,7 @@ The sampleID is the same of the sampleID of the phenotype file (or the sample na
 
 <br>
 
-If you want to skip the alignment step you need to specify the location of the count matrix and the respective phenotype (input_genes.txt) you have, in the params_genes.yml file:
+If you want to skip the alignment step you need to specify the location of the count matrix and the respective phenotype (samplesheet_genes.csv) you have, in the params_genes.yml file:
 
 ```bash
 params{
