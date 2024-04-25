@@ -225,8 +225,8 @@ params{
 ```bash
 params{
     dgergroupingfactor_genes        =  "condition" # column name where your treatments are located
-    edgerformulamodelmatrix_genes   =  "~0 + condition" # design matrix, values have to be column names in deseq2 samlesInfo_genes.txt
-    edgercontrasts_genes            = "TNBC-non_TNBC"  # contrasts of interest. Values have to be present in the input_genes.txt
+    edgerformulamodelmatrix_genes   =  "~0 + condition" # design matrix, values have to be column names in deseq2 samplesheet_genes.csv
+    edgercontrasts_genes            = "TNBC-non_TNBC"  # contrasts of interest. Values have to be present in the samplesheet_genes.csv
 }
 ```
 
@@ -240,7 +240,7 @@ params{
 
 <br>
 
-> For DESeq2 to run you need to have the column of the treatments in the input_genes.txt has to be named **condition** and the batches **batch**
+> For DESeq2 to run you need to have the column of the treatments in the samplesheet_genes.csv has to be named **condition** and the batches **batch**
 
 <br>
 
