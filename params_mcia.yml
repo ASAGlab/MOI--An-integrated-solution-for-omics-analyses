@@ -1,6 +1,6 @@
 ## Boilerplate options
 
-
+# MODIFY THESE PARAMETERS ACCORDINGLY!
 outdir: '/home/bianca/testresultsintegration' ### If outdir =  results then pathmcia should: /complete/path/to/results/mcia/ biotransl_all_path:path/to/results/prepareforbio
 pathmcia: "/home/bianca/testresultsintegration/mcia/" # should of the string of the format /complete/path/to/results/mcia/ 
 biotrans_all_path  : "/home/bianca/testresultsintegration/prepareforbio/"  # should of the string of the format /complete/path/to/results/prepareforbio/ 
