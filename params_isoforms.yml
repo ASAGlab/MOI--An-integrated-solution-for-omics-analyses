@@ -32,7 +32,7 @@ igenomes_ignore            : false
 #isoforms #########################################/
 isoforms : true
 
-input_isoforms   : "/home/bianca/gittest/moi/assets/samplesheet_isoforms.csv"
+input_isoforms   : "${projectDir}/assets/samplesheet_isoforms.csv"
 
 
 # run SRA
