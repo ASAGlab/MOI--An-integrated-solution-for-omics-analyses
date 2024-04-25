@@ -124,13 +124,16 @@ params{
 ``` 
 It then employs [salmon] in order to obtain quantification files with format relative-path/salmon_isoforms/sampleID/quant.sf. 
 
-If you want to skip the alignement step you need to specify the location of those files in the respective field in the isoforms.config file:
+If you want to skip the alignement step you need to specify the location of those files in the respective field in the params_isoforms.yml file:
 
 ```bash
 params{
   salmonDirIso # path where your outputs from aligningg are located
 }
-``` 
+```
+
+<br>
+
 # Note: All files need to be in the format: 
 ```plaintext
 salmonDirIso:
@@ -140,7 +143,7 @@ salmonDirIso:
 
 
 
-After that [isoformSwitchAnalyzer] is used, which takes these quantification files and performs differential expression analysis on the level of both isoforms and genes. IsoformSwitchAnalyzer requires an input_isoforms (phenotype file) with necessary columns sampleID and condition. The design matrix is of the form :
+After that [isoformSwitchAnalyzer] is used, which takes these quantification files and performs differential expression analysis on the level of both isoforms and genes. IsoformSwitchAnalyzer requires a samplesheet_isoforms.csv (phenotype file) with necessary columns sampleID and condition. The design matrix is of the form :
 
 ```console
 ~0 + condition
