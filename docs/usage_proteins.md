@@ -213,7 +213,7 @@ params{
     pea_proteins      = "biotranslator"
     biotrans_pro_organism          = "hsapiens"
     biotrans_pro_keytype          = "gene_symbol"
-    biotrans_pro_ontology         = "GO" // MGIMP, Reactome
+    biotrans_pro_ontology         = "GO" # MGIMP, Reactome
 
 }
 ```
