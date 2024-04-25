@@ -17,7 +17,7 @@ sra_mirna : false
 
 genome : 'GRCh38'
 gencode: true 
-igenomes_base  : 's3:#ngi-igenomes/igenomes'
+igenomes_base  : 's3:ngi-igenomes/igenomes'
 igenomes_ignore: true
 
 #genes
