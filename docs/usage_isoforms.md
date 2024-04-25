@@ -69,7 +69,17 @@ SRR2015761,SRX10229053,1
 
 An [example samplesheet](../assets/samplesheet_isoforms.csv) has been provided with the pipeline.
 
+## Refference files
+The user has to provide the location of local refference files:
 
+```bash
+params{
+  fasta_isoforms                   : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz'
+  transcript_fasta_isoforms         : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz'
+  gtf_isoforms                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz'
+```
+
+<br>
 
 ## Running the pipeline
 
