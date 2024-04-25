@@ -50,7 +50,7 @@ alg_lipids   : 'edger' # deseq2, edger
 
 
 batchdeseq2_lipids   : false
-deseqFormula_lipids  : "~0 + condition"  # batch and condition have to be column names in deseq2 samlesinfo
+deseqFormula_lipids  : "~0 + condition"  # batch and condition have to be column names in deseq2 samplesinfo
 con1_lipids : "mkc"   # deseq2, has to be cell in samplesinfo
 con2_lipids : "dmso"  # deseq2, has to be cell in samplesinfo
 
