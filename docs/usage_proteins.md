@@ -118,7 +118,7 @@ params{
 Now,is time to perform differential expression analysis. We provide three different algorithms for that, which we describe below. 
 
 ### Note 
-> You need to specify which algorithm you are going to use in proteins.config
+> You need to specify which algorithm you are going to use in params_proteins.yml
 
 ```bash
 params{
@@ -135,8 +135,8 @@ params{
 ```bash
 params{
     dgergroupingfactor_proteins        =  "condition" # column name where your treatments are located
-    edgerformulamodelmatrix_proteins   =  "~0 + condition" # design matrix, values have to be column names in deseq2 samlesInfo_proteins.txt
-    edgercontrasts_proteins            = "TNBC-non_TNBC"  # contrasts of interest. Values have to be present in the samplesInfo_proteins.txt
+    edgerformulamodelmatrix_proteins   =  "~0 + condition" # design matrix, values have to be column names in deseq2 samplesheet_proteins.csv
+    edgercontrasts_proteins            = "TNBC-non_TNBC"  # contrasts of interest. Values have to be present in the samplesheet_proteins.csv
 }
 ```
 
@@ -150,7 +150,7 @@ params{
 
 <br>
 
-> For DESeq2 to run you need to have the column of the treatments in the samplesInfo_proteins.txt has to be named **condition** and the batches **batch**
+> For DESeq2 to run you need to have the column of the treatments in the samplesheet_proteins.csv has to be named **condition** and the batches **batch**
 
 <br>
 
@@ -158,7 +158,7 @@ params{
 ```bash 
 params{
     batchdeseq2_proteins               = false # perform batch effect correction
-    deseqFormula_proteins              = "~0 + condition"  # design matrix, values have to be column names in deseq2 samlesInfo_proteins.txt
+    deseqFormula_proteins              = "~0 + condition"  # design matrix, values have to be column names in deseq2 samplesheet_proteins.csv
     con1_proteins                     = "mkc"   # control, has to be cell in samplesinfo
     con2_proteins                     = "dmso"  # treatment, has to be cell in samplesinfo
     deseq2single_matrix             = true   # if the input is a single matrix or a directory of files
