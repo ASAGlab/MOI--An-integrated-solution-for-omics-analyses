@@ -144,7 +144,7 @@ just run the pipeline again with -resume :
 
 ## Documentation
 
-The ASAGlab/moi pipeline comes with documentation about the pipeline  under docs in various usage.md files as well as example yml files which the user can modify as guidance into custom modifications directly. Example outputs are also inceluded under the docs folder in this repository.
+The ASAGlab/moi pipeline comes with documentation about the pipeline  under docs in various usage.md files as well as example yml files which the user can modify as guidance into custom modifications directly. Example outputs are also included under the docs folder in this repository.
 
 ## Credits
 
