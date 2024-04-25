@@ -184,7 +184,7 @@ TREATMENT_REP1,0
 
 <br><br>
 
-### PAE
+### Pathway Enrichment Analysis (PEA)
 
 Last step of the analysis is to perform pathway enrichment analysis with [clusterprofiler](../modules/local/clusterprofiler) or [biotranslator](../modules/local/biotranslator) 
 
