@@ -74,13 +74,13 @@ An [example samplesheet](../assets/samplesheet_mirna.csv) has been provided with
 
 <br>
 
-In order to run the genes part of the pipeline you have to modify one file, specifying which part of the analysis you want to run and specific parameters [params_mirna.yml](../params_mirna.yml): 
+In order to run the miRNA part of the pipeline you have to modify one file, specifying which part of the analysis you want to run and specific parameters [params_mirna.yml](../params_mirna.yml): 
 
 ```bash
 params{
 genome = 'GRCh38'  # Reference genome identifier from AWS, check /conf/igenomes.config
 outdir  = 'full path of location you want to output'
-salmonDirmiRNA = 'full path of location you want to output/mirna/mirna_genes/'
+salmonDirmiRNA = 'full path of location you want to output/mirna/'
 input_mirna = 'full path of samplesheet with SRA code or location of fastq files'
 
 }
@@ -149,12 +149,12 @@ If you have performed the alignment step outside you can organise your data in t
 
 ```bash
 params{
-  salmonDirGenes = '/path/to/directory_that_holds_quantification_files'
+  salmonDirmiRNA = '/path/to/directory_that_holds_quantification_files'
 }
 ```
 ## Note: All files need to be in the format: 
 ```plaintext
-salmonDirGenes:
+salmonDirmiRNA :
 - sampleID/  
   - quant.sf
 ``` 
