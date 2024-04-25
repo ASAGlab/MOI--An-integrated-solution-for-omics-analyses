@@ -41,7 +41,8 @@ ch_multiqc_custom_methods_description = params.multiqc_methods_description ? fil
 include { INPUT_CHECK } from '../subworkflows/local/input_check'
 include { PREPROCESS_MATRIX_LIPIDS } from '../subworkflows/local/preprocess_matrix_lipids'
 include { DEA } from './dea.nf'
-
+include { ANNOTATE_LIPIDS              } from '../modules/local/annotate_lipids/main'
+include { PEA as PEA_OF_LIPIDS                          } from '../subworkflows/local/pea'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,6 +57,7 @@ include { FASTQC                      } from '../modules/nf-core/fastqc/main'
 include { MULTIQC                     } from '../modules/local/multiqc/main'
 include { CUSTOM_DUMPSOFTWAREVERSIONS } from '../modules/nf-core/custom/dumpsoftwareversions/main'
 include { SANITY                   } from '../modules/local/sanity/main'
+include { SANITY2                   } from '../modules/local/sanity2/main'
 include { CLUSTERPROFILER                   } from '../modules/local/clusterprofiler/main'
 include { METABOANALYSTR                   } from '../modules/local/metaboanalystr/main'
 include { LIPIDR         } from '../modules/local/lipidr/main'
@@ -113,15 +115,29 @@ workflow LIPIDS {
         LIPIDR_NORMALIZE(count_matrix_lipids,samplesInfo_lipids,params.lipidr_normalize)
         LIPIDR(count_matrix_lipids,samplesInfo_lipids,LIPIDR_NORMALIZE.out.normalized_lipidsRdata, params.lipidr_formula, params.lipidr_condition)
         dea_features = LIPIDR.out.de_lipids
+        ANNOTATE_LIPIDS(dea_features,params.additional_omics_lipids,params.biocomp_dummy)
+        PEA_OF_LIPIDS(params.pea_lipids,
+        ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO,
+        "mcia",
+        1,
+        params.biotrans_lipids_organism, 
+        params.biotrans_lipids_keytype,
+        params.biotrans_lipids_ontology) 
         
+        lipids_genes    = ANNOTATE_LIPIDS.out.genes_across_lipids_omics
+        biotranslator_plots_lipids= PEA_OF_LIPIDS.out.biotrans_plots
+        biotranslator_priori_lipids = PEA_OF_LIPIDS.out.biotrans_priori
+        biotranslator_enriched_lipids = PEA_OF_LIPIDS.out.biotrans_enriched  
         //METABOANALYSTR(dea_features) 
         //CLUSTERPROFILER(dea_features,params.alg_lipids,params.lipids_genespval) 
     }
     else if(!params.lipids){
         SANITY("lipids")
         dea_features = SANITY.out.sanity
+        dea_features2 = SANITY2.out.sanity
     }
     emit: dea_features
+    dea_features2 = LIPIDR.out.de_lipids
 
 
 }
