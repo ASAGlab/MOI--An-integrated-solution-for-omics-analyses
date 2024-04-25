@@ -15,9 +15,9 @@ You will need to create a samplesheet with information about the samples you wou
 
 ```console
 sample,fastq_1,fastq_2,condition,batch
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz,control,1
-CONTROL_REP1,AEG588A1_S1_L003_R1_001.fastq.gz,AEG588A1_S1_L003_R2_001.fastq.gz,control,2
-CONTROL_REP1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz,control,3
+CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz,control,1,0
+CONTROL_REP1,AEG588A1_S1_L003_R1_001.fastq.gz,AEG588A1_S1_L003_R2_001.fastq.gz,control,2,0
+CONTROL_REP1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz,control,3,0
 ```
 
 <br>
@@ -60,9 +60,9 @@ Alternatively, instead of the providing with paths of fastq files you can provid
 
 ```console
 sample,sampleID,condition,batch,cl
-SRR2015757,SRX1022901,control,1,1
-SRR2015760,SRX1022904,control,2,1
-SRR2015761,SRX1022905,control,3,1
+SRR2015757,SRX10229011,1
+SRR2015760,SRX10229042,1
+SRR2015761,SRX10229053,1
 ```
 <br>
 
