@@ -188,7 +188,7 @@ depending on the state of their data.
 
 <br>
 
-> ### Input_genes should have a column named condition describing the states of the experiment (ctr vs treat) and one called "batch" describing batches of the experiment (if there is no batch then the replicate column is the batch). If the user wants other names they user have to specify in the params_genes.yml the column name of their conditions and that column name to be present in the input_genes.txt file:
+> ### Input_genes should have a column named condition describing the states of the experiment (ctr vs treat) and one called "batch" describing batches of the experiment (if there is no batch then the replicate column is the batch). If the user wants other names they user have to specify in the params_genes.yml the column name of their conditions and that column name to be present in the samplesheet_genes.csv file:
 
 ```bash 
 
