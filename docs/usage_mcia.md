@@ -35,11 +35,13 @@ For example if I have proteins and mirnas my mcia directory will look like:
     
 ```
 
-Alternatively, if you mcia is used as with pipeline-generated data you should declare this variable as follows:
+Alternatively, if you mcia is used as with pipeline-generated data you should declare these variables as follows:
 
 ```bash
 params{
-  pathmcia  = '/$outdir/mcia/' 
+  outdir: '/home/bianca/testresultsintegration' ### If outdir =  results then pathmcia should: /complete/path/to/results/mcia/ biotransl_all_path:path/to/results/prepareforbio
+  pathmcia  = '/$outdir/mcia/'  # should of the string of the format /complete/path/to/results/mcia/ 
+  biotrans_all_path  : "/home/bianca/testresultsintegration/prepareforbio/"  # should of the string of the format /complete/path/to/results/prepareforbio/ 
   }
 ```
 
