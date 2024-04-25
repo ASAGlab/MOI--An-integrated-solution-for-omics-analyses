@@ -71,7 +71,30 @@ SRR2015761,SRX1022905,control,3,1
 
 An [example samplesheet](../assets/samplesheet_genes.csv) has been provided with the pipeline.
 
+## Refference files
+The user can choose to run the pipeline using fasta and gtf files supplied by aws:
 
+<br>
+
+```bash
+params{
+  igenomes_base              : 's3://ngi-igenomes/igenomes'
+  igenomes_ignore            : false 
+}
+```
+
+<br> 
+
+Alternatively, they can provide the location of local refference files:
+
+```bash
+params{
+  fasta_genes                   : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz'
+  transcript_fasta_genes         : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz'
+  gtf_genes                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz'
+```
+
+<br>
 
 ## Running the pipeline
 
