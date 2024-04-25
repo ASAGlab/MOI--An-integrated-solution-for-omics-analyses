@@ -201,11 +201,12 @@ params{
     lipids_genespval                 = 0.5 # pval cutoff for lipids
 }
 ```
-
+<br>
+#### BIOTRANSLATOR
 
 ```bash
 params{
-    //BIOTRANSLATOR
+    
     pea_proteins      = "biotranslator"
     biotrans_pro_organism          = "hsapiens"
     biotrans_pro_keytype          = "gene_symbol"
