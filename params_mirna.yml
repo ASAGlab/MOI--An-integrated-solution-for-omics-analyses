@@ -1,24 +1,31 @@
 
 ## Boilerplate options
 
-outdir: 'testresultsmirna'
+
+## CHANGE BELOW TO RUN FOR YOUR OWN DATA!
+
+#fasta_mirna                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz'
+#transcript_fasta_mirna          : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz'
+#gtf_mirna                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz'
+
+# OR
+igenomes_base              : 's3://ngi-igenomes/igenomes'
+igenomes_ignore            : false # change this to true if you have your own reference files
+
+
+outdir: '${projectDir}/testresultsmirna'
+pathmcia                        : "${projectDir}/testresultsmirna/mcia/" # should of the format complete output directory/mcia
+salmonDirGenes                  : '${projectDir}/testresultsmirna/mirna/salmon_mirna/'  # change this for salmon outputs format: outdir/genes/salmon_mirna
 
 genome                     : 'GRCh38'
-gencode                    : true // these need to be changes in modules.config
-igenomes_base              : 's3://ngi-igenomes/igenomes'
-igenomes_ignore            : true
+gencode                    : true # // these need to be changes in modules.config
+
 gencode_mirna                   : true
 featurecounts_group_type_mirna  : 'gene_biotype'
 
-## CHANGE BELOW TO RUN FOR YOUR OWN DATA!
-fasta_mirna                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz'
-transcript_fasta_mirna          : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz'
-gtf_mirna                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz'
-
-
-
-#####################################
 mirna  : true
+#####################################
+
 input_mirna                     : "${projectDir}/assets/samplesheet_mirna.csv"
 
 # Run SRA
@@ -36,7 +43,7 @@ skip_alignment_mirna            : true
 pseudo_aligner_mirna            : 'salmon'
 salmon_index_mirna            : null
 #//salmon_index_mirna              : '/home/bianca/gencode2/salmon/'
-salmonDirGenes                  : 'testresultsmirna/genes/salmon_mirna/'  # change this for salmon outputs format: outdir/genes/salmon_mirna
+
 extra_salmon_quant_args_mirna    : null   
 
   
@@ -83,7 +90,7 @@ biotrans_mirna_ontology         : "GO" #// MGIMP, Reactome
 ################### CHANGE PATHMCIA IF YOU WANT TO RUN MCIA
 # MCIA
 runmcia                         : false
-pathmcia                        : "/home/bianca/testresultsmirna/mcia/" # should of the format complete output directory/mcia
+
 samplesinfomcia                 : '${projectDir}/assets/samplesheet_mirna.csv'
 mcia_a1lim                      : '0, Inf'
 mcia_a2lim                      : '-Inf, 0'
