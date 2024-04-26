@@ -95,6 +95,7 @@ workflow LIPIDS {
     main:
     ch_versions = Channel.empty()
     dea_features = Channel.empty()
+    dea_features2 = Channel.empty()
     dea_featuresRData = Channel.empty()
     if(params.lipids && !params.lipidr){
         PREPROCESS_MATRIX_LIPIDS("lipids",count_matrix_lipids,samplesInfo_lipids,
@@ -128,6 +129,7 @@ workflow LIPIDS {
         biotranslator_plots_lipids= PEA_OF_LIPIDS.out.biotrans_plots
         biotranslator_priori_lipids = PEA_OF_LIPIDS.out.biotrans_priori
         biotranslator_enriched_lipids = PEA_OF_LIPIDS.out.biotrans_enriched  
+        dea_features2 = LIPIDR.out.de_lipids
         //METABOANALYSTR(dea_features) 
         //CLUSTERPROFILER(dea_features,params.alg_lipids,params.lipids_genespval) 
     }
@@ -138,7 +140,8 @@ workflow LIPIDS {
         dea_features2 = SANITY2.out.sanity
     }
     emit: dea_features
-    dea_features2 = LIPIDR.out.de_lipids
+          dea_features2
+    
 
 
 }
