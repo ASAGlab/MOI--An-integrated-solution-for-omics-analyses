@@ -133,6 +133,7 @@ workflow LIPIDS {
     }
     else if(!params.lipids){
         SANITY("lipids")
+        SANITY2("lipids")
         dea_features = SANITY.out.sanity
         dea_features2 = SANITY2.out.sanity
     }
