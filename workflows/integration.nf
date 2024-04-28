@@ -213,7 +213,7 @@ if (params.lipids && params.additional_omics_lipids) {
         )
         COMPARATIVE_ANALYSIS_LIPIDS(PREPARE_DF_INT_LIPIDS.out.comparative_df, params.biocomp_all_organism, params.biocomp_all_keytype, params.biocomp_all_ontology, ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO)
         comparative_analysis_with_lipids = COMPARATIVE_ANALYSIS_LIPIDS.out.biocomp_plots
-    } else {
+    } /*else {
         PREPARE_DF(
             genesp,
             mirnap,
@@ -243,7 +243,7 @@ if (params.lipids && params.additional_omics_lipids) {
     lipids_genes = ANNOTATE_LIPIDS.out.genes_across_lipids_omics
     biotranslator_plots_lipids = PEA_OF_LIPIDS.out.biotrans_plots
     biotranslator_priori_lipids = PEA_OF_LIPIDS.out.biotrans_priori
-    biotranslator_enriched_lipids = PEA_OF_LIPIDS.out.biotrans_enriched
+    biotranslator_enriched_lipids = PEA_OF_LIPIDS.out.biotrans_enriched*/
     //COMPARATIVE_ANALYSIS_LIPIDS(PREPARE_DF_INT_LIPIDS.out.comparative_df,params.biocomp_all_organism, params.biocomp_all_keytype,params.biocomp_all_ontology,ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO)
     //comparative_analysis_with_lipids = COMPARATIVE_ANALYSIS_LIPIDS.out.biocomp_plots
 }
