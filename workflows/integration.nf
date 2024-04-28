@@ -129,7 +129,7 @@ workflow INTEGRATION {
     biotranslator_enriched_lipids  = Channel.empty()
     lipids_genes    = Channel.empty()
     plot_mcia = Channel.empty()
-    genesmirnasvg = file("${projectDir}/assets/dummy_file3.txt")
+    genesmirnasvg = parms.dummy_file3
     if (params.mirna && params.genes){
 
         CORRELATION(mirnap,genesp, ch_degenes, ch_demirna, "pearson",0.8, 0.05)
