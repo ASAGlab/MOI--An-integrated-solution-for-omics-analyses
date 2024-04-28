@@ -84,7 +84,7 @@ workflow PEA {
     clusterprofiler_plots = Channel.empty()
     biotrans_enriched = Channel.empty()
     biotrans_priori = Channel.empty()
-    if(pea == 'cluterprofiler'){
+    if(pea == 'clusterprofiler'){
         CLUSTERPROFILER(feature,alg,genespval)
         clusterprofiler_plots = CLUSTERPROFILER.out.enriched
     }
