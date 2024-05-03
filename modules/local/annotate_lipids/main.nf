@@ -15,7 +15,7 @@ process ANNOTATE_LIPIDS {
 
     output:
     path "genes_related_to_deLipids.txt"        , emit: genes_related_to_deLipids
-    path "integrated_lipids.txt"        , emit: genes_of_integrated_lipids
+    path "integrated_lipids.txt"        , emit: genes_of_integrated_lipids optional true
     path "genes_related_to_deLipids_BIO.txt"        , emit: genes_related_to_deLipids_BIO
     path "genes_related_to_lipids_across_omics.txt"        , emit: genes_related_to_all_lipid_classes_across_omics optional true
     path "genes_related_to_lipids_across_different_lipid_classes.txt"        , emit: genes_related_to_all_lipid_classes
