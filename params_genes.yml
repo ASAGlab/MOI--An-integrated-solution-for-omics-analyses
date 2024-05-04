@@ -23,8 +23,8 @@ salmonDirGenes                  : '${projectDir}/results/genes/salmon_genes/'  #
 #genes
 
 genes   : true
-input_genes                     : "${projectDir}/assets/samplesheet_ire1_24.csv"
-#input_genes                     : "${projectDir}/assets/samplesheet_genes.csv"
+#input_genes                     : "${projectDir}/assets/samplesheet_ire1_24.csv"
+input_genes                     : "${projectDir}/assets/samplesheet_genes.csv"
 
 
 #start from sra
