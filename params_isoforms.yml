@@ -78,7 +78,7 @@ dexseqpval  : 0.05
 dexseqfdr   : 0.0001
 
 ## run mcia
-runmcia                          : true
+runmcia                          : false
 pathmcia                        : "/home/bianca/testresultsire124/mcia/" 
 samplesinfomcia                 : '${projectDir}/assets/samplesheet_ire1_24.csv'
 mcia_a1lim                      : '0, Inf'
