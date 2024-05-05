@@ -43,7 +43,7 @@ process PREPARE_DF {
 
     """
     
-    Rscript /r/prepare_df.R --rna $genes --mirna $mirna --proteins $proteins --lipids $lipids --isoforms $isoforms --integrated $integrated --integrated $integratedafterlipids --path $path --alg_genes $alg_genes --alg_mirna $alg_mirna --alg_proteins $alg_proteins --pval $pval
+    Rscript /r/prepare_df.R --rna $genes --mirna $mirna --proteins $proteins --lipids $lipids --isoforms $isoforms --integrated $integrated --integratedafterlipids $integratedafterlipids --path $path --alg_genes $alg_genes --alg_mirna $alg_mirna --alg_proteins $alg_proteins --pval $pval
 
 
     cat <<-END_VERSIONS > versions.yml
