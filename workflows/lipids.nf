@@ -116,7 +116,7 @@ workflow LIPIDS {
         LIPIDR_NORMALIZE(count_matrix_lipids,samplesInfo_lipids,params.lipidr_normalize)
         LIPIDR(count_matrix_lipids,samplesInfo_lipids,LIPIDR_NORMALIZE.out.normalized_lipidsRdata, params.lipidr_formula, params.lipidr_condition)
         dea_features = LIPIDR.out.de_lipids
-        ANNOTATE_LIPIDS(dea_features,params.additional_omics_lipids,params.biocomp_dummy)
+        ANNOTATE_LIPIDS(dea_features,false,params.biocomp_dummy)
         PEA_OF_LIPIDS(params.pea_lipids,
         ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO,
         "mcia",
@@ -128,8 +128,8 @@ workflow LIPIDS {
         lipids_genes    = ANNOTATE_LIPIDS.out.genes_across_lipids_omics
         biotranslator_plots_lipids= PEA_OF_LIPIDS.out.biotrans_plots
         biotranslator_priori_lipids = PEA_OF_LIPIDS.out.biotrans_priori
-        biotranslator_enriched_lipids = PEA_OF_LIPIDS.out.biotrans_enriched  
-        dea_features2 = LIPIDR.out.de_lipids
+        biotranslator_enriched_lipids = PEA_OF_LIPIDS.out.biotrans_enriched
+        dea_features2 = LIPIDR.out.de_lipids  
         //METABOANALYSTR(dea_features) 
         //CLUSTERPROFILER(dea_features,params.alg_lipids,params.lipids_genespval) 
     }
@@ -140,8 +140,7 @@ workflow LIPIDS {
         dea_features2 = SANITY2.out.sanity
     }
     emit: dea_features
-          dea_features2
-    
+    dea_features2 
 
 
 }
