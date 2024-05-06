@@ -212,7 +212,8 @@ workflow INTEGRATION {
         enriched = PEA.out.clusterprofiler_plots
         plot_mcia = MCIA_P.out.pca_integrated
         
-        PREPARE_DF_INT(genesp,
+        PREPARE_DF_INT(
+        genesp,
         mirnap,
         proteinsp,
         lipidsp,
@@ -220,8 +221,9 @@ workflow INTEGRATION {
         MCIA_P.out.pca_integrated,params.biocomp_dummy,genesmirnasvg,
         params.genes,params.mirna,params.proteins,params.lipids,params.isoforms, params.runmcia,
         false, // integrated after lipids
-        pathprepare,params.alg_genes, params.alg_mirna,params.alg_proteins,params.biotrans_all_pval)
-        ANNOTATE_LIPIDS_INT(ch_delipids, params.additional_omics_lipids, PREPARE_DF_INT.out.genes_across_omics)
+        pathprepare,
+        params.alg_genes, params.alg_mirna,params.alg_proteins,params.biotrans_all_pval)
+        ANNOTATE_LIPIDS_INT(ch_delipids, true, PREPARE_DF_INT.out.genes_across_omics)
         PREPARE_DF_INT_LIPIDS(
             genesp,
             mirnap,
