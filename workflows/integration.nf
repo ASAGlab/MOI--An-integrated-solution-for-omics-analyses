@@ -218,7 +218,7 @@ workflow INTEGRATION {
         proteinsp,
         lipidsp,
         isoformsp,
-        MCIA_P.out.pca_integrated,params.biocomp_dummy,genesmirnasvg,
+        MCIA_P.out.pca_integrated,ch_biocomp_dummy,genesmirnasvg,
         params.genes,params.mirna,params.proteins,params.lipids,params.isoforms, params.runmcia,
         false, // integrated after lipids
         pathprepare,
