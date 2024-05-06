@@ -85,7 +85,7 @@ else{
 
 // Info required for completion email and summary
 def multiqc_report = []
-
+ch_biocomp_dummy = file(params.biocomp_dummy)
 workflow LIPIDS {
 
     take:
@@ -116,7 +116,7 @@ workflow LIPIDS {
         LIPIDR_NORMALIZE(count_matrix_lipids,samplesInfo_lipids,params.lipidr_normalize)
         LIPIDR(count_matrix_lipids,samplesInfo_lipids,LIPIDR_NORMALIZE.out.normalized_lipidsRdata, params.lipidr_formula, params.lipidr_condition)
         dea_features = LIPIDR.out.de_lipids
-        ANNOTATE_LIPIDS(dea_features,false,params.biocomp_dummy)
+        ANNOTATE_LIPIDS(dea_features,false,ch_biocomp_dummy)
         PEA_OF_LIPIDS(params.pea_lipids,
         ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO,
         "mcia",
