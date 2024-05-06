@@ -85,7 +85,7 @@ ch_demirna = file("${params.outdir}/correlation/mirna/*.txt").copyTo("${params.o
 ch_deproteins = file("${params.outdir}/correlation/proteins/*.txt").copyTo("${params.outdir}/forcorrelation/proteins.txt")
 */
 
-
+ch_biocomp_dummy = file(params.biocomp_dummy)
 workflow INTEGRATION {
 
     take:
@@ -171,7 +171,7 @@ workflow INTEGRATION {
         proteinsp,
         lipidsp,
         isoformsp,
-        MCIA_P.out.pca_integrated,params.biocomp_dummy,genesmirnasvg,
+        MCIA_P.out.pca_integrated,ch_biocomp_dummy,genesmirnasvg,
         params.genes,params.mirna,params.proteins,params.lipids,params.isoforms, params.runmcia,
         false, // integrated after lipids
         pathprepare,params.alg_genes, params.alg_mirna,params.alg_proteins,params.biotrans_all_pval)
