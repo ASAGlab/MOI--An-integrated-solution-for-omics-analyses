@@ -40,7 +40,7 @@ process ISOPART2 {
     
 
     """
-    Rscript /r/iso_part2.R $switchlist $cpat_results $pfam_results $signalp_results $reducetoswitches $saturn_run $saturn_fdr $saturn_fc dexseq saturn
+    Rscript /r/iso_part2a.R $switchlist $cpat_results $pfam_results $signalp_results $reducetoswitches $saturn_run $saturn_fdr $saturn_fc dexseq saturn
 
 
     cat <<-END_VERSIONS > versions.yml
