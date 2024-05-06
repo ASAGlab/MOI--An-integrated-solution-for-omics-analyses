@@ -7,6 +7,7 @@ process PREPARE_DF {
 
     input:
 
+    // 8 paths
     path pgenes
     path pmirna
     path pproteins
@@ -15,6 +16,7 @@ process PREPARE_DF {
     path pintegrated
     path pannotatelipids
     path correlation
+    // 7 boolean
     val genes
     val mirna
     val proteins
@@ -22,6 +24,7 @@ process PREPARE_DF {
     val isoforms
     val integrated
     val integratedafterlipids
+    // path of results
     path path
     val alg_genes
     val alg_mirna
