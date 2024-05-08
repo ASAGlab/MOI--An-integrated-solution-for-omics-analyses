@@ -297,7 +297,7 @@ TREATMENT_REP1,0
 
 <br><br>
 
-## PAE
+## PEA
 
  Last step of the analysis is to perform pathway enrichment analysis with [clusterprofiler](../modules/local/clusterprofiler) 
 
