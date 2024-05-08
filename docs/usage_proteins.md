@@ -9,7 +9,7 @@
 
 ## Nessecary inputs
 <br>
-The pipeline has as input the [count matrix](../assets/counts_proteins.txt) with the abundance of proteins and a [phenotype file](../assets/samplesheet_proteins.csv) describing the metadata of each sample. You have to modify one file, specifying which part of the analysis you want to run and specific parameters [params_proteins.yml](../params_proteins.yml):
+The pipeline has as input the [count matrix](../assets/proteins.txt) with the abundance of proteins and a [phenotype file](../assets/samplesheet_proteins.csv) describing the metadata of each sample. You have to modify one file, specifying which part of the analysis you want to run and specific parameters [params_proteins.yml](../params_proteins.yml):
 
 
 ```bash
