@@ -65,6 +65,8 @@ work                'Directory containing the nextflow working files'
 
 <br>
 
+### Preprocess
+
 Initially, there is an optional module [preprocess_matrix](../subworkflows/local/preprocess_matrix.nf) that preprocesses this matrix.
 Namely, the user can perform [filtering](../modules/local/mom_filter), [normalization](../modules/local/mom_norm/) and [batch effect](../modules/local/mom_filter/) correction, 
 depending on the state of their data.
