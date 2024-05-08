@@ -95,27 +95,7 @@ Once the count matrix is ready, we can move on to differential expression analys
 
 <br>
 
-### Preprocess
 
-After the formation of the count matrix there is an optional module [preprocess_matrix](../subworkflows/local/preprocess_matrix.nf)that preprocesses this matrix.
-Namely, the user can perform [filtering](../modules/local/mom_filter), [normalization](../modules/local/mom_norm/) and [batch effect](../modules/local/mom_filter/) correction, 
-depending on the state of their data.
-
-<br>
-
-```bash 
-
-params{
-    mom_filt_method_proteins           = "filterByExp"  # filterByExp or choose a cutoff value
-    mom_norm_method_proteins           = "quantile"     # calncNorm quantile
-    mom_batch_method_proteins          = "com" # com for combat, sva,  comsva for combat & sva, svacom for sva and comba, none
-    mom_batch_batch_proteins           = "replicate"  
-}
-```
-
-<br>
-
-Now,is time to perform differential expression analysis. We provide three different algorithms for that, which we describe below. 
 
 ### Note 
 > You need to specify which algorithm you are going to use in params_proteins.yml
