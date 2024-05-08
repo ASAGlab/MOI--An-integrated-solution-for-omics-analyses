@@ -83,7 +83,7 @@ params{
 
 ## Running the pipeline
 
-In order to run the isoform part of the pipeline you have to modify one file, specofying which part of the analysis you want to run and parameters associated with it:[params_isoforms.yml](/../params_isoforms.yml)
+In order to run the isoform part of the pipeline you have to modify one file, specofying which part of the analysis you want to run and parameters associated with it: [params_isoforms.yml](/../params_isoforms.yml)
 
 
 ```bash
