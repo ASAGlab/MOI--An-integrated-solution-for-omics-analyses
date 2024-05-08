@@ -123,7 +123,7 @@ work                # Directory containing the nextflow working files
 .nextflow_log       # Log file from Nextflow
 # Other nextflow hidden files, eg. history of pipeline runs and old logs.
 ```
-The pipeline initially downloads SRA codes and converts the runs into fastq files. Alternativey you can provide local fastq files. It then performs quality control with [FASTQC] and then automatically detects and removes adapterS with [Trimgalore]. 
+The pipeline initially downloads SRA codes and converts the runs into fastq files. Alternativey you can provide local fastq files. It then performs quality control with [FASTQC](../modules/nf-core/fastqc) and then automatically detects and removes adapterS with [Trimgalore](../modules/nf-core/TRIMAGALORE). 
 
 Each of the above steps can be skipped, for example if you don't want to perform quality control, you can specify in the isoforms.config file:
 
@@ -132,7 +132,7 @@ params{
   skip_qc_isoforms= true
 }
 ``` 
-It then employs [salmon] in order to obtain quantification files with format relative-path/salmon_isoforms/sampleID/quant.sf. 
+It then employs [salmon](../modules/nf-core/salmon) in order to obtain quantification files with format relative-path/salmon_isoforms/sampleID/quant.sf. 
 
 If you want to skip the alignement step you need to specify the location of those files in the respective field in the params_isoforms.yml file:
 
@@ -159,7 +159,7 @@ After that [isoformSwitchAnalyzer] is used, which takes these quantification fil
 ~0 + condition
 ```
 
-Then diferentially expressed feaatures are collected and their sequences are annotated regarding their coding potential [CPAT], their homology with protein domains [Pfam] and the existense of any signaling sequence [signalP]. This is performed with subworkflow functional_annotation.nf
+Then diferentially expressed feaatures are collected and their sequences are annotated regarding their coding potential [CPAT](../modules/local/cpat), their homology with protein domains [Pfam](../modules/local/pfam) and the existense of any signaling sequence [signalP](../modules/local/signalp). This is performed with subworkflow functional_annotation.nf
 
 Next step of the analysis is to asses functional implications of the differentially isoform/exon usage on the expression of the different genes and isoforms. We provide many insightful plots for this reason under the direcorty $outdir/isovisual. Moreover, we additionally provide one output specifically focused on lncRNAs and a correlation matrix between differentially expressed lncRNAs and genes. Lastly, we provide the R object if the user wishes to inspect the results more thouroughly. 
 
