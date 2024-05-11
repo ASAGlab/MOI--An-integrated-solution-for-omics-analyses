@@ -1,4 +1,4 @@
-
+ 
 ## Boilerplate options
 
 outdir: '${projectDir}/results/'
@@ -28,16 +28,19 @@ input_genes                     : "${projectDir}/assets/samplesheet_genes.csv"
 
 
 #start from sra
-sra_genes : true
+sra_genes : false
 
 #QC parameters
-skip_qc_genes                   : false
+skip_qc_genes                   : true
 skip_preseq_genes               : true
 skip_markduplicates_genes       : true
 
 # Alignment and pseudoalignment
-skip_pseudo_alignment_genes     : false # if false set also skip_alignment_genes : false
-skip_alignment_genes            : false
+
+# if false set also skip_alignment_genes : false
+skip_pseudo_alignment_genes     : true   
+
+skip_alignment_genes            : true
 pseudo_aligner_genes            : 'salmon'   
 aligner_genes                   : null # 'star', 'hisat2'
 
