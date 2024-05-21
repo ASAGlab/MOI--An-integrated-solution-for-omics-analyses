@@ -3,7 +3,7 @@ process ISOPART2 {
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://hub.docker.com' : 'bianca7/isoforms'}"
-
+    time '24h'
     input:
 
     path switchlist
