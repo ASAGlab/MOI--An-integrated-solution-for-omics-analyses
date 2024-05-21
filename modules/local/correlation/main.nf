@@ -18,7 +18,7 @@ process CORRELATION {
 
     output:
     path "correlation_features_and_targets.txt"        , emit: correlated
-    path "targets.txt"        , emit: tagets
+    path "targets.txt"        , emit: targets
     path "*.svg"        , emit: cor_plots
     path "versions.yml" , emit: versions
 
