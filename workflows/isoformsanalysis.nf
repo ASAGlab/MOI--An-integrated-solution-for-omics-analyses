@@ -107,79 +107,74 @@ if(params.isoforms){
 
 
 if (params.isoforms){
-    if (!params.skip_alignment_isoforms) {
-            if (!params.skip_qc_isoforms) {
-        QUALITYCONTROL(ch_input_isoforms, params.ribo_database_manifest, params.bbsplit_fasta_list_isoforms)
-        ALIGNASSEMBLYISO(QUALITYCONTROL.out.filtered_reads)
-//        ISOFORMSPART1(params.salmonDirIso, params.input_isoforms, params.gtf_isoforms, ALIGNASSEMBLYISO.out.salmon_fasta, ALIGNASSEMBLYISO.out.salmon_outfiles)
-        ISOFORMSPART1(params.salmonDirIso, params.input_isoforms, ALIGNASSEMBLYISO.out.ch_iso_gtf, ALIGNASSEMBLYISO.out.salmon_fasta, ALIGNASSEMBLYISO.out.salmon_outfiles)
-        FUNCTIONAL_ANNOTATION(ISOFORMSPART1.out.nt_iso_part1, ISOFORMSPART1.out.aa_iso_part1)
-        ISOFORMSPART2(ISOFORMSPART1.out.iso_part1_switchlist, FUNCTIONAL_ANNOTATION.out.out_cpat, FUNCTIONAL_ANNOTATION.out.out_pfam, FUNCTIONAL_ANNOTATION.out.out_signal, params.isopart2reduceToSwitchingGenes, params.saturn_run, params.saturn_fdr, params.saturn_fc)
-        ISOVISUAL(ISOFORMSPART2.out.switchdexseq, params.topisoforms, params.isoformstosee)
-        de_isoforms=ISOFORMSPART2.out.de_isoforms
-        switchList = ISOFORMSPART2.out.switchdexseq
-        PEA(params.pea_isoforms,ISOFORMSPART2.out.genestrans,params."mcia",params.isoforms_genespval,params.biotrans_isoforms_organism, params.biotrans_isoforms_keytype,params.biotrans_isoforms_ontology)
-        ISOMCIA(ISOFORMSPART2.out.isoforms)
-        } else if (params.skip_qc_isoforms) {
-            INPUT_CHECK(ch_input_isoforms).reads.map { meta, fastq ->
-                def meta_clone = meta.clone()
-                meta_clone.id = meta_clone.id.split('_')[0..-2].join('_')
-                [meta_clone, fastq]
-            }
-            .groupTuple(by: [0])
-            .branch {
-                meta, fastq ->
-                    single: fastq.size() == 1
-                            return [meta, fastq.flatten()]
-                    multiple: fastq.size() > 1
-                               return [meta, fastq.flatten()]
-            }
-            .set { ch_fastq }
-        ch_versions = ch_versions.mix(INPUT_CHECK.out.versions)
-
-        CAT_FASTQ(ch_fastq.multiple).reads
-            .mix(ch_fastq.single)
-            .set { ch_cat_fastq }
-        ch_versions = ch_versions.mix(CAT_FASTQ.out.versions.first().ifEmpty(null))
-
-        if (!params.skip_pseudo_alignment_isoforms) {
-            ALIGNASSEMBLYISO(ch_cat_fastq)
+    if (!params.skip_pseudo_alignment_isoforms) {
+        if (!params.skip_qc_isoforms) {
+            QUALITYCONTROL(ch_input_isoforms, params.ribo_database_manifest, params.bbsplit_fasta_list_isoforms)
+            ALIGNASSEMBLYISO(QUALITYCONTROL.out.filtered_reads)
+        //        ISOFORMSPART1(params.salmonDirIso, params.input_isoforms, params.gtf_isoforms, ALIGNASSEMBLYISO.out.salmon_fasta, ALIGNASSEMBLYISO.out.salmon_outfiles)
             ISOFORMSPART1(params.salmonDirIso, params.input_isoforms, ALIGNASSEMBLYISO.out.ch_iso_gtf, ALIGNASSEMBLYISO.out.salmon_fasta, ALIGNASSEMBLYISO.out.salmon_outfiles)
             FUNCTIONAL_ANNOTATION(ISOFORMSPART1.out.nt_iso_part1, ISOFORMSPART1.out.aa_iso_part1)
             ISOFORMSPART2(ISOFORMSPART1.out.iso_part1_switchlist, FUNCTIONAL_ANNOTATION.out.out_cpat, FUNCTIONAL_ANNOTATION.out.out_pfam, FUNCTIONAL_ANNOTATION.out.out_signal, params.isopart2reduceToSwitchingGenes, params.saturn_run, params.saturn_fdr, params.saturn_fc)
             ISOVISUAL(ISOFORMSPART2.out.switchdexseq, params.topisoforms, params.isoformstosee)
-            switchList = ISOFORMSPART2.out.switchdexseq
             de_isoforms=ISOFORMSPART2.out.de_isoforms
+            de_iso_exp=ISOFORMSPART2.out.isoforms
+            switchList = ISOFORMSPART2.out.switchdexseq
             PEA(params.pea_isoforms,ISOFORMSPART2.out.genestrans,params."mcia",params.isoforms_genespval,params.biotrans_isoforms_organism, params.biotrans_isoforms_keytype,params.biotrans_isoforms_ontology)
-            ISOMCIA(ISOFORMSPART2.out.isoforms)
-        }
-        }} else if (params.skip_alignment_isoforms) {
-    
+            if (params.runmcia){ISOMCIA(ISOFORMSPART2.out.isoforms)}}
+        else if (params.skip_qc_isoforms){
+                    INPUT_CHECK(ch_input_isoforms).reads.map { meta, fastq ->
+                    def meta_clone = meta.clone()
+                    meta_clone.id = meta_clone.id.split('_')[0..-2].join('_')
+                    [meta_clone, fastq]}.groupTuple(by: [0]).branch {
+                    meta, fastq ->
+                        single: fastq.size() == 1
+                            return [meta, fastq.flatten()]
+                        multiple: fastq.size() > 1
+                            return [meta, fastq.flatten()]}.set { ch_fastq }
+                ch_versions = ch_versions.mix(INPUT_CHECK.out.versions)
+
+                CAT_FASTQ(ch_fastq.multiple).reads
+                .mix(ch_fastq.single)
+                .set { ch_cat_fastq }
+                ch_versions = ch_versions.mix(CAT_FASTQ.out.versions.first().ifEmpty(null))
+                ALIGNASSEMBLYISO(ch_cat_fastq)
+                ISOFORMSPART1(params.salmonDirIso, params.input_isoforms, ALIGNASSEMBLYISO.out.ch_iso_gtf, ALIGNASSEMBLYISO.out.salmon_fasta, ALIGNASSEMBLYISO.out.salmon_outfiles)
+                FUNCTIONAL_ANNOTATION(ISOFORMSPART1.out.nt_iso_part1, ISOFORMSPART1.out.aa_iso_part1)
+                ISOFORMSPART2(ISOFORMSPART1.out.iso_part1_switchlist, FUNCTIONAL_ANNOTATION.out.out_cpat, FUNCTIONAL_ANNOTATION.out.out_pfam, FUNCTIONAL_ANNOTATION.out.out_signal, params.isopart2reduceToSwitchingGenes, params.saturn_run, params.saturn_fdr, params.saturn_fc)
+                ISOVISUAL(ISOFORMSPART2.out.switchdexseq, params.topisoforms, params.isoformstosee)
+                switchList = ISOFORMSPART2.out.switchdexseq
+                de_isoforms=ISOFORMSPART2.out.de_isoforms
+                de_iso_exp=ISOFORMSPART2.out.isoforms
+                PEA(params.pea_isoforms,ISOFORMSPART2.out.genestrans,params."mcia",params.isoforms_genespval,params.biotrans_isoforms_organism, params.biotrans_isoforms_keytype,params.biotrans_isoforms_ontology)
+                if (params.runmcia){ISOMCIA(ISOFORMSPART2.out.isoforms)}
+                }} else if (params.skip_pseudo_alignment_isoforms) {
     //ISOFORMSPART1A(params.salmonDirIso,params.input_isoforms, params.gtf_isoforms, params.fasta_salmon_isoforms)
-    
     def biotype = params.gencode_isoforms ? "gene_type" : params.featurecounts_group_type_isoforms
     PREPARE_GENOME (
         prepareToolIndices, biotype, false ,params.salmon_index_isoforms
     )
-    ISOFORMSPART1A(params.salmonDirIso,params.input_isoforms, PREPARE_GENOME.out.gtf, PREPARE_GENOME.out.salmon_fasta)
-    FUNCTIONAL_ANNOTATION(ISOFORMSPART1A.out.nt_iso_part1, ISOFORMSPART1A.out.aa_iso_part1)
+        ISOFORMSPART1A(params.salmonDirIso,params.input_isoforms, PREPARE_GENOME.out.gtf, PREPARE_GENOME.out.salmon_fasta)
+        FUNCTIONAL_ANNOTATION(ISOFORMSPART1A.out.nt_iso_part1, ISOFORMSPART1A.out.aa_iso_part1)
     ISOFORMSPART2(ISOFORMSPART1A.out.iso_part1_switchlist, FUNCTIONAL_ANNOTATION.out.out_cpat, FUNCTIONAL_ANNOTATION.out.out_pfam, FUNCTIONAL_ANNOTATION.out.out_signal, params.isopart2reduceToSwitchingGenes, params.saturn_run, params.saturn_fdr, params.saturn_fc)
     ISOVISUAL(ISOFORMSPART2.out.switchdexseq, params.topisoforms, params.isoformstosee)
     switchList = ISOFORMSPART2.out.switchdexseq
     de_isoforms=ISOFORMSPART2.out.de_isoforms
+    de_iso_exp=ISOFORMSPART2.out.isoforms
+
     PEA(params.pea_isoforms,ISOFORMSPART2.out.genestrans,params."mcia",params.isoforms_genespval,params.biotrans_isoforms_organism, params.biotrans_isoforms_keytype,params.biotrans_isoforms_ontology)
 
-    ISOMCIA(ISOFORMSPART2.out.isoforms)
+    if (params.runmcia){ISOMCIA(ISOFORMSPART2.out.isoforms)}
 }
 }
-
 
 else if(!params.isoforms){
     SANITY("isoforms")
     de_isoforms = SANITY.out.sanity
+    de_iso_exp =  Channel.empty()
 }
 emit:
 de_isoforms = de_isoforms
+de_iso_exp = de_iso_exp
 }
 
 
