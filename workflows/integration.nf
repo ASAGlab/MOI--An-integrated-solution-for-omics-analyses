@@ -57,10 +57,14 @@ include { MULTIQC                     } from '../modules/local/multiqc/main'
 include { PREPARE_DF              } from '../modules/local/prepare_for_bio/main'
 include { CORRELATION              } from '../modules/local/correlation/main'
 include { CORRELATION   as CORB           } from '../modules/local/correlation/main'
-
+include { MULTIMIR              } from '../modules/local/multimir/main'
+include { COMBINE_TARGETS              } from '../modules/local/combine_targets/main'
+include { CAT              } from '../modules/local/cat/main'
+include { CAT   as CATP           } from '../modules/local/cat/main'
 include { PREPARE_DF  as PREPARE_DF_INT            } from '../modules/local/prepare_for_bio/main'
 include { PREPARE_DF  as PREPARE_DF_INT_LIPIDS            } from '../modules/local/prepare_for_bio/main'
 include { ANNOTATE_LIPIDS as ANNOTATE_LIPIDS_INT              } from '../modules/local/annotate_lipids/main'
+include { ANNOTATE_TARGET_TRANSCRIPTS              } from '../modules/local/annotate_target_transcripts/main'
 include { PEA                          } from '../subworkflows/local/pea'
 include { PEA as PEA_OF_LIPIDS                          } from '../subworkflows/local/pea'
 include { CLUSTERPROFILER             } from '../modules/local/clusterprofiler/main'
@@ -78,14 +82,14 @@ include { CUSTOM_DUMPSOFTWAREVERSIONS } from '../modules/nf-core/custom/dumpsoft
 
 // Info required for completion email and summary
 def multiqc_report = []
-
+ch_biocomp_dummy = file(params.biocomp_dummy)
 /*ch_delipids = file("${params.outdir}/prepareforbio/de_lipids.txt")
 ch_degenes = file("${params.outdir}/correlation/genes/*.txt").copyTo("${params.outdir}/forcorrelation/genes.txt")
 ch_demirna = file("${params.outdir}/correlation/mirna/*.txt").copyTo("${params.outdir}/forcorrelation/mirna.txt")
 ch_deproteins = file("${params.outdir}/correlation/proteins/*.txt").copyTo("${params.outdir}/forcorrelation/proteins.txt")
 */
 
-ch_biocomp_dummy = file(params.biocomp_dummy)
+
 workflow INTEGRATION {
 
     take:
@@ -110,6 +114,7 @@ workflow INTEGRATION {
     ch_demirna
     ch_deproteins
     ch_delipids
+    ch_deisoforms
 
 
 
@@ -130,16 +135,47 @@ workflow INTEGRATION {
     lipids_genes    = Channel.empty()
     plot_mcia = Channel.empty()
     genesmirnasvg = params.dummy_file3
-    if (params.mirna && params.genes){
-
-        CORRELATION(mirnap,genesp, ch_degenes, ch_demirna, "pearson",0.8, 0.05)
-        genesmirna = CORRELATION.out.tagets
-        genesmirnasvg = CORRELATION.out.cor_plots
-        if (params.proteins){
-            CORB(mirnap,proteinsp, ch_deproteins, ch_demirna, "pearson",0.8, 0.05)
-            proteinsmirna = CORB.out.tagets
-            }
+    if(params.mirna){
+        MULTIMIR(ch_demirna)
         }
+    if (params.mirna && params.genes){
+        
+        CORRELATION(mirnap,genesp, ch_demirna, ch_degenes, "pearson",0.8, 0.05)
+        genesmirna = CORRELATION.out.targets
+        genesmirnasvg = CORRELATION.out.cor_plots
+
+        //TODO ADD ISOFORMS AND FROM ISOFORM DOCKER CONVERT EST TO GENE NAME. THEN ADD CAT AND AS CONDITIONAL
+
+        CAT("genes",CORRELATION.out.targets)
+
+        if (params.proteins){
+            CORB( mirnap,proteinsp,ch_demirna,ch_deproteins, "pearson",0.8, 0.05)
+            proteinsmirna = CORB.out.targets
+            CATP("proteins",CORB.out.targets)
+            COMBINE_TARGETS(true,true,true,CAT.out.cormat,CATP.out.cormat,MULTIMIR.out.targets)
+            }else if(!params.proteins){
+            COMBINE_TARGETS(true,false,true,CAT.out.cormat,ch_biocomp_dummy,MULTIMIR.out.targets)
+            }
+    }else if (params.mirna && params.isoforms){
+        
+        CORRELATION(mirnap,isoformsp, ch_demirna, ch_deisoforms, "pearson",0.8, 0.05)
+        genesmirna = CORRELATION.out.targets
+        genesmirnasvg = CORRELATION.out.cor_plots
+
+        //TODO ADD ISOFORMS AND FROM ISOFORM DOCKER CONVERT EST TO GENE NAME. THEN ADD CAT AND AS CONDITIONAL
+        ANNOTATE_TARGET_TRANSCRIPTS(CORRELATION.out.targets)
+        CAT("isoforms",ANNOTATE_TARGET_TRANSCRIPTS.out.genes_of_correlated_isoforms)
+
+        if (params.proteins){
+            CORB( mirnap,proteinsp,ch_demirna,ch_deproteins, "pearson",0.8, 0.05)
+            proteinsmirna = CORB.out.targets
+            CATP("proteins",CORB.out.targets)
+            COMBINE_TARGETS(true,true,true,CAT.out.cormat,CATP.out.cormat,MULTIMIR.out.targets)
+            }else if(!params.proteins){
+            COMBINE_TARGETS(true,false,true,CAT.out.cormat,ch_biocomp_dummy,MULTIMIR.out.targets)
+            }
+    }    
+        
 
     /*if (params.runmcia){
         MCIA_P(genesp,
@@ -171,7 +207,7 @@ workflow INTEGRATION {
         proteinsp,
         lipidsp,
         isoformsp,
-        MCIA_P.out.pca_integrated,ch_biocomp_dummy,genesmirnasvg,
+        MCIA_P.out.pca_integrated,params.biocomp_dummy,genesmirnasvg,
         params.genes,params.mirna,params.proteins,params.lipids,params.isoforms, params.runmcia,
         false, // integrated after lipids
         pathprepare,params.alg_genes, params.alg_mirna,params.alg_proteins,params.biotrans_all_pval)
@@ -218,7 +254,7 @@ workflow INTEGRATION {
         proteinsp,
         lipidsp,
         isoformsp,
-        MCIA_P.out.pca_integrated,ch_biocomp_dummy,genesmirnasvg,
+        MCIA_P.out.pca_integrated,ch_biocomp_dummy,COMBINE_TARGETS.out.versions,
         params.genes,params.mirna,params.proteins,params.lipids,params.isoforms, params.runmcia,
         false, // integrated after lipids
         pathprepare,
@@ -232,7 +268,7 @@ workflow INTEGRATION {
             isoformsp,
             MCIA_P.out.pca_integrated,
             ANNOTATE_LIPIDS_INT.out.genes_related_to_deLipids,
-            genesmirnasvg,
+            COMBINE_TARGETS.out.versions,
             params.genes,
             params.mirna,
             params.proteins,
