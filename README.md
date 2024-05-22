@@ -63,7 +63,7 @@ MOI produces extensive outputs, including informative plots and intermediate res
 3. Download the pipeline and rename it:
 
    ```bash
-   git clone https://github.com/ASAGlab/MOI--An-integrated-solution-for-omics-analyses.git
+   git clone https://github.com/ASAGlab/MOI--An-integrated-solution-for-omics-analyses.git &&
    mv MOI--An-integrated-solution-for-omics-analyses multiomicsintegrator 
    ```
 
