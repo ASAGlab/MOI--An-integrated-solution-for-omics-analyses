@@ -88,7 +88,8 @@ workflow MOM {
     GENES.out.forcor, 
     MIRNA.out.forcor, 
     PROTEINS.out.forcor,
-    LIPIDS.out.dea_features2 )
+    LIPIDS.out.dea_features2,
+    ISOFORMSANALYSIS.out.de_iso_exp  )
     if(params.ridder_alone){
         RIDDER(params.ridder_input, params.riddernames)
     }
