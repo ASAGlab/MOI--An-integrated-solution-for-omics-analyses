@@ -24,9 +24,9 @@ process ISOPART2 {
     path "de_isoforms.txt"        , emit: de_isoforms
     path "genesofisoforms.txt"        , emit: genestrans
     path "lncrnas.txt"        , emit: lncRNAs 
-    path "lncrna_correlation_targets_detailed.txt"        , emit: lncRNAs_dataframe_detailed
-    path "*.svg" , emit: correlation_plots
-    path "lncrna_correlation_targets.txt", emit: lncrna_targets
+    path "lncrna_correlation_targets_detailed.txt"        , emit: lncRNAs_dataframe_detailed optional true
+    path "*.svg" , emit: correlation_plots optional true
+    path "lncrna_correlation_targets.txt", emit: lncrna_targets optional true
     path "orfAnalysis.txt"        , emit: orfAnalysis 
     path "results.txt"        , emit: all_results 
     path "saturn"        , emit: switchlistSat 
