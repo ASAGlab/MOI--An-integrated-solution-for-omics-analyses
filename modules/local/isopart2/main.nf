@@ -23,7 +23,7 @@ process ISOPART2 {
     path "isoforms_expression.txt"        , emit: isoforms
     path "de_isoforms.txt"        , emit: de_isoforms
     path "genesofisoforms.txt"        , emit: genestrans
-    path "lncrnas.txt"        , emit: lncRNAs 
+    path "lncrnas.txt"        , emit: lncRNAs optional true
     path "lncrna_correlation_targets_detailed.txt"        , emit: lncRNAs_dataframe_detailed optional true
     path "*.svg" , emit: correlation_plots optional true
     path "lncrna_correlation_targets.txt", emit: lncrna_targets optional true
