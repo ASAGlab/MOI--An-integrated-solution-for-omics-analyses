@@ -61,7 +61,7 @@ edgercontrasts_genes: "TNBC-non_TNBC"
 
 #mirna
 
-mirna : false
+mirna : false # true
    
 skip_qc_mirna: true
 skip_alignment_mirna : true
@@ -202,7 +202,7 @@ biotrans_proteins _ontology : "GO" # MGIMP, Reactome
 
 
 #    BIOTRANSLATOR
-pea_mirna      : "clusterprofiler"
+pea_mirna      : "cluterprofiler"
 biotrans_mirna_organism          : "hsapiens"
 biotrans_mirna_keytype          : "gene_symbol"
 biotrans_mirna_ontology         : "GO" # MGIMP, Reactome
