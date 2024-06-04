@@ -20,6 +20,7 @@ process ISOPART1A {
 
     output:
     path "switch.RData"        , emit: switchlist
+    path "wholerobject"        , emit: switchlistwhole
     path "isoformSwitchAnalyzeR_isoform_AA.fasta"        , emit: aa
     path "isoformSwitchAnalyzeR_isoform_nt.fasta"        , emit: nt
     path "versions.yml" , emit: versions
@@ -32,7 +33,7 @@ process ISOPART1A {
     def prefix = task.ext.prefix ?: "${txt.baseName}"
 
     """
-    Rscript /r/iso.R $txt $sample $gtf $fasta $dexseqpval $dexseqfdr . switch.RData
+    Rscript /r/isoA.R $txt $sample $gtf $fasta $dexseqpval $dexseqfdr . switch.RData F
 
 
     cat <<-END_VERSIONS > versions.yml
