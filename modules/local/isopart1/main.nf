@@ -16,6 +16,7 @@ process ISOPART1 {
     path fasta // fasta used to index
     val dexseqpval
     val dexseqfdr
+    val prefilter
 
 
     output:
@@ -33,7 +34,7 @@ process ISOPART1 {
     def prefix = task.ext.prefix ?: "${txt.baseName}"
 
     """
-    Rscript /r/isoA.R $txt $sample $gtf $fasta $dexseqpval $dexseqfdr . switch.RData F
+    Rscript /r/isoA.R $txt $sample $gtf $fasta $dexseqpval $dexseqfdr . switch.RData prefilter
 
 
     cat <<-END_VERSIONS > versions.yml
