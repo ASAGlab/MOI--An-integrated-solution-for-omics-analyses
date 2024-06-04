@@ -34,7 +34,7 @@ process ISOPART1A {
     def prefix = task.ext.prefix ?: "${txt.baseName}"
 
     """
-    Rscript /r/isoA.R $txt $sample $gtf $fasta $dexseqpval $dexseqfdr . switch.RData prefilter
+    Rscript /r/isoA.R $txt $sample $gtf $fasta $dexseqpval $dexseqfdr . switch.RData $prefilter
 
 
     cat <<-END_VERSIONS > versions.yml
