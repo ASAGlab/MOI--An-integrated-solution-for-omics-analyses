@@ -66,6 +66,7 @@ extra_salmon_quant_args_iso  : null
 ##############################
 
 #isoforms isoSwitch
+prefilterisoforms          : false
 isopart2reduceToSwitchingGenes  : false
 topisoforms : true   ## see top ten genes with DEU
 isoformstosee   : 'IMMT' ## see specific gene. Works only if topisoforms : false
