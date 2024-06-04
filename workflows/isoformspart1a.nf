@@ -106,7 +106,7 @@ workflow ISOFORMSPART1A {
 
 //    PREPAREFORISO(out_salmon) 
 //    ISOPART1(PREPAREFORISO.out.ch_renamed_salmon, salmonsamplesinfo, ch_gtf, ch_fasta)
-    ISOPART1A(out_salmon, salmonsamplesinfo, ch_gtf, ch_fasta_salmon,params.dexseqpval, params.dexseqfdr)
+    ISOPART1A(out_salmon, salmonsamplesinfo, ch_gtf, ch_fasta_salmon,params.dexseqpval, params.dexseqfdr,params.prefilterisoforms)
 
 /*    if(!params.salmon_input_path){
         PREPAREFORISO(out_salmon)
