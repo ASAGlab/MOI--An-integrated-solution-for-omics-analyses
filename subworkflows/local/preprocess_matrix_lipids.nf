@@ -51,6 +51,7 @@ def multiqc_report = []
 workflow PREPROCESS_MATRIX_LIPIDS {
 
     take:
+    feature
     samples
     samplesinfo
     mom_filt_change_anot
