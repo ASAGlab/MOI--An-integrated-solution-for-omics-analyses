@@ -41,6 +41,7 @@ ch_multiqc_custom_methods_description = params.multiqc_methods_description ? fil
 include { INPUT_CHECK } from './input_check.nf'
 include { CLUSTERPROFILER } from '../../modules/local/clusterprofiler'
 include { BIOTRANSLATOR } from '../../modules/local/biotranslator'
+include { OMNIPATH } from '../../modules/local/omnipath'
 
 
 /*
@@ -93,8 +94,12 @@ workflow PEA {
         biotrans_enriched = BIOTRANSLATOR.out.enriched_term
         biotrans_priori = BIOTRANSLATOR.out.prioritized_genes
         biotrans_plots = BIOTRANSLATOR.out.bio_plots
+        //OMNIPATH(BIOTRANSLATOR.out.prioritized_genes,  "choose_category","proteins", false,"nothing") 
+        OMNIPATH(BIOTRANSLATOR.out.prioritized_genes, params.omnipath_choose,params.omnipath_choose_type,params.omnipath_additional_info_bool,params.omnipath_additional_info_val,params.omnipath_additional_info_attribute)
     }
-
+    
+    
+    
     
 
 
