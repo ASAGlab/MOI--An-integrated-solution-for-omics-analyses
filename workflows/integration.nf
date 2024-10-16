@@ -134,6 +134,7 @@ workflow INTEGRATION {
     biotranslator_enriched_lipids  = Channel.empty()
     lipids_genes    = Channel.empty()
     plot_mcia = Channel.empty()
+    genes_across_omics = Channel.empty()
     genesmirnasvg = params.dummy_file3
     if(params.mirna){
         MULTIMIR(ch_demirna)
@@ -259,6 +260,7 @@ workflow INTEGRATION {
         false, // integrated after lipids
         pathprepare,
         params.alg_genes, params.alg_mirna,params.alg_proteins,params.biotrans_all_pval)
+        // OMNIPATH_INTEGRATED(PEA.out.biotrans_enriched, PREPARE_DF_INT.out.genes_across_omics, false, "Category","integrated")
         ANNOTATE_LIPIDS_INT(ch_delipids, true, PREPARE_DF_INT.out.genes_across_omics)
         PREPARE_DF_INT_LIPIDS(
             genesp,
@@ -291,6 +293,10 @@ workflow INTEGRATION {
         biotranslator_plots_lipids = PEA_OF_LIPIDS.out.biotrans_plots
         biotranslator_priori_lipids = PEA_OF_LIPIDS.out.biotrans_priori
         biotranslator_enriched_lipids = PEA_OF_LIPIDS.out.biotrans_enriched
+        genes_across_omics = PREPARE_DF_INT_LIPIDS.out.genes_across_omics
+        // OMNIPATH_INTEGRATED(PEA_OF_LIPIDS.out.biotrans_priori, PREPARE_DF_INT_LIPIDS.out.genes_across_omics, false, "Category","integrated")
+    
+    
     //COMPARATIVE_ANALYSIS_LIPIDS(PREPARE_DF_INT_LIPIDS.out.comparative_df,params.biocomp_all_organism, params.biocomp_all_keytype,params.biocomp_all_ontology,ANNOTATE_LIPIDS_INT.out.genes_related_to_deLipids_BIO)
     //comparative_analysis_with_lipids = COMPARATIVE_ANALYSIS_LIPIDS.out.biocomp_plots
 
@@ -355,4 +361,5 @@ workflow INTEGRATION {
     comparative_analysis_with_lipids
     lipids_genes    
     plot_mcia
+    genes_across_omics
 }
