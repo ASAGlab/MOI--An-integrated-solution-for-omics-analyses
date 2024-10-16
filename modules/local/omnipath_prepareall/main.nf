@@ -6,7 +6,7 @@ process OMNIPATH_PREPAREALL {
         'https://hub.docker.com' : 'bianca7/omnipathr'}"
 
     input:
-
+    path input_wait
     path input 
     val genes 
     val isoforms 
