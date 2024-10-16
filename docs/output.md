@@ -93,6 +93,11 @@ Clusterprofiler can be utilized by individual analyses or after the integration 
 </details>
 
 [Additional integration methods and biotranslator](/docs/images/figure7.png) (A) MOI has unique tools for associating genes to the molecules found in metabolomic datasets and visualizing them across functional lipid categories and available omics data. (B) Correlation analysis performed with Pearson or Spearman can filter illuminating connection and patterns and aiding the noise mitigation for downstream analyses like pathway enrichment analysis (functional analysis). The example provided here shows the top 10 differentially expressed miRNA and their correlated genes. (C) The semantic distance matrix of feature signatures performed by our comparative analysis tool explores how closely connected regarding the biological ontologies are two signatures.  (D) shows the biological processes that hold the most descriptive information of the observed phenotype, interconnected with hub genes (x axis). 
+
+[OmnipathR](/docs/images/FIG_7Along.png) 
+Demonstrational data from omnipathr. Visualization of networks of prioritized features. (A) The user can use omnipathr to annotate their network based on various attributes like location (shape), type of molecule (color) and whether or not it belongs to a specific function of interest (Tcell receptor signaling linked with transparency levels). (B) Specific deregulated pathways of the network are shown. The user can also choose to annotate based on the omics of origin of the prioritized features.
+
+
 ### Pipeline information
 
 <details markdown="1">
