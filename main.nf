@@ -97,7 +97,7 @@ workflow MOM {
     }
     if (params.omnipath_on_all){
         
-        OMNIPATH_PREPAREALL(params.omnipath_biotrans,params.genes,params.isoforms,params.proteins,params.lipids,params.runmcia)
+        OMNIPATH_PREPAREALL(INTEGRATION.out.genes_across_omics,params.omnipath_biotrans,params.genes,params.isoforms,params.proteins,params.lipids,params.runmcia)
         OMNIPATH_INTEGRATED(OMNIPATH_PREPAREALL.out.merged_ranked, INTEGRATION.out.genes_across_omics,params.omnipath_choose, params.omnipath_choose_type, params.omnipath_additional_info_bool, params.omnipath_additional_info_val, params.omnipath_additional_info_attribute )
     }
 
