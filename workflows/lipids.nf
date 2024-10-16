@@ -42,8 +42,8 @@ include { INPUT_CHECK } from '../subworkflows/local/input_check'
 include { PREPROCESS_MATRIX_LIPIDS } from '../subworkflows/local/preprocess_matrix_lipids'
 include { DEA } from './dea.nf'
 include { ANNOTATE_LIPIDS              } from '../modules/local/annotate_lipids/main'
-include { PEA as PEA_OF_LIPIDS                          } from '../subworkflows/local/pea'
-
+include { PEA    } from '../subworkflows/local/pea'
+//include { PEA as PEA_OF_LIPIDS                          } from '../subworkflows/local/pea'
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     IMPORT NF-CORE MODULES/SUBWORKFLOWS
@@ -117,18 +117,29 @@ workflow LIPIDS {
         LIPIDR(count_matrix_lipids,samplesInfo_lipids,LIPIDR_NORMALIZE.out.normalized_lipidsRdata, params.lipidr_formula, params.lipidr_condition)
         dea_features = LIPIDR.out.de_lipids
         ANNOTATE_LIPIDS(dea_features,false,ch_biocomp_dummy)
-        PEA_OF_LIPIDS(params.pea_lipids,
+       /* PEA_OF_LIPIDS(params.pea_lipids,
         ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO,
         "mcia",
         1,
         params.biotrans_lipids_organism, 
         params.biotrans_lipids_keytype,
-        params.biotrans_lipids_ontology) 
+        params.biotrans_lipids_ontology) */
+        PEA(params.pea_lipids,
+        ANNOTATE_LIPIDS.out.genes_related_to_deLipids_BIO,
+        "mcia",
+        1,
+        params.biotrans_lipids_organism, 
+        params.biotrans_lipids_keytype,
+        params.biotrans_lipids_ontology)  
         
-        lipids_genes    = ANNOTATE_LIPIDS.out.genes_across_lipids_omics
+        /*lipids_genes    = ANNOTATE_LIPIDS.out.genes_across_lipids_omics
         biotranslator_plots_lipids= PEA_OF_LIPIDS.out.biotrans_plots
         biotranslator_priori_lipids = PEA_OF_LIPIDS.out.biotrans_priori
         biotranslator_enriched_lipids = PEA_OF_LIPIDS.out.biotrans_enriched
+*/
+        biotranslator_plots_lipids= PEA.out.biotrans_plots
+        biotranslator_priori_lipids = PEA.out.biotrans_priori
+        biotranslator_enriched_lipids = PEA.out.biotrans_enriched
         dea_features2 = LIPIDR.out.de_lipids  
         //METABOANALYSTR(dea_features) 
         //CLUSTERPROFILER(dea_features,params.alg_lipids,params.lipids_genespval) 
