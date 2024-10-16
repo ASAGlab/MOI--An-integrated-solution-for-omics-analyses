@@ -46,6 +46,8 @@ include { PREPROCESS_MATRIX } from './subworkflows/local/preprocess_matrix'
 // defaults
 include { INPUT_CHECK } from './subworkflows/local/input_check'
 include { CAT_FASTQ                   } from './modules/nf-core/cat/fastq/main'
+include { OMNIPATH_PREPAREALL                   } from './modules/local/omnipath_prepareall/main'
+include { OMNIPATH_INTEGRATED                   } from './modules/local/omnipath_integrated/main'
 
 //if (params.input) { ch_input = file(params.input) } else { exit 1, 'Input samplesheet not specified!' }
 
@@ -93,7 +95,11 @@ workflow MOM {
     if(params.ridder_alone){
         RIDDER(params.ridder_input, params.riddernames)
     }
-
+    if (params.omnipath_on_all){
+        
+        OMNIPATH_PREPAREALL(params.omnipath_biotrans,params.genes,params.isoforms,params.proteins,params.lipids,params.runmcia)
+        OMNIPATH_INTEGRATED(OMNIPATH_PREPAREALL.out.merged_ranked, INTEGRATION.out.genes_across_omics,params.omnipath_choose, params.omnipath_choose_type, params.omnipath_additional_info_bool, params.omnipath_additional_info_val, params.omnipath_additional_info_attribute )
+    }
 
 }
 
