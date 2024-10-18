@@ -57,7 +57,7 @@ TREATMENT_REP1,treat
 
 <br>
 
-Alternatively, instead of the providing with paths of fastq files you can provide a column with SRA ***run*** identifiers you wish to download from NCBI in the first column named sample and the second column has to be named sampleID and store the SRA ***codes***: 
+Alternatively, instead of providing with paths of fastq files you can provide a column with SRA ***run*** identifiers you wish to download from NCBI in the first column named sample and the second column has to be named sampleID and store the SRA ***codes***: 
 
 
 ```console
