@@ -54,4 +54,22 @@ process PREPARE_DF {
         R: \$(R --version 2>&1)
     END_VERSIONS
     """
+
+
+
+
+    if(params.preparedf_alone){
+        PREPARE_DF(preparedf_alone.genes,
+         preparedf_alone.mirna,
+         preparedf_alone.proteins,
+         preparedf_alone.lipids,
+         preparedf_alone.isoforms,
+         preparedf_alone.integrated,
+         preparedf_alone.integratedafterlipids,
+         preparedf_alone.path,
+         preparedf_alone.alg_genes,
+         preparedf_alone.alg_mirna,
+         preparedf_alone.alg_proteins,
+         preparedf_alone.pval)
+    }
 }
