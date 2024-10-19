@@ -59,17 +59,17 @@ process PREPARE_DF {
 
 
     if(params.preparedf_alone){
-        PREPARE_DF(preparedf_alone.genes,
-         preparedf_alone.mirna,
-         preparedf_alone.proteins,
-         preparedf_alone.lipids,
-         preparedf_alone.isoforms,
-         preparedf_alone.integrated,
-         preparedf_alone.integratedafterlipids,
-         preparedf_alone.path,
-         preparedf_alone.alg_genes,
-         preparedf_alone.alg_mirna,
-         preparedf_alone.alg_proteins,
-         preparedf_alone.pval)
+        PREPARE_DF(params.preparedf_alone_params.genes,
+         params.preparedf_alone_mirna,
+         params.preparedf_alone_proteins,
+         params.preparedf_alone_lipids,
+         params.preparedf_alone_isoforms,
+         params.preparedf_alone_integrated,
+         params.preparedf_alone_integratedafterlipids,
+         params.preparedf_alone_path,
+         params.preparedf_alone_alg_genes,
+         params.preparedf_alone_alg_mirna,
+         params.preparedf_alone_alg_proteins,
+         params.preparedf_alone_pval)
     }
 }
