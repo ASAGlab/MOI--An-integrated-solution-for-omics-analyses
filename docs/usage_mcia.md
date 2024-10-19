@@ -172,18 +172,18 @@ If the user wants to run multiMiR alone they need to declare it in nextflow.conf
 
       params{
          preparedf_alone = true
-         preparedf_alone.genes = '[Logical, do you have genes?]'
-         preparedf_alone.mirna = '[Logical, do you have miRNA?]'
-         preparedf_alone.proteins = '[Logical, do you have proteins?]'
-         preparedf_alone.lipids = '[Logical, do you have lipids?]'
-         preparedf_alone.isoforms = '[Logical, do you have isoforms?]'
-         preparedf_alone.integrated = '[Logical, have you applied mcia?]'
-         preparedf_alone.integratedafterlipids = '[Logical, have you applied mcia and lipidomic analysis?]'
-         preparedf_alone.path   = '[Directory of the inputs]'  
-         preparedf_alone.alg_genes = '[Algorithm used for genes]'  
-         preparedf_alone.alg_mirna = '[Algorithm used for miRNA]'  
-         preparedf_alone.alg_proteins = '[Algorithm used for proteins]'  
-         preparedf_alone.pval  = '[pvalue cut off]'  
+         preparedf_alone_genes = '[Logical, do you have genes?]'
+         preparedf_alone_mirna = '[Logical, do you have miRNA?]'
+         preparedf_alone_proteins = '[Logical, do you have proteins?]'
+         preparedf_alone_lipids = '[Logical, do you have lipids?]'
+         preparedf_alone_isoforms = '[Logical, do you have isoforms?]'
+         preparedf_alone_integrated = '[Logical, have you applied mcia?]'
+         preparedf_alone_integratedafterlipids = '[Logical, have you applied mcia and lipidomic analysis?]'
+         preparedf_alone_path   = '[Directory of the inputs]'  
+         preparedf_alone_alg_genes = '[Algorithm used for genes]'  
+         preparedf_alone_alg_mirna = '[Algorithm used for miRNA]'  
+         preparedf_alone_alg_proteins = '[Algorithm used for proteins]'  
+         preparedf_alone_pval  = '[pvalue cut off]'  
          }
 ```
 
@@ -194,7 +194,7 @@ and this is the command to run it alone:
 
 ``` bash
 
-   nextflow run multiomicsintegrator/modules/local/prepare_df/main.nf -c multiomicsintegrator/nextflow.config -profile docker
+   nextflow run multiomicsintegrator/modules/local/prepare_for_bio_alone/main.nf -c multiomicsintegrator/nextflow.config -profile docker
 ```
 
 ## Correlation analysis
