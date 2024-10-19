@@ -59,7 +59,7 @@ process PREPARE_DF {
 
 
     if(params.preparedf_alone){
-        PREPARE_DF(params.preparedf_alone_params.genes,
+        PREPARE_DF(params.preparedf_alone_genes,
          params.preparedf_alone_mirna,
          params.preparedf_alone_proteins,
          params.preparedf_alone_lipids,
