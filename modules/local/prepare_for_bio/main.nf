@@ -58,7 +58,7 @@ process PREPARE_DF {
 
 
 
-    if(params.preparedf_alone){
+  /*  if(params.preparedf_alone){
         PREPARE_DF(params.preparedf_alone_genes,
          params.preparedf_alone_mirna,
          params.preparedf_alone_proteins,
@@ -72,4 +72,5 @@ process PREPARE_DF {
          params.preparedf_alone_alg_proteins,
          params.preparedf_alone_pval)
     }
+*/
 }
